@@ -3,6 +3,26 @@
 #include "safe_input.h"
 #include <stdio.h>
 
+static void print_help_banner(void)
+{
+    printf("\033[1;33m"); /* Bold yellow */
+    printf("  ██╗  ██╗███████╗██╗     ██████╗      \n");
+    printf("  ██║  ██║██╔════╝██║     ██╔══██╗     \n");
+    printf("  ███████║█████╗  ██║     ██████╔╝     \n");
+    printf("  ██╔══██║██╔══╝  ██║     ██╔═══╝      \n");
+    printf("  ██║  ██║███████╗███████╗██║          \n");
+    printf("  ╚═╝  ╚═╝╚══════╝╚══════╝╚═╝          \n");
+    printf("\033[0;36m");
+    printf("  ███╗   ███╗ █████╗ ███╗   ██╗██╗   ██╗ █████╗ ██╗     \n");
+    printf("  ████╗ ████║██╔══██╗████╗  ██║██║   ██║██╔══██╗██║     \n");
+    printf("  ██╔████╔██║███████║██╔██╗ ██║██║   ██║███████║██║     \n");
+    printf("  ██║╚██╔╝██║██╔══██║██║╚██╗██║██║   ██║██╔══██║██║     \n");
+    printf("  ██║ ╚═╝ ██║██║  ██║██║ ╚████║╚██████╔╝██║  ██║███████╗\n");
+    printf("  ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝\n");
+    printf("\033[0m");
+    printf("\033[90m  Your interactive guide to Data Structures & Algorithms in C.\033[0m\n\n");
+}
+
 void launch_help_page(void)
 {
     static int in_help = 0;
@@ -16,8 +36,9 @@ void launch_help_page(void)
     while (1)
     {
         display_header("C DSA INTERACTIVE SUITE - HELP MANUAL");
+        print_help_banner();
 
-        printf("Select a module to view its help page:\n\n");
+        printf("\033[1mSelect a module to view its help page:\033[0m\n\n");
         printf("1. Data Structures Help\n");
         printf("2. Expression Evaluation Help\n");
         printf("3. Sorting & Searching Help\n");
@@ -97,6 +118,6 @@ void launch_help_page(void)
     }
 
     in_help = 0;
-    // Clear screen again to restore the clean look of the app menu
+    /* Clear screen again to restore the clean look of the app menu. */
     printf("\033[H\033[2J");
 }

@@ -54,6 +54,7 @@ set(SRC_DIRS
     features/dp_visualizer
     features/memory_inspector
     features/bigo_verifier
+    src/bit_manipulation
 )
 
 # Header search paths
