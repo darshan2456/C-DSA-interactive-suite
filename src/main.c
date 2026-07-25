@@ -63,18 +63,17 @@ void run_legacy_menu()
             "click 9 for job scheduling (FCFS / SJF / priority / round robin) demo\n"
             "click 10 for backtracking algorithms demo\n"
             "click 11 for dynamic programming algorithms demo\n"
-            "click 12 for string algorithms demo\n"
+            "click 12 for String & Compression Suite demo\n"
             "click 13 for process synchronization algorithms demo\n"
             "click 14 for advanced heaps & priority queues suite demo\n"
             "click 15 for cache replacement simulator demo\n"
-            "click 16 for interactive string compression & encoding suite demo\n"
-            "click 17 for algorithm benchmarking and profiling demo\n"
-            "click 18 for interactive algorithm step-debugger demo\n"
-            "click 19 for setting animation speed (by default 2s)\n"
-            "click 20 for Stochastic Fuzz Testing Engine demo\n"
-            "click 21 for Raw Memory Layout Inspector / Hexdump Visualizer demo\n"
+            "click 16 for algorithm benchmarking and profiling demo\n"
+            "click 17 for interactive algorithm step-debugger demo\n"
+            "click 18 for setting animation speed (by default 2s)\n"
+            "click 19 for Stochastic Fuzz Testing Engine demo\n"
+            "click 20 for Raw Memory Layout Inspector / Hexdump Visualizer demo\n"
             "\nenter choice (\'-1\' to exit, or \'help\') : ",
-            1, 21 // limits
+            1, 20 // limits
         );
 
         if (status == INPUT_EXIT_SIGNAL)
@@ -157,7 +156,24 @@ void run_legacy_menu()
                 dynamic_programming_demo();
                 break;
             case 12:
-                string_algorithms_demo();
+                while (1)
+                {
+                    int string_choice;
+                    int string_status = safe_input_int(&string_choice,
+                                                       "\n--- String & Compression Suite ---\n"
+                                                       "1. String Pattern Matching Demos\n"
+                                                       "2. String Compression & Encoding Demos\n"
+                                                       "\nenter choice (\'-1\' to exit) : ",
+                                                       1, 2);
+                    if (string_status == INPUT_EXIT_SIGNAL)
+                        break;
+                    if (string_status == 0)
+                        continue;
+                    if (string_choice == 1)
+                        string_algorithms_demo();
+                    else if (string_choice == 2)
+                        compression_demo();
+                }
                 break;
             case 13:
                 process_synchronization_demo();
@@ -169,24 +185,21 @@ void run_legacy_menu()
                 cache_simulator_demo();
                 break;
             case 16:
-                compression_demo();
-                break;
-            case 17:
                 display_header("Algorithm Benchmarking & Profiling");
                 benchmark_menu_demo();
                 break;
-            case 18:
+            case 17:
                 debugger_demo();
                 break;
-            case 19:
+            case 18:
                 display_header("Settings");
                 settings_menu_demo();
                 break;
-            case 20:
+            case 19:
                 display_header("Stochastic Fuzz Testing Engine");
                 fuzzer_demo();
                 break;
-            case 21:
+            case 20:
                 display_header("Raw Memory Layout Inspector");
                 memory_inspector_demo();
                 break;
