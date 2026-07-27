@@ -113,60 +113,25 @@ void run_legacy_menu()
                 searching_algorithms_demo();
                 break;
             case 5:
-                while (1)
-                {
-                    int graph_choice;
-                    int graph_status = safe_input_int(&graph_choice,
-                                                      "\n--- Graph Algorithms ---\n"
-                                                      "1. Graph Traversals & Spanning Trees Demo\n"
-                                                      "2. Advanced Graph Algorithms Demo\n"
-                                                      "\nenter choice (\'-1\' to exit) : ",
-                                                      1, 2);
-                    if (graph_status == INPUT_EXIT_SIGNAL)
-                        break;
-                    if (graph_status == 0)
-                        continue;
-                    if (graph_choice == 1)
-                        graph_traversals_demo();
-                    else if (graph_choice == 2)
-                        advanced_graph_algorithms_demo();
-                }
+                graph_traversals_demo();
                 break;
             case 6:
-                hashing_algorithms_demo();
+                advanced_graph_algorithms_demo();
                 break;
             case 7:
                 trees_demo();
                 break;
             case 8:
-                error_correction_algorithms_demo();
+                dynamic_programming_demo();
                 break;
             case 9:
-                while (1)
-                {
-                    int os_choice;
-                    int os_status =
-                        safe_input_int(&os_choice,
-                                       "\n--- Operating System Algorithms ---\n"
-                                       "1. CPU Job Scheduling Simulators\n"
-                                       "2. Process Synchronization Problems (Semaphores / Mutex)\n"
-                                       "\nenter choice (\'-1\' to exit) : ",
-                                       1, 2);
-                    if (os_status == INPUT_EXIT_SIGNAL)
-                        break;
-                    if (os_status == 0)
-                        continue;
-                    if (os_choice == 1)
-                        job_scheduling_demo();
-                    else if (os_choice == 2)
-                        process_synchronization_demo();
-                }
-                break;
-            case 10:
                 backtracking_demo();
                 break;
+            case 10:
+                error_correction_algorithms_demo();
+                break;
             case 11:
-                dynamic_programming_demo();
+                job_scheduling_demo();
                 break;
             case 12:
                 while (1)
