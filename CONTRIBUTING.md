@@ -152,11 +152,19 @@ The CI pipeline runs all tests and Valgrind checks automatically on every push a
 
 ## Reporting Issues
 
-When opening an issue, please include:
-
-- A clear title and description
-- Steps to reproduce (if it's a bug)
-- Expected vs actual behavior
-- Your OS and GCC version
-
 Use the appropriate label: `bug`, `enhancement`, `documentation`, `good first issue`, `refactor` etc.
+
+---
+
+## Adding a New Algorithm or Data Structure
+
+When adding a new module:
+1. **Core Implementation**: Create `src/<category>/<algo>.c` and `src/<category>/<algo>.h`.
+2. **Doxygen Annotations**: Add Doxygen comments (`@brief`, `@param`, `@return`) to all exported header prototypes.
+3. **Menu Integration**:
+   - Register the subroutine in `src/main.c` for CLI menu access.
+   - Register the entry in `src/utils/algorithm_search.c` (`GLOBAL_ALGORITHM_TABLE`) for the Algorithm Finder.
+   - Register the entry in `tui/tui.c` (`TUI_ENTRIES`) for TUI parity.
+4. **Unit Tests**: Create `tests/<category>/test_<algo>.c` and register it in `CMakeLists.txt`.
+5. **Format & Verify**: Run `cmake --build build --target fmt` and verify `ctest --test-dir build`.
+
