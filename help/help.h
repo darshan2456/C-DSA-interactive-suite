@@ -18,9 +18,19 @@ void help_data_structures_menu(void);
 void help_sorting_searching_menu(void);
 
 /**
- * @brief Sub-menu for Graphs & Trees help.
+ * @brief Sub-menu for Trees help.
  */
-void help_graphs_trees_menu(void);
+void help_trees_menu(void);
+
+/**
+ * @brief Sub-menu for Graph Traversals help.
+ */
+void help_graph_traversals_menu(void);
+
+/**
+ * @brief Sub-menu for Advanced Heaps help.
+ */
+void help_advanced_heaps_menu(void);
 
 /**
  * @brief Sub-menu for Advanced Topics help.
