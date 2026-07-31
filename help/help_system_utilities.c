@@ -75,6 +75,36 @@ static void display_diagnostics_help(void)
     getchar();
 }
 
+static void display_benchmarking_help(void)
+{
+    clear_screen();
+    display_header("Help - Benchmarking & Profiling");
+    printf("\n"
+           "================================================================================\n"
+           " ALGORITHM BENCHMARKING & PROFILING\n"
+           "================================================================================\n"
+           " Concept:\n"
+           "   Measures and compares execution time, memory usage, or operational\n"
+           "   efficiency across different algorithms under uniform conditions.\n\n"
+           " CONFIGURATION SETTINGS:\n"
+           "   • Iterations: Define how many times each algorithm is executed to calculate\n"
+           "                 an accurate average time (mitigates CPU spike anomalies).\n"
+           "   • Export Format: Save the benchmark results to external report files in CSV,\n"
+           "                    Markdown, or JSON formats.\n\n"
+           " BENCHMARK SUITES:\n"
+           "   1. Sorting Algorithms           8. Hash Map Collision Resolution\n"
+           "   2. Searching Algorithms         9. Trees Lookup Performance\n"
+           "   3. Graph Shortest Paths         10. Backtracking Algorithms\n"
+           "   4. Minimum Spanning Trees (MST) 11. Network Flow Algorithms\n"
+           "   5. Job Scheduling               12. Advanced Heaps\n"
+           "   6. String Matching              13. Cache Replacement Simulator\n"
+           "   7. DP vs Naive Recursion        14. Compression & Encoding\n\n"
+           " HOW TO RUN IN THIS SUITE:\n"
+           "   Main Menu ➔ Option 15 (Benchmarking Suite)\n\n"
+           " Press [ENTER] to return to System Utilities Help Menu...");
+    getchar();
+}
+
 void help_system_utilities_menu(void)
 {
     while (1)
@@ -89,8 +119,9 @@ void help_system_utilities_menu(void)
                                     "1. Sorting Telemetry & Memory Profiler Engine\n"
                                     "2. State Serialization & Binary Disk Persistence\n"
                                     "3. Developer Diagnostics (Fuzzing, Big-O, Exporter)\n"
+                                    "4. Algorithm Benchmarking & Profiling\n"
                                     "\nenter choice ('-1' to return): ",
-                                    1, 3);
+                                    1, 4);
 
         if (status == INPUT_EXIT_SIGNAL)
         {
@@ -112,6 +143,9 @@ void help_system_utilities_menu(void)
                 break;
             case 3:
                 display_diagnostics_help();
+                break;
+            case 4:
+                display_benchmarking_help();
                 break;
         }
     }

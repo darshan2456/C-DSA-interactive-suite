@@ -33,9 +33,9 @@ void help_graph_traversals_menu(void);
 void help_advanced_heaps_menu(void);
 
 /**
- * @brief Sub-menu for Advanced Topics help.
+ * @brief Sub-menu for String Algorithms & Compression help.
  */
-void help_advanced_topics_menu(void);
+void help_string_compression_menu(void);
 
 /**
  * @brief Sub-menu for Dynamic Programming help.
