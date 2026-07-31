@@ -95,7 +95,7 @@ void kmp_search(const char* text, const char* pattern)
     free(lps);
 }
 
-static void compute_lps_array_visual(char* pattern, int m, int* lps)
+static void compute_lps_array_visual(const char* pattern, int m, int* lps)
 {
     int length = 0;
     lps[0] = 0;

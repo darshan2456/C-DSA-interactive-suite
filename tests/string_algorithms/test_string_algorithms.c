@@ -7,8 +7,8 @@
 /* Functions under test (forward-declared, same approach as the other tests).
    The string matchers print their results, so each test captures stdout and
    counts the "found at index" lines to compare against the expected count. */
-void naive_string_matching(char* text, char* pattern);
-void kmp_search(char* text, char* pattern);
+void naive_string_matching(const char* text, const char* pattern);
+void kmp_search(const char* text, const char* pattern);
 void rabin_karp_search(char* text, char* pattern, int q);
 void find_longest_repeated_substring(const char* txt, int n, char* output);
 int* build_suffix_array(const char* txt, int n);
@@ -16,7 +16,8 @@ int* build_lcp_array(const char* txt, int* suffix_arr, int n);
 
 /* Run a matcher with stdout redirected to a temp file, then return how many
    "found at index" lines it printed. */
-static int count_matches(void (*fn)(char*, char*), char* text, char* pattern)
+static int count_matches(void (*fn)(const char*, const char*),
+                         const char* text, const char* pattern)
 {
     FILE* tmp = tmpfile();
     assert(tmp != NULL);
