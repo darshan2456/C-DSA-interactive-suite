@@ -16,8 +16,8 @@ int* build_lcp_array(const char* txt, int* suffix_arr, int n);
 
 /* Run a matcher with stdout redirected to a temp file, then return how many
    "found at index" lines it printed. */
-static int count_matches(void (*fn)(const char*, const char*),
-                         const char* text, const char* pattern)
+static int count_matches(void (*fn)(const char*, const char*), const char* text,
+                         const char* pattern)
 {
     FILE* tmp = tmpfile();
     assert(tmp != NULL);
