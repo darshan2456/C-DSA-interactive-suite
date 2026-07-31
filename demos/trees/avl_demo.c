@@ -1,8 +1,9 @@
+#include <stdio.h>
+#include <stdlib.h>
+
 #include "avl.h"
 #include "safe_input.h"
 #include "serialization.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 void avl_demo(void)
 {

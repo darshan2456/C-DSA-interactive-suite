@@ -4,7 +4,7 @@
 #include <string.h>
 #include <time.h>
 
-void naive_string_matching(char* text, char* pattern)
+void naive_string_matching(const char* text, const char* pattern)
 {
     int n = strlen(text);
     int m = strlen(pattern);

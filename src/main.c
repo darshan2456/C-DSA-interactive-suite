@@ -45,7 +45,7 @@
 void probabilistic_ds_demo(void);
 void spatial_indexing_demo(void);
 
-void run_legacy_menu()
+void run_legacy_menu(void)
 {
     while (1)
     {
@@ -352,7 +352,7 @@ void run_legacy_menu()
     }
 }
 
-void tui_menu()
+void tui_menu(void)
 {
     while (1)
     {

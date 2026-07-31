@@ -1,10 +1,11 @@
-#include "bplus_tree.h"
-#include "mwst_utils.h"
-#include "safe_input.h"
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
+#include "bplus_tree.h"
+#include "mwst_utils.h"
+#include "safe_input.h"
 
 void bplus_tree_demo(void)
 {

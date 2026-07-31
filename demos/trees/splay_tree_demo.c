@@ -1,7 +1,8 @@
-#include "display_header.h"
-#include "splay_tree.h"
 #include <stdio.h>
 #include <stdlib.h>
+
+#include "display_header.h"
+#include "splay_tree.h"
 
 void splay_tree_demo(void)
 {

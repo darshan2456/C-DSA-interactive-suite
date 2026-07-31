@@ -1,7 +1,8 @@
-#include "btree.h"
-#include "safe_input.h"
 #include <stdio.h>
 #include <stdlib.h>
+
+#include "btree.h"
+#include "safe_input.h"
 
 void btree_demo(void)
 {

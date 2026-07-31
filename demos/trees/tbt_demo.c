@@ -1,7 +1,8 @@
-#include "safe_input.h"
-#include "tbt.h"
 #include <stdio.h>
 #include <stdlib.h>
+
+#include "safe_input.h"
+#include "tbt.h"
 
 void TBT_demo(void)
 {

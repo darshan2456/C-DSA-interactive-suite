@@ -1,7 +1,8 @@
-#include "safe_input.h"
-#include "segment_tree.h"
 #include <stdio.h>
 #include <stdlib.h>
+
+#include "safe_input.h"
+#include "segment_tree.h"
 
 void segment_tree_demo(void)
 {

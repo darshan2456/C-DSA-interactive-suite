@@ -1,8 +1,9 @@
+#include <stdio.h>
+#include <stdlib.h>
+
 #include "display_header.h"
 #include "fenwick_tree.h"
 #include "safe_input.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 void fenwick_tree_demo(void)
 {

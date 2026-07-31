@@ -1,8 +1,9 @@
+#include <stdio.h>
+#include <stdlib.h>
+
 #include "bst.h"
 #include "safe_input.h"
 #include "serialization.h"
-#include <stdio.h>
-#include <stdlib.h>
 extern int deletionStrategy;
 #define SUCCESSOR 1
 #define PREDECESSOR 2

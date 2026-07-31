@@ -1,7 +1,8 @@
+#include <stdio.h>
+
 #include "display_header.h"
 #include "safe_input.h"
 #include "trees.h"
-#include <stdio.h>
 
 void trees_demo(void)
 {

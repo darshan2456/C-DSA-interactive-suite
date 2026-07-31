@@ -1,7 +1,8 @@
-#include "display_header.h"
-#include "red_black_tree.h"
 #include <stdio.h>
 #include <stdlib.h>
+
+#include "display_header.h"
+#include "red_black_tree.h"
 
 void red_black_tree_demo(void)
 {
