@@ -46,7 +46,13 @@ void help_advanced_topics_menu(void)
                 printf("    • Longest Common Subsequence (LCS): Finds longest shared character "
                        "subsequence.\n");
                 printf("    • Matrix Chain Multiplication (MCM): Finds optimal matrix "
-                       "multiplication order.\n\n");
+                       "multiplication order.\n");
+                printf("    • Edit Distance: Computes minimum operations to convert a string into "
+                       "another.\n");
+                printf("    • Coin Change: Finds the minimum number of coins required to make a "
+                       "target amount.\n");
+                printf("    • Travelling Salesperson Problem (TSP): Finds the shortest route "
+                       "visiting all cities.\n\n");
                 printf("DP VISUALIZER:\n");
                 printf("    An interactive helper tool integrated into DP demos that traces "
                        "recursion\n");
