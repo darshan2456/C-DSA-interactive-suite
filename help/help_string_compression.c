@@ -13,10 +13,12 @@ void help_string_compression_menu(void)
     printf("    • Rabin-Karp: Uses rolling hashes to compare pattern and text windows.\n");
     printf("    • Suffix Array: Sorted array of all suffixes, enabling fast substring queries.\n");
     printf("    • Kasai's LCP Array: Computes the longest common prefixes between consecutive\n");
-    printf("      suffixes in the Suffix Array in O(N) time. Essential for substring queries.\n\n");
+    printf("      suffixes in the Suffix Array in O(N) time. Essential for substring "
+           "queries.\n\n");
 
     printf("COMPRESSION & ENCODING:\n");
-    printf("    • Huffman Coding: Lossless data compression using variable-length prefix codes.\n");
+    printf("    • Huffman Coding: Lossless data compression using variable-length prefix "
+           "codes.\n");
     printf("    • Run-Length Encoding (RLE): Simple form of compression for repeating "
            "characters.\n");
     printf("    • LZW (Lempel-Ziv-Welch): Dictionary-based compression algorithm.\n");

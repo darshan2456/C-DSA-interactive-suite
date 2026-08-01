@@ -140,10 +140,10 @@ void launch_help_page(void)
                        "exports.\n");
                 printf("    --load-bst <path>          - Load and visualize a BST from a "
                        "serialized file.\n");
-                printf("    --load-avl <path>          - Load and visualize an AVL Tree from a "
-                       "serialized file.\n");
-                printf("    --load-graph <path>        - Load and print an unweighted Graph from "
-                       "a file.\n");
+                printf("    --load-avl <path>          - Load and visualize an AVL Tree "
+                       "from a serialized file.\n");
+                printf("    --load-graph <path>        - Load and print an unweighted "
+                       "Graph from a file.\n");
                 printf("    --load-wgraph <path>       - Load and print a Weighted Graph from a "
                        "file.\n\n");
                 printf("=================================================================\n");
