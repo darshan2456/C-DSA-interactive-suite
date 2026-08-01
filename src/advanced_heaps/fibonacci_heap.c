@@ -187,23 +187,7 @@ static FibonacciNode* fib_heap_consolidate(FibonacciNode* min_node)
         {
             arr[i]->left = arr[i];
             arr[i]->right = arr[i];
-            if (new_min == NULL)
-            {
-                new_min = arr[i];
-            }
-            else
-            {
-                list_insert(new_min, arr[i]);
-                if (arr[i]->key < new_min->key)
-                {
-                    new_min = arr[i];
-                }
-            }
-        }
-    }
-
-    return new_min;
-}
+            if (new_min ==
 
 /* Extracts the minimum element and consolidates the heap */
 FibonacciNode* fib_heap_extract_min(FibonacciNode* min_node, int* min_key, int* min_val)
