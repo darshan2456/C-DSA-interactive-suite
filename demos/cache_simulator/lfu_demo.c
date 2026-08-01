@@ -28,10 +28,7 @@ void cache_lfu_demo(void)
 
         printf("\n\033[1;36m=== LEAST FREQUENTLY USED (LFU) PAGE REPLACEMENT ===\033[0m\n");
 
-        cache_visualize(
-            &cache,
-            cache.last_accessed_slot,
-            cache.last_accessed_slot != -1);
+        cache_visualize(&cache, cache.last_accessed_slot, cache.last_accessed_slot != -1);
 
         cache_print_status(&cache);
 
@@ -42,10 +39,7 @@ void cache_lfu_demo(void)
         {
             if (cache.blocks[i].is_valid)
             {
-                printf("%d\t%d\t%d\t%d\n",
-                       i,
-                       cache.blocks[i].page_id,
-                       cache.blocks[i].frequency,
+                printf("%d\t%d\t%d\t%d\n", i, cache.blocks[i].page_id, cache.blocks[i].frequency,
                        cache.blocks[i].last_access_time);
             }
             else
@@ -83,16 +77,9 @@ void cache_lfu_demo(void)
                 if (safe_input_int(&page, "", 0, 999) != 1)
                     break;
 
-                bool hit =
-                    cache_access_lfu(
-                        &cache,
-                        page,
-                        choice == 2);
+                bool hit = cache_access_lfu(&cache, page, choice == 2);
 
-                printf("\n%s : Page %d\n",
-                       hit ? "CACHE HIT"
-                           : "CACHE MISS",
-                       page);
+                printf("\n%s : Page %d\n", hit ? "CACHE HIT" : "CACHE MISS", page);
 
                 sleep_seconds(1.0f);
                 break;
@@ -114,23 +101,15 @@ void cache_lfu_demo(void)
                     int page = rand() % 10;
                     bool write = rand() % 2;
 
-                    cache_access_lfu(
-                        &cache,
-                        page,
-                        write);
+                    cache_access_lfu(&cache, page, write);
 
                     if (!is_instant())
                     {
                         clear_screen();
 
-                        printf("\nAuto Simulation (%d/%d)\n\n",
-                               i + 1,
-                               steps);
+                        printf("\nAuto Simulation (%d/%d)\n\n", i + 1, steps);
 
-                        cache_visualize(
-                            &cache,
-                            cache.last_accessed_slot,
-                            false);
+                        cache_visualize(&cache, cache.last_accessed_slot, false);
 
                         cache_print_status(&cache);
 
@@ -141,11 +120,8 @@ void cache_lfu_demo(void)
                         {
                             if (cache.blocks[j].is_valid)
                             {
-                                printf("%d\t%d\t%d\t%d\n",
-                                       j,
-                                       cache.blocks[j].page_id,
-                                       cache.blocks[j].frequency,
-                                       cache.blocks[j].last_access_time);
+                                printf("%d\t%d\t%d\t%d\n", j, cache.blocks[j].page_id,
+                                       cache.blocks[j].frequency, cache.blocks[j].last_access_time);
                             }
                             else
                             {

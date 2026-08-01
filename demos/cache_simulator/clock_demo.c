@@ -28,10 +28,7 @@ void cache_clock_demo(void)
 
         printf("\n\033[1;36m=== CLOCK PAGE REPLACEMENT ===\033[0m\n");
 
-        cache_visualize(
-            &cache,
-            cache.last_accessed_slot,
-            cache.last_accessed_slot != -1);
+        cache_visualize(&cache, cache.last_accessed_slot, cache.last_accessed_slot != -1);
 
         cache_print_status(&cache);
 
@@ -64,16 +61,9 @@ void cache_clock_demo(void)
                 if (safe_input_int(&page, "", 0, 999) != 1)
                     break;
 
-                bool hit =
-                    cache_access_clock(
-                        &cache,
-                        page,
-                        choice == 2);
+                bool hit = cache_access_clock(&cache, page, choice == 2);
 
-                printf("\n%s : Page %d\n",
-                       hit ? "CACHE HIT"
-                           : "CACHE MISS",
-                       page);
+                printf("\n%s : Page %d\n", hit ? "CACHE HIT" : "CACHE MISS", page);
 
                 sleep_seconds(1.0f);
                 break;
@@ -95,23 +85,15 @@ void cache_clock_demo(void)
                     int page = rand() % 10;
                     bool write = rand() % 2;
 
-                    cache_access_clock(
-                        &cache,
-                        page,
-                        write);
+                    cache_access_clock(&cache, page, write);
 
                     if (!is_instant())
                     {
                         clear_screen();
 
-                        printf("\nAuto Simulation (%d/%d)\n\n",
-                               i + 1,
-                               steps);
+                        printf("\nAuto Simulation (%d/%d)\n\n", i + 1, steps);
 
-                        cache_visualize(
-                            &cache,
-                            cache.last_accessed_slot,
-                            false);
+                        cache_visualize(&cache, cache.last_accessed_slot, false);
 
                         cache_print_status(&cache);
 

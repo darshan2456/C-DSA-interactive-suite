@@ -47,10 +47,7 @@ void cache_opt_demo(void)
 
         printf("\n\033[1;36m=== OPTIMAL PAGE REPLACEMENT ===\033[0m\n");
 
-        cache_visualize(
-            &cache,
-            cache.last_accessed_slot,
-            cache.last_accessed_slot != -1);
+        cache_visualize(&cache, cache.last_accessed_slot, cache.last_accessed_slot != -1);
 
         cache_print_status(&cache);
 
@@ -84,89 +81,69 @@ void cache_opt_demo(void)
 
         switch (choice)
         {
-        case 1:
-        {
-            if (current >= ref_len)
+            case 1:
             {
+                if (current >= ref_len)
+                {
+                    printf("\nReference string completed.\n");
+                    sleep_seconds(1.0f);
+                    break;
+                }
+
+                bool hit =
+                    cache_access_opt(&cache, ref_str[current], ref_str, ref_len, current, false);
+
+                printf("\n%s : Page %d\n", hit ? "CACHE HIT" : "CACHE MISS", ref_str[current]);
+
+                current++;
+
+                sleep_seconds(1.0f);
+                break;
+            }
+
+            case 2:
+            {
+                while (current < ref_len)
+                {
+                    cache_access_opt(&cache, ref_str[current], ref_str, ref_len, current, false);
+
+                    current++;
+
+                    if (!is_instant())
+                    {
+                        clear_screen();
+
+                        printf("\nAuto Simulation (%d/%d)\n\n", current, ref_len);
+
+                        cache_visualize(&cache, cache.last_accessed_slot, false);
+
+                        cache_print_status(&cache);
+
+                        printf("\nReference String:\n");
+
+                        for (int i = 0; i < ref_len; i++)
+                        {
+                            if (i == current)
+                                printf("[%-2d] ", ref_str[i]);
+                            else
+                                printf(" %-2d  ", ref_str[i]);
+                        }
+
+                        sleep_seconds(1.0f);
+                    }
+                }
+
                 printf("\nReference string completed.\n");
                 sleep_seconds(1.0f);
                 break;
             }
 
-            bool hit =
-                cache_access_opt(
-                    &cache,
-                    ref_str[current],
-                    ref_str,
-                    ref_len,
-                    current,
-                    false);
-
-            printf("\n%s : Page %d\n",
-                   hit ? "CACHE HIT"
-                       : "CACHE MISS",
-                   ref_str[current]);
-
-            current++;
-
-            sleep_seconds(1.0f);
-            break;
-        }
-
-        case 2:
-        {
-            while (current < ref_len)
-            {
-                cache_access_opt(
-                    &cache,
-                    ref_str[current],
-                    ref_str,
-                    ref_len,
-                    current,
-                    false);
-
-                current++;
-
-                if (!is_instant())
-                {
-                    clear_screen();
-
-                    printf("\nAuto Simulation (%d/%d)\n\n",
-                           current,
-                           ref_len);
-
-                    cache_visualize(
-                        &cache,
-                        cache.last_accessed_slot,
-                        false);
-
-                    cache_print_status(&cache);
-
-                    printf("\nReference String:\n");
-
-                    for (int i = 0; i < ref_len; i++)
-                    {
-                        if (i == current)
-                            printf("[%-2d] ", ref_str[i]);
-                        else
-                            printf(" %-2d  ", ref_str[i]);
-                    }
-
-                    sleep_seconds(1.0f);
-                }
-            }
-
-            printf("\nReference string completed.\n");
-            sleep_seconds(1.0f);
-            break;
-        }
-
-        case 3:
-            cache_init(&cache, capacity);
-            current = 0;
-            printf("\nCache Reset Successfully!\n");
-            sleep_seconds(0.8f);
-            break;
+            case 3:
+                cache_init(&cache, capacity);
+                current = 0;
+                printf("\nCache Reset Successfully!\n");
+                sleep_seconds(0.8f);
+                break;
         }
     }
 }

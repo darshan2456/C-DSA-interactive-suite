@@ -29,10 +29,7 @@ void cache_fifo_demo(void)
         printf("\n\033[1;36m=== FIFO PAGE REPLACEMENT ===\033[0m\n");
         printf("Oldest page is replaced when cache becomes full.\n\n");
 
-        cache_visualize(
-            &cache,
-            cache.last_accessed_slot,
-            cache.last_accessed_slot != -1);
+        cache_visualize(&cache, cache.last_accessed_slot, cache.last_accessed_slot != -1);
 
         cache_print_status(&cache);
 
@@ -55,86 +52,68 @@ void cache_fifo_demo(void)
 
         switch (choice)
         {
-        case 1:
-        case 2:
-        {
-            int page;
-
-            printf("Enter page number: ");
-
-            if (safe_input_int(&page, "", 0, 999) != 1)
-                break;
-
-            bool hit =
-                cache_access_fifo(
-                    &cache,
-                    page,
-                    choice == 2);
-
-            printf("\nAccessing Page %d (%s)\n",
-                   page,
-                   choice == 2 ? "WRITE" : "READ");
-
-            printf("%s\n",
-                   hit ? "CACHE HIT!"
-                       : "CACHE MISS!");
-
-            sleep_seconds(1.0f);
-            break;
-        }
-
-        case 3:
-        {
-            int steps;
-
-            printf("Number of simulation steps (1-20): ");
-
-            if (safe_input_int(&steps, "", 1, 20) != 1)
-                break;
-
-            srand((unsigned)time(NULL));
-
-            for (int i = 0; i < steps; i++)
+            case 1:
+            case 2:
             {
-                int page = rand() % 10;
-                bool write = rand() % 2;
+                int page;
 
-                cache_access_fifo(
-                    &cache,
-                    page,
-                    write);
+                printf("Enter page number: ");
 
-                if (!is_instant())
-                {
-                    clear_screen();
+                if (safe_input_int(&page, "", 0, 999) != 1)
+                    break;
 
-                    printf("\nAuto Simulation (%d/%d)\n\n",
-                           i + 1,
-                           steps);
+                bool hit = cache_access_fifo(&cache, page, choice == 2);
 
-                    printf("Accessing Page %d (%s)\n\n",
-                           page,
-                           write ? "WRITE" : "READ");
+                printf("\nAccessing Page %d (%s)\n", page, choice == 2 ? "WRITE" : "READ");
 
-                    cache_visualize(
-                        &cache,
-                        cache.last_accessed_slot,
-                        false);
+                printf("%s\n", hit ? "CACHE HIT!" : "CACHE MISS!");
 
-                    cache_print_status(&cache);
-
-                    sleep_seconds(1.0f);
-                }
+                sleep_seconds(1.0f);
+                break;
             }
 
-            break;
-        }
+            case 3:
+            {
+                int steps;
 
-        case 4:
-            cache_init(&cache, capacity);
-            printf("\nCache reset successfully!\n");
-            sleep_seconds(0.8f);
-            break;
+                printf("Number of simulation steps (1-20): ");
+
+                if (safe_input_int(&steps, "", 1, 20) != 1)
+                    break;
+
+                srand((unsigned)time(NULL));
+
+                for (int i = 0; i < steps; i++)
+                {
+                    int page = rand() % 10;
+                    bool write = rand() % 2;
+
+                    cache_access_fifo(&cache, page, write);
+
+                    if (!is_instant())
+                    {
+                        clear_screen();
+
+                        printf("\nAuto Simulation (%d/%d)\n\n", i + 1, steps);
+
+                        printf("Accessing Page %d (%s)\n\n", page, write ? "WRITE" : "READ");
+
+                        cache_visualize(&cache, cache.last_accessed_slot, false);
+
+                        cache_print_status(&cache);
+
+                        sleep_seconds(1.0f);
+                    }
+                }
+
+                break;
+            }
+
+            case 4:
+                cache_init(&cache, capacity);
+                printf("\nCache reset successfully!\n");
+                sleep_seconds(0.8f);
+                break;
         }
     }
 }
