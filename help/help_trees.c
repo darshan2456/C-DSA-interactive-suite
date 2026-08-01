@@ -12,8 +12,7 @@ void help_trees_menu(void)
     printf("    Self-balancing binary search tree where heights of children differ by at "
            "most 1.\n\n");
     printf("TRIE:\n");
-    printf("    Search tree used to store associative structures, typically keys are "
-           "strings.\n\n");
+    printf("    Search tree used to store associative structures, typically keys are strings.\n\n");
     printf("B-TREE & B+ TREE:\n");
     printf("    Self-balancing search trees optimized for systems that read/write large blocks of "
            "data.\n\n");
@@ -21,8 +20,7 @@ void help_trees_menu(void)
     printf("    Self-balancing BST using node colors (red/black) to guarantee O(log N) "
            "operations.\n\n");
     printf("SPLAY TREE:\n");
-    printf("    Self-adjusting BST that moves recently accessed nodes to the root "
-           "(splaying).\n\n");
+    printf("    Self-adjusting BST that moves recently accessed nodes to the root (splaying).\n\n");
     printf("SEGMENT TREE & FENWICK TREE (BIT):\n");
     printf("    Trees for fast range queries (sum, min, max) and point updates in O(log N).\n\n");
     printf("THREADED BINARY TREE:\n");

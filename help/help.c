@@ -46,7 +46,7 @@ void launch_help_page(void)
         printf("5. Graph Traversals Help\n");
         printf("6. Advanced Heaps Help\n");
         printf("7. Hashing Help\n");
-        printf("8. Advanced & Specialized Topics Help\n");
+        printf("8. String Algorithms & Compression Help\n");
         printf("9. Dynamic Programming Help\n");
         printf("10. Error Correction Help\n");
         printf("11. Bit Manipulation Help\n");
@@ -94,7 +94,7 @@ void launch_help_page(void)
                 help_hashing_menu();
                 break;
             case 8:
-                help_advanced_topics_menu();
+                help_string_compression_menu();
                 break;
             case 9:
                 help_dynamic_programming_menu();
@@ -127,7 +127,8 @@ void launch_help_page(void)
                 printf("    designed to help you visualize and interact with Data Structures\n");
                 printf("    and Algorithms implemented in C.\n\n");
                 printf("NAVIGATION & COMMANDS\n");
-                printf("    help               - Launches this help page from any input prompt.\n");
+                printf("    help               - Launches this help page from any input "
+                       "prompt.\n");
                 printf("    -1                 - Exits the current menu, sub-suite, or "
                        "application.\n");
                 printf("    Numbers            - Choose specific menu items or menu paths.\n\n");
@@ -139,10 +140,10 @@ void launch_help_page(void)
                        "exports.\n");
                 printf("    --load-bst <path>          - Load and visualize a BST from a "
                        "serialized file.\n");
-                printf("    --load-avl <path>          - Load and visualize an AVL Tree from a "
-                       "serialized file.\n");
-                printf("    --load-graph <path>        - Load and print an unweighted Graph from a "
-                       "file.\n");
+                printf("    --load-avl <path>          - Load and visualize an AVL Tree "
+                       "from a serialized file.\n");
+                printf("    --load-graph <path>        - Load and print an unweighted "
+                       "Graph from a file.\n");
                 printf("    --load-wgraph <path>       - Load and print a Weighted Graph from a "
                        "file.\n\n");
                 printf("=================================================================\n");

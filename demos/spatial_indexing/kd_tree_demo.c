@@ -49,4 +49,5 @@ void kd_tree_demo(void)
 
     free(range_res);
     kdtree_free(tree);
+    press_enter_to_continue();
 }

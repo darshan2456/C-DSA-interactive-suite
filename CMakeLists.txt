@@ -53,6 +53,7 @@ set(SRC_DIRS
     demos/error_correction_algorithms
     demos/hashing
     demos/job_scheduling
+    demos/process_synchronization
     features/telemetry
     features/serialization
     features/dp_visualizer
@@ -78,9 +79,8 @@ foreach(DIR ${SRC_DIRS})
     list(APPEND SOURCES ${DIR_SRCS})
 endforeach()
 
-# Exclude src/data_structures/main.c from the library source files because it contains main()
+# Exclude src/main.c from the library source files because it contains main()
 list(REMOVE_ITEM SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/src/main.c")
-list(REMOVE_ITEM SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/src/utils/io_utility.c")
 
 # Platform specific configurations
 if(NOT WIN32)

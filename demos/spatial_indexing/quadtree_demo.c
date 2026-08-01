@@ -37,4 +37,5 @@ void quadtree_demo(void)
 
     free(results);
     quadtree_free(tree);
+    press_enter_to_continue();
 }

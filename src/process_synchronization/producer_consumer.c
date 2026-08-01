@@ -9,8 +9,8 @@
 
 #define BUFFER_SIZE 5
 
-static void display_buffer_state(const int* buffer, int in, int out, int mutex, int empty, int full,
-                                 int prod_blocked, int cons_blocked)
+void display_buffer_state(const int* buffer, int in, int out, int mutex, int empty, int full,
+                          int prod_blocked, int cons_blocked)
 {
     printf("\n\033[1;34m┌────────────────────────────────────────────────────────┐\033[0m");
     printf("\n\033[1;34m│                 PRODUCER-CONSUMER STATE                │\033[0m");
@@ -47,258 +47,143 @@ static void display_buffer_state(const int* buffer, int in, int out, int mutex, 
     printf("\n\033[1;34m└────────────────────────────────────────────────────────┘\033[0m\n");
 }
 
-void producer_consumer_demo(void)
+void pc_init(ProducerConsumerState* pc_state)
 {
-    int buffer[BUFFER_SIZE] = {0};
-    int in = 0;
-    int out = 0;
-    int mutex = 1;
-    int empty = BUFFER_SIZE;
-    int full = 0;
-    int item_counter = 1;
-    int prod_blocked = 0;
-    int cons_blocked = 0;
+    for (int i = 0; i < BUFFER_SIZE; i++)
+        pc_state->buffer[i] = 0;
+    pc_state->in = 0;
+    pc_state->out = 0;
+    pc_state->mutex = 1;
+    pc_state->empty = BUFFER_SIZE;
+    pc_state->full = 0;
+    pc_state->item_counter = 1;
+    pc_state->prod_blocked = 0;
+    pc_state->cons_blocked = 0;
+}
 
-    while (1)
+void producer_step(ProducerConsumerState* pc_state)
+{
+    int* buffer = pc_state->buffer;
+    if (pc_state->empty == 0)
+    {
+        pc_state->prod_blocked = 1;
+        printf("\033[1;31mProducer: Empty Semaphore is 0 (Buffer full). Producer is "
+               "BLOCKED.\033[0m\n");
+    }
+    else
+    {
+        // wait(mutex)
+        if (pc_state->mutex == 0)
+        {
+            printf("Producer: Mutex is held by another process. Waiting.\n");
+        }
+        else
+        {
+            pc_state->prod_blocked = 0;
+            pc_state->empty--;
+            pc_state->mutex--; // acquire lock
+
+            buffer[pc_state->in] = pc_state->item_counter++;
+            int produced = buffer[pc_state->in];
+            printf("\033[1;32mProducer: Acquired mutex, placed item P%d at slot %d.\033[0m\n",
+                   produced, pc_state->in);
+            pc_state->in = (pc_state->in + 1) % BUFFER_SIZE;
+
+            pc_state->mutex++; // release lock
+            pc_state->full++;
+
+            if (pc_state->cons_blocked)
+            {
+                pc_state->cons_blocked = 0;
+                printf("\033[1;32mProducer: Signal(full_sem) sent. Consumer is now "
+                       "UNBLOCKED.\033[0m\n");
+            }
+        }
+    }
+}
+
+void pc_auto_stimulate(ProducerConsumerState* pc_state, int steps, int step_mode)
+{
+    srand((unsigned int)time(NULL));
+
+    for (int s = 0; s < steps; s++)
     {
         if (!is_instant())
         {
             clear_screen();
         }
-        printf("\n\033[1;36m=== PRODUCER-CONSUMER PROBLEM SIMULATOR ===\033[0m\n");
-        printf("This demo visualizes the behavior of Producer and Consumer processes\n");
-        printf("synchronizing over a bounded circular buffer using Semaphores.\n");
+        printf("\n\033[1;36m=== Auto-Simulation (Step %d of %d) ===\033[0m\n", s + 1, steps);
+        display_buffer_state(pc_state->buffer, pc_state->in, pc_state->out, pc_state->mutex,
+                             pc_state->empty, pc_state->full, pc_state->prod_blocked,
+                             pc_state->cons_blocked);
 
-        display_buffer_state(buffer, in, out, mutex, empty, full, prod_blocked, cons_blocked);
-
-        printf("\nOptions:\n");
-        printf("1. Run Producer (attempt to produce)\n");
-        printf("2. Run Consumer (attempt to consume)\n");
-        printf("3. Auto-simulate (runs random steps automatically)\n");
-        printf("4. Reset Buffer state\n");
-        printf("Enter option (-1 to return to menu): ");
-        fflush(stdout);
-
-        int choice;
-        int status = safe_input_int(&choice, "", 1, 4);
-        if (status == INPUT_EXIT_SIGNAL || choice == -1)
+        int act = rand() % 2; // 0 = produce, 1 = consume
+        if (act == 0)
         {
-            break;
+            printf("\n\033[1;33m[Simulated Event: Producer attempts action]\033[0m\n");
+            producer_step(pc_state);
         }
-        if (status == 0)
+        else
         {
-            continue;
+            printf("\n\033[1;33m[Simulated Event: Consumer attempts action]\033[0m\n");
+            consumer_step(pc_state);
         }
 
-        if (choice == 1)
+        if (step_mode == 2)
         {
-            printf("\n\033[1;33m[Action: Producer Attempting to Produce]\033[0m\n");
-            // wait(empty)
-            if (empty == 0)
-            {
-                prod_blocked = 1;
-                printf("\033[1;31mProducer: Empty Semaphore is 0 (Buffer full). Producer is "
-                       "BLOCKED.\033[0m\n");
-            }
-            else
-            {
-                // wait(mutex)
-                if (mutex == 0)
-                {
-                    printf("Producer: Mutex is held by another process. Waiting.\n");
-                }
-                else
-                {
-                    prod_blocked = 0;
-                    empty--;
-                    mutex--; // acquire lock
-
-                    buffer[in] = item_counter++;
-                    int produced = buffer[in];
-                    printf(
-                        "\033[1;32mProducer: Acquired mutex, placed item P%d at slot %d.\033[0m\n",
-                        produced, in);
-                    in = (in + 1) % BUFFER_SIZE;
-
-                    mutex++; // release lock
-                    full++;
-
-                    if (cons_blocked)
-                    {
-                        cons_blocked = 0;
-                        printf("\033[1;32mProducer: Signal(full_sem) sent. Consumer is now "
-                               "UNBLOCKED.\033[0m\n");
-                    }
-                }
-            }
-            printf("\nPress Enter to continue...");
-            getchar();
-        }
-        else if (choice == 2)
-        {
-            printf("\n\033[1;33m[Action: Consumer Attempting to Consume]\033[0m\n");
-            // wait(full)
-            if (full == 0)
-            {
-                cons_blocked = 1;
-                printf("\033[1;31mConsumer: Full Semaphore is 0 (Buffer empty). Consumer is "
-                       "BLOCKED.\033[0m\n");
-            }
-            else
-            {
-                // wait(mutex)
-                if (mutex == 0)
-                {
-                    printf("Consumer: Mutex is held by another process. Waiting.\n");
-                }
-                else
-                {
-                    cons_blocked = 0;
-                    full--;
-                    mutex--; // acquire lock
-
-                    int consumed = buffer[out];
-                    buffer[out] = 0; // clear slot
-                    printf("\033[1;32mConsumer: Acquired mutex, consumed item P%d from slot "
-                           "%d.\033[0m\n",
-                           consumed, out);
-                    out = (out + 1) % BUFFER_SIZE;
-
-                    mutex++; // release lock
-                    empty++;
-
-                    if (prod_blocked)
-                    {
-                        prod_blocked = 0;
-                        printf("\033[1;32mConsumer: Signal(empty_sem) sent. Producer is now "
-                               "UNBLOCKED.\033[0m\n");
-                    }
-                }
-            }
-            printf("\nPress Enter to continue...");
-            getchar();
-        }
-        else if (choice == 3)
-        {
-            printf("\nEnter number of simulation steps to run automatically (1 to 20): ");
-            int steps;
-            int step_status = safe_input_int(&steps, "", 1, 20);
-            if (step_status != 1)
-                continue;
-
-            int step_mode = 1; // Default to Animated Playback
-            if (!is_instant())
-            {
-                int mode_choice;
-                int mode_status = safe_input_int(
-                    &mode_choice,
-                    "\nSelect Simulation Playback Mode:\n1. Animated Playback (Automatic)\n2. "
-                    "Step-by-Step (Manual)\nEnter choice (1 or 2), or '-1' to exit: ",
-                    1, 2);
-                if (mode_status == INPUT_EXIT_SIGNAL)
-                {
-                    continue;
-                }
-                if (mode_status == 1)
-                {
-                    step_mode = mode_choice;
-                }
-            }
-
-            srand((unsigned int)time(NULL));
-
-            for (int s = 0; s < steps; s++)
-            {
-                if (!is_instant())
-                {
-                    clear_screen();
-                }
-                printf("\n\033[1;36m=== Auto-Simulation (Step %d of %d) ===\033[0m\n", s + 1,
-                       steps);
-                display_buffer_state(buffer, in, out, mutex, empty, full, prod_blocked,
-                                     cons_blocked);
-
-                int act = rand() % 2; // 0 = produce, 1 = consume
-                if (act == 0)
-                {
-                    printf("\n\033[1;33m[Simulated Event: Producer attempts action]\033[0m\n");
-                    if (empty == 0)
-                    {
-                        prod_blocked = 1;
-                        printf("\033[1;31mProducer: Buffer full. Blocked.\033[0m\n");
-                    }
-                    else
-                    {
-                        prod_blocked = 0;
-                        empty--;
-                        buffer[in] = item_counter++;
-                        printf("\033[1;32mProducer: Placed item P%d at slot %d.\033[0m\n",
-                               buffer[in], in);
-                        in = (in + 1) % BUFFER_SIZE;
-                        full++;
-                        if (cons_blocked)
-                        {
-                            cons_blocked = 0;
-                            printf("\033[1;32mProducer: Unblocked Consumer.\033[0m\n");
-                        }
-                    }
-                }
-                else
-                {
-                    printf("\n\033[1;33m[Simulated Event: Consumer attempts action]\033[0m\n");
-                    if (full == 0)
-                    {
-                        cons_blocked = 1;
-                        printf("\033[1;31mConsumer: Buffer empty. Blocked.\033[0m\n");
-                    }
-                    else
-                    {
-                        cons_blocked = 0;
-                        full--;
-                        int consumed = buffer[out];
-                        buffer[out] = 0;
-                        printf("\033[1;32mConsumer: Consumed item P%d from slot %d.\033[0m\n",
-                               consumed, out);
-                        out = (out + 1) % BUFFER_SIZE;
-                        empty++;
-                        if (prod_blocked)
-                        {
-                            prod_blocked = 0;
-                            printf("\033[1;32mConsumer: Unblocked Producer.\033[0m\n");
-                        }
-                    }
-                }
-
-                if (step_mode == 2)
-                {
-                    printf("\nPress [ENTER] to step to next action...");
-                    int ch;
-                    while ((ch = getchar()) != '\n' && ch != EOF)
-                        ;
-                }
-                else if (!is_instant())
-                {
-                    sleep_seconds(1.2f);
-                }
-            }
-            printf("\nAuto-simulation finished. Press Enter to continue...");
+            printf("\nPress [ENTER] to step to next action...");
             int ch;
             while ((ch = getchar()) != '\n' && ch != EOF)
                 ;
         }
-        else if (choice == 4)
+        else if (!is_instant())
         {
-            for (int i = 0; i < BUFFER_SIZE; i++)
-                buffer[i] = 0;
-            in = 0;
-            out = 0;
-            mutex = 1;
-            empty = BUFFER_SIZE;
-            full = 0;
-            prod_blocked = 0;
-            cons_blocked = 0;
-            printf("\nBuffer has been reset successfully!\n");
-            sleep_seconds(0.8f);
+            sleep_seconds(1.2f);
+        }
+    }
+    printf("\nAuto-simulation finished. Press Enter to continue...");
+    int ch;
+    while ((ch = getchar()) != '\n' && ch != EOF)
+        ;
+}
+
+void consumer_step(ProducerConsumerState* pc_state)
+{
+    int* buffer = pc_state->buffer;
+    if (pc_state->full == 0)
+    {
+        pc_state->cons_blocked = 1;
+        printf("\033[1;31mConsumer: Full Semaphore is 0 (Buffer empty). Consumer is "
+               "BLOCKED.\033[0m\n");
+    }
+    else
+    {
+        // wait(mutex)
+        if (pc_state->mutex == 0)
+        {
+            printf("Consumer: Mutex is held by another process. Waiting.\n");
+        }
+        else
+        {
+            pc_state->cons_blocked = 0;
+            pc_state->full--;
+            pc_state->mutex--; // acquire lock
+
+            int consumed = buffer[pc_state->out];
+            buffer[pc_state->out] = 0;
+            printf("\033[1;32mConsumer: Acquired mutex, consumed item P%d from slot %d.\033[0m\n",
+                   consumed, pc_state->out);
+            pc_state->out = (pc_state->out + 1) % BUFFER_SIZE;
+
+            pc_state->mutex++; // release lock
+            pc_state->empty++;
+
+            if (pc_state->prod_blocked)
+            {
+                pc_state->prod_blocked = 0;
+                printf("\033[1;32mConsumer: Signal(empty_sem) sent. Producer is now "
+                       "UNBLOCKED.\033[0m\n");
+            }
         }
     }
 }
