@@ -13,9 +13,19 @@ void launch_help_page(void);
 void help_data_structures_menu(void);
 
 /**
- * @brief Sub-menu for Sorting & Searching help.
+ * @brief Sub-menu for O(N^2) Sorting Algorithms help.
  */
-void help_sorting_searching_menu(void);
+void help_sorting_algorithms_n2_menu(void);
+
+/**
+ * @brief Sub-menu for Advanced Sorting Algorithms help.
+ */
+void help_advanced_sorting_algorithms_menu(void);
+
+/**
+ * @brief Sub-menu for Searching Algorithms help.
+ */
+void help_searching_algorithms_menu(void);
 
 /**
  * @brief Sub-menu for Trees help.

@@ -41,24 +41,26 @@ void launch_help_page(void)
         printf("\033[1mSelect a module to view its help page:\033[0m\n\n");
         printf("1. Data Structures Help\n");
         printf("2. Expression Evaluation Help\n");
-        printf("3. Sorting & Searching Help\n");
-        printf("4. Trees Help\n");
-        printf("5. Graph Traversals Help\n");
-        printf("6. Advanced Heaps Help\n");
-        printf("7. Hashing Help\n");
-        printf("8. String Algorithms & Compression Help\n");
-        printf("9. Dynamic Programming Help\n");
-        printf("10. Error Correction Help\n");
-        printf("11. Bit Manipulation Help\n");
-        printf("12. Process Synchronization Help\n");
-        printf("13. Backtracking Algorithms Help\n");
-        printf("14. Advanced Graph Algorithms & Network Resilience Help\n");
-        printf("15. System Utilities, Telemetry & Serialization Help\n");
-        printf("16. Cache Replacement Simulator Help\n");
-        printf("17. Navigation, CLI Flags & General Info\n");
+        printf("3. O(N^2) Sorting Algorithms Help\n");
+        printf("4. Advanced Sorting Algorithms Help\n");
+        printf("5. Searching Algorithms Help\n");
+        printf("6. Trees Help\n");
+        printf("7. Graph Traversals Help\n");
+        printf("8. Advanced Heaps Help\n");
+        printf("9. Hashing Help\n");
+        printf("10. String Algorithms & Compression Help\n");
+        printf("11. Dynamic Programming Help\n");
+        printf("12. Error Correction Help\n");
+        printf("13. Bit Manipulation Help\n");
+        printf("14. Process Synchronization Help\n");
+        printf("15. Backtracking Algorithms Help\n");
+        printf("16. Advanced Graph Algorithms & Network Resilience Help\n");
+        printf("17. System Utilities, Telemetry & Serialization Help\n");
+        printf("18. Cache Replacement Simulator Help\n");
+        printf("19. Navigation, CLI Flags & General Info\n");
         int choice;
         int status =
-            safe_input_int(&choice, "\nenter choice (\'-1\' to exit, or \'help\') : ", 1, 17);
+            safe_input_int(&choice, "\nenter choice (\'-1\' to exit, or \'help\') : ", 1, 19);
 
         if (status == INPUT_EXIT_SIGNAL)
         {
@@ -79,48 +81,54 @@ void launch_help_page(void)
                 help_expression_evaluation_menu();
                 break;
             case 3:
-                help_sorting_searching_menu();
+                help_sorting_algorithms_n2_menu();
                 break;
             case 4:
-                help_trees_menu();
+                help_advanced_sorting_algorithms_menu();
                 break;
             case 5:
-                help_graph_traversals_menu();
+                help_searching_algorithms_menu();
                 break;
             case 6:
-                help_advanced_heaps_menu();
+                help_trees_menu();
                 break;
             case 7:
-                help_hashing_menu();
+                help_graph_traversals_menu();
                 break;
             case 8:
-                help_string_compression_menu();
+                help_advanced_heaps_menu();
                 break;
             case 9:
-                help_dynamic_programming_menu();
+                help_hashing_menu();
                 break;
             case 10:
-                help_error_correction_menu();
+                help_string_compression_menu();
                 break;
             case 11:
-                bit_manipulation_help();
+                help_dynamic_programming_menu();
                 break;
             case 12:
-                help_process_synchronization_menu();
+                help_error_correction_menu();
                 break;
             case 13:
-                help_backtracking_menu();
+                bit_manipulation_help();
                 break;
             case 14:
-                help_advanced_graphs_menu();
+                help_process_synchronization_menu();
                 break;
             case 15:
-                help_system_utilities_menu();
+                help_backtracking_menu();
                 break;
             case 16:
-                help_cache_simulator_menu();
+                help_advanced_graphs_menu();
                 break;
             case 17:
+                help_system_utilities_menu();
+                break;
+            case 18:
+                help_cache_simulator_menu();
+                break;
+            case 19:
                 display_header("General Navigation, CLI Flags & Commands");
                 printf("DESCRIPTION\n");
                 printf("    The C DSA Interactive Suite is a terminal-based application\n");
