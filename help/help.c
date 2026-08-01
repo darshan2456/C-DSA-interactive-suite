@@ -109,7 +109,7 @@ void launch_help_page(void)
                 help_string_compression_menu();
                 break;
             case 11:
-                help_dynamic_programming_menu();
+                help_bit_manipulation_menu();
                 break;
             case 12:
                 help_spatial_indexing_menu();
@@ -118,7 +118,7 @@ void launch_help_page(void)
                 help_probabilistic_data_structures_menu();
                 break;
             case 14:
-                help_error_correction_menu();
+                help_advanced_graph_algorithms_menu();
                 break;
             case 15:
                 help_bit_manipulation_menu();
