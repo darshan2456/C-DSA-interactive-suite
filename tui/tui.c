@@ -45,9 +45,12 @@
 #include "tui.h"
 
 /* ── types ──────────────────────────────────────────────────────────────────── */
-void probabilistic_ds_demo(void);
-void spatial_indexing_demo(void);
-
+void bloom_filter_demo(void);
+void count_min_sketch_demo(void);
+void hyperloglog_demo(void);
+void kd_tree_demo(void);
+void quadtree_demo(void);
+void rtree_demo(void);
 typedef void (*demo_fn)(void);
 
 // for non void return type demos
@@ -317,8 +320,16 @@ static Entry ENTRIES[] = {
     {"State Serialization Engine", serialization_demo, 0, 0, 1},
     {"System Settings (Animation Speed)", settings_menu_demo, 0, 0, 1},
 
-    {"Probabilistic Data Structures", probabilistic_ds_demo, 0, 0, 0},
-    {"Spatial Indexing Module", spatial_indexing_demo, 0, 0, 0},
+    {"Probabilistic Data Structures", NULL, 1, 0, 0},
+    {"Bloom Filter", bloom_filter_demo, 0, 0, 1},
+    {"Count-Min Sketch", count_min_sketch_demo, 0, 0, 1},
+    {"HyperLogLog", hyperloglog_demo, 0, 0, 1},
+
+    {"Spatial Indexing", NULL, 1, 0, 0},
+    {"k-d Tree", kd_tree_demo, 0, 0, 1},
+    {"QuadTree", quadtree_demo, 0, 0, 1},
+    {"R-Tree", rtree_demo, 0, 0, 1},
+
     {"Interactive Algorithm Quick-Search", run_algorithm_search_menu, 0, 0, 0},
 };
 
