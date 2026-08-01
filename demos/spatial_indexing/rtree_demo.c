@@ -39,4 +39,5 @@ void rtree_demo(void)
 
     free(results);
     rtree_free(tree);
+    press_enter_to_continue();
 }

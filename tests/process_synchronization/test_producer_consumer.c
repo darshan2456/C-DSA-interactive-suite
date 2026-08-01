@@ -53,6 +53,7 @@ int mock_safe_input_int(int* var, const char* prompt, int low, int high)
 // Redirect functions using preprocessor macros
 #define safe_input_int mock_safe_input_int
 #define printf mock_printf
+#include "../../demos/process_synchronization/producer_consumer_demo.c"
 #include "../../src/process_synchronization/producer_consumer.c"
 #undef safe_input_int
 #undef printf
