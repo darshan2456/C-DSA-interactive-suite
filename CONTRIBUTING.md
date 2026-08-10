@@ -2,7 +2,7 @@
 
 Thank you for taking the time to contribute! This project is open to learners, systems enthusiasts, and low-level programmers who want to build something meaningful in C. You will need deep technical knowledge, as this project is made with raw C, has a CI which runs CMake, a formatting system, a build system and dockerization support. But dont worry, I am always willing to help contributors in any way I can. You can join my discord server for that purpose.
 
-link - https://discord.gg/RxepKBWBX
+link - https://discord.gg/zVpyuXHMF
 
 ---
 
