@@ -62,7 +62,7 @@ void bridges_demo(void)
         else
         {
             char path[256];
-            if (safe_input_string(path, "Enter CSV path: ") != 1)
+            if (safe_input_string(path, sizeof(path), "Enter CSV path: ") != 1)
             {
                 continue;
             }

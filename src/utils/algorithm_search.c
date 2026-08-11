@@ -325,7 +325,7 @@ void run_algorithm_search_menu(void)
 
     char query[64] = {0};
     int status =
-        safe_input_string(query, "\nEnter search keyword (e.g. 'dijkstra', 'avl', 'sort'): ");
+        safe_input_string(query, sizeof(query), "\nEnter search keyword (e.g. 'dijkstra', 'avl', 'sort'): ");
     if (status == INPUT_EXIT_SIGNAL || strlen(query) == 0)
     {
         printf("\nExiting interactive algorithm finder...\n");

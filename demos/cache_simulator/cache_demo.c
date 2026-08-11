@@ -46,7 +46,7 @@ void cache_simulator_demo(void)
 
         char ref_str[256];
         int ref_status = safe_input_string(
-            ref_str, "Enter page reference string (e.g., 1,2,3,4,1,2), or 'X' to exit: ");
+            ref_str, sizeof(ref_str), "Enter page reference string (e.g., 1,2,3,4,1,2), or 'X' to exit: ");
         if (ref_status == INPUT_EXIT_SIGNAL)
         {
             return;
