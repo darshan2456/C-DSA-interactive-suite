@@ -144,30 +144,11 @@ int sll_deleteByValue(Node** head_ref, const void* value, int (*compare)(const v
     {
         return -2;
     }
+
     Node* curr = *head_ref;
     Node* prev = NULL;
 
-    int head_match = 0;
-    if (compare != NULL)
-    {
-        head_match = (compare(curr->data, value) == 0);
-    }
-    else
-    {
-        head_match = (curr->data == value);
-    }
-
-    if (head_match)
-    {
-        *head_ref = curr->next;
-        if (free_data != NULL)
-        {
-            free_data(curr->data);
-        }
-        free(curr);
-        return 1;
-    }
-    while (1)
+    while (curr != NULL)
     {
         int match = 0;
         if (compare != NULL)
@@ -181,23 +162,28 @@ int sll_deleteByValue(Node** head_ref, const void* value, int (*compare)(const v
 
         if (match)
         {
-            break;
+            if (prev == NULL)
+            {
+                *head_ref = curr->next;
+            }
+            else
+            {
+                prev->next = curr->next;
+            }
+
+            if (free_data != NULL)
+            {
+                free_data(curr->data);
+            }
+            free(curr);
+            return 1;
         }
 
         prev = curr;
         curr = curr->next;
-        if (curr == NULL)
-        {
-            return -1;
-        }
     }
-    prev->next = curr->next;
-    if (free_data != NULL)
-    {
-        free_data(curr->data);
-    }
-    free(curr);
-    return 1;
+
+    return -1;
 }
 
 // returns -2 if list is empty, -1 if list has only 1 element and 1 on successful reversal
