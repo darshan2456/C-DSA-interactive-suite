@@ -6,6 +6,7 @@ int linear_search(int arr[], int target, int length_of_array);
 int binary_search(int arr[], int target, int length_of_array);
 int interpolation_search(int arr[], int target, int length_of_array);
 int jump_search(int arr[], int target, int length_of_array);
+int exponential_search(int arr[], int target, int length_of_array);
 
 void test_linear_search()
 {
@@ -81,6 +82,24 @@ void test_jump_search()
     printf("Jump search tests passed\n");
 }
 
+void test_exponential_search()
+{
+    int arr1[] = {1, 2, 3, 4, 5};
+    assert(exponential_search(arr1, 1, 5) == 0);
+    assert(exponential_search(arr1, 5, 5) == 4);
+    assert(exponential_search(arr1, 3, 5) == 2);
+    assert(exponential_search(arr1, 10, 5) == -1);
+
+    int arr2[] = {42};
+    assert(exponential_search(arr2, 42, 1) == 0);
+    assert(exponential_search(arr2, 1, 1) == -1);
+
+    int arr3[] = {2, 4, 6, 8, 10, 12};
+    assert(exponential_search(arr3, 8, 6) == 3);
+
+    printf("Exponential search tests passed\n");
+}
+
 void test_searching_advanced_edge_cases()
 {
     /* Array with negative numbers */
@@ -90,18 +109,21 @@ void test_searching_advanced_edge_cases()
     assert(binary_search(neg_arr, -30, n) == 1);
     assert(interpolation_search(neg_arr, -30, n) == 1);
     assert(jump_search(neg_arr, -30, n) == 1);
+    assert(exponential_search(neg_arr, -30, n) == 1);
 
     /* Target smaller than min element */
     assert(linear_search(neg_arr, -100, n) == -1);
     assert(binary_search(neg_arr, -100, n) == -1);
     assert(interpolation_search(neg_arr, -100, n) == -1);
     assert(jump_search(neg_arr, -100, n) == -1);
+    assert(exponential_search(neg_arr, -100, n) == -1);
 
     /* Target larger than max element */
     assert(linear_search(neg_arr, 500, n) == -1);
     assert(binary_search(neg_arr, 500, n) == -1);
     assert(interpolation_search(neg_arr, 500, n) == -1);
     assert(jump_search(neg_arr, 500, n) == -1);
+    assert(exponential_search(neg_arr, 500, n) == -1);
 
     /* Large uniform array */
     int uniform[10] = {7, 7, 7, 7, 7, 7, 7, 7, 7, 7};
@@ -109,12 +131,16 @@ void test_searching_advanced_edge_cases()
     assert(binary_search(uniform, 7, 10) >= 0);
     assert(interpolation_search(uniform, 7, 10) >= 0);
     assert(jump_search(uniform, 7, 10) >= 0);
+    assert(exponential_search(uniform, 7, 10) >= 0);
 
     /* Two element array */
     int duo[2] = {10, 20};
     assert(binary_search(duo, 10, 2) == 0);
     assert(binary_search(duo, 20, 2) == 1);
     assert(binary_search(duo, 15, 2) == -1);
+    assert(exponential_search(duo, 10, 2) == 0);
+    assert(exponential_search(duo, 20, 2) == 1);
+    assert(exponential_search(duo, 15, 2) == -1);
 
     /* Reverse sorted array searching */
     int rev_search[] = {100, 80, 60, 40, 20, 0};
@@ -127,6 +153,8 @@ void test_searching_advanced_edge_cases()
     assert(linear_search(single_arr, 99, 1) == -1);
     assert(binary_search(single_arr, 42, 1) == 0);
     assert(binary_search(single_arr, 99, 1) == -1);
+    assert(exponential_search(single_arr, 42, 1) == 0);
+    assert(exponential_search(single_arr, 99, 1) == -1);
 
     printf("Searching advanced edge case tests passed\n");
 }
@@ -137,6 +165,7 @@ int main()
     test_binary_search();
     test_interpolation_search();
     test_jump_search();
+    test_exponential_search();
     test_searching_advanced_edge_cases();
     printf("All search tests passed\n");
     return 0;
