@@ -6,7 +6,7 @@
  */
 int set_bit(int n, int k)
 {
-    if (k < 0 || k >= 31)
+    if (k < 0 || k >= 32)
     {
         return n;
     }
@@ -19,7 +19,7 @@ int set_bit(int n, int k)
  */
 int clear_bit(int n, int k)
 {
-    if (k < 0 || k >= 31)
+    if (k < 0 || k >= 32)
     {
         return n;
     }
@@ -32,7 +32,7 @@ int clear_bit(int n, int k)
  */
 int toggle_bit(int n, int k)
 {
-    if (k < 0 || k >= 31)
+    if (k < 0 || k >= 32)
     {
         return n;
     }
@@ -46,7 +46,7 @@ int toggle_bit(int n, int k)
  */
 int check_bit(int n, int k)
 {
-    if (k < 0 || k >= 31)
+    if (k < 0 || k >= 32)
     {
         return 0;
     }
