@@ -26,7 +26,7 @@ void edit_distance_demo(void)
         }
 
         char word1[256];
-        int w1_status = safe_input_string(word1, "\nEnter the first string: ");
+        int w1_status = safe_input_string(word1, sizeof(word1), "\nEnter the first string: ");
         if (w1_status == INPUT_EXIT_SIGNAL)
         {
             return;
@@ -37,7 +37,7 @@ void edit_distance_demo(void)
         }
 
         char word2[256];
-        int w2_status = safe_input_string(word2, "Enter the second string: ");
+        int w2_status = safe_input_string(word2, sizeof(word2), "Enter the second string: ");
         if (w2_status == INPUT_EXIT_SIGNAL)
         {
             return;
