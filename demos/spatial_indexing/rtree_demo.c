@@ -24,17 +24,18 @@ void rtree_demo(void)
     rtree_insert(tree, b2, NULL);
     rtree_insert(tree, b3, NULL);
 
-    printf("Total Items Indexed: %zu\n", tree->total_items);
+    printf("Total Items Indexed: %lu\n", (unsigned long)tree->total_items);
 
     MBR search_query = {0.0, 0.0, 5.0, 5.0};
     RTreeItem* results = NULL;
     size_t count = rtree_search_mbr(tree, search_query, &results);
 
-    printf("\nSpatial Intersects Query [0,5]x[0,5] Found %zu MBRs:\n", count);
+    printf("\nSpatial Intersects Query [0,5]x[0,5] Found %lu MBRs:\n", (unsigned long)count);
     for (size_t i = 0; i < count; i++)
     {
-        printf(" -> MBR %zu: Min(%.1f, %.1f) Max(%.1f, %.1f)\n", i + 1, results[i].mbr.min_x,
-               results[i].mbr.min_y, results[i].mbr.max_x, results[i].mbr.max_y);
+        printf(" -> MBR %lu: Min(%.1f, %.1f) Max(%.1f, %.1f)\n", (unsigned long)(i + 1),
+               results[i].mbr.min_x, results[i].mbr.min_y, results[i].mbr.max_x,
+               results[i].mbr.max_y);
     }
 
     free(results);

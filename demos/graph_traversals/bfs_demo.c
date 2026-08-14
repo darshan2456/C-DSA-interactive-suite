@@ -190,7 +190,7 @@ void bfs_demo(void)
     if (save_status == 1)
     {
         char path[256];
-        int path_status = safe_input_string(path, "\nenter filepath to save to:- ");
+        int path_status = safe_input_string(path, sizeof(path), "\nenter filepath to save to:- ");
         if (path_status != INPUT_EXIT_SIGNAL)
         {
             if (serialize_graph_to_file(graph, path))

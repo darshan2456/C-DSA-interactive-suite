@@ -85,7 +85,8 @@ void parity_bit_demo(void)
         printf("\nMode        : Odd Parity\n");
     }
 
-    printf("Original Data: %s (Length: %zu, 1s count: %d)\n", data, strlen(data), count_ones(data));
+    printf("Original Data: %s (Length: %lu, 1s count: %d)\n", data, (unsigned long)strlen(data),
+           count_ones(data));
 
     printf("Parity Bit   : %d\n", parity_bit);
     printf("Transmitted  : %s%d\n", data, parity_bit);

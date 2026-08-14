@@ -38,7 +38,7 @@ void trie_demo(void)
 
         if (choice == 1)
         {
-            status = safe_input_string(word, "enter word (lowercase letters only): ");
+            status = safe_input_string(word, sizeof(word), "enter word (lowercase letters only): ");
             if (status == INPUT_EXIT_SIGNAL || status == 0)
                 continue;
             if (trie_insert(root, word))
@@ -48,7 +48,7 @@ void trie_demo(void)
         }
         else if (choice == 2)
         {
-            status = safe_input_string(word, "enter word to search: ");
+            status = safe_input_string(word, sizeof(word), "enter word to search: ");
             if (status == INPUT_EXIT_SIGNAL || status == 0)
                 continue;
             if (trie_search(root, word))
@@ -58,7 +58,7 @@ void trie_demo(void)
         }
         else if (choice == 3)
         {
-            status = safe_input_string(word, "enter prefix: ");
+            status = safe_input_string(word, sizeof(word), "enter prefix: ");
             if (status == INPUT_EXIT_SIGNAL || status == 0)
                 continue;
             if (trie_starts_with_prefix(root, word))
@@ -68,7 +68,7 @@ void trie_demo(void)
         }
         else if (choice == 4)
         {
-            status = safe_input_string(word, "enter word to delete: ");
+            status = safe_input_string(word, sizeof(word), "enter word to delete: ");
             if (status == INPUT_EXIT_SIGNAL || status == 0)
                 continue;
             trie_delete(root, word);

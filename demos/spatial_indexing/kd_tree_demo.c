@@ -40,10 +40,10 @@ void kd_tree_demo(void)
     KDNode** range_res = NULL;
     size_t count = kdtree_range_search(tree, min_pt, max_pt, &range_res);
 
-    printf("\nRange Search [3.0, 15.0] x [3.0, 15.0] Found %zu points:\n", count);
+    printf("\nRange Search [3.0, 15.0] x [3.0, 15.0] Found %lu points:\n", (unsigned long)count);
     for (size_t i = 0; i < count; i++)
     {
-        printf(" -> Point %zu: (%.1f, %.1f)\n", i + 1, range_res[i]->point[0],
+        printf(" -> Point %lu: (%.1f, %.1f)\n", (unsigned long)(i + 1), range_res[i]->point[0],
                range_res[i]->point[1]);
     }
 

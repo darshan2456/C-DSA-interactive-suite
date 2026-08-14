@@ -16,8 +16,8 @@ void count_min_sketch_demo(void)
         return;
     }
 
-    printf("[INITIALIZED] Matrix Dimensions: %zu Width x %zu Depth\n", sketch->width,
-           sketch->depth);
+    printf("[INITIALIZED] Matrix Dimensions: %lu Width x %lu Depth\n",
+           (unsigned long)sketch->width, (unsigned long)sketch->depth);
 
     printf("Simulating data stream insertion...\n");
     cms_add(sketch, "HTTP_GET_/api/v1/user", strlen("HTTP_GET_/api/v1/user"), 500);

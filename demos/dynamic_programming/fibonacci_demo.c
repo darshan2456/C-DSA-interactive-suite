@@ -49,9 +49,9 @@ void fibonacci_demo(void)
         double time_tab = (double)(end_t - start_t) / CLOCKS_PER_SEC;
 
         printf("\n--- Results ---\n");
-        printf("Fibonacci(%d) via Recursive (Memoized): %lld (Time: %f seconds)\n", n, res_memo,
+        printf("Fibonacci(%d) via Recursive (Memoized): %I64d (Time: %f seconds)\n", n, res_memo,
                time_memo);
-        printf("Fibonacci(%d) via Iterative (Tabulation): %lld (Time: %f seconds)\n", n, res_tab,
+        printf("Fibonacci(%d) via Iterative (Tabulation): %I64d (Time: %f seconds)\n", n, res_tab,
                time_tab);
 
         free(memo);

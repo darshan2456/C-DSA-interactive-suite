@@ -16,8 +16,9 @@ void bloom_filter_demo(void)
         return;
     }
 
-    printf("[INITIALIZED] Bit Array Size: %zu bits (%zu bytes), Hash Functions: %zu\n",
-           filter->bit_size, (filter->bit_size + 7) / 8, filter->num_hashes);
+    printf("[INITIALIZED] Bit Array Size: %lu bits (%lu bytes), Hash Functions: %lu\n",
+           (unsigned long)filter->bit_size, (unsigned long)((filter->bit_size + 7) / 8),
+           (unsigned long)filter->num_hashes);
 
     const char* sample_items[] = {"user_alice", "user_bob", "user_charlie", "user_david"};
     for (size_t i = 0; i < 4; i++)

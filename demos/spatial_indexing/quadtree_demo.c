@@ -22,17 +22,18 @@ void quadtree_demo(void)
     quadtree_insert(tree, -50.0, -50.0, NULL);
     quadtree_insert(tree, 80.0, 80.0, NULL);
 
-    printf("Total Points Inserted: %zu (Root Divided: %s)\n", tree->total_points,
+    printf("Total Points Inserted: %lu (Root Divided: %s)\n", (unsigned long)tree->total_points,
            tree->root->divided ? "YES" : "NO");
 
     Rect query_range = {15.0, 15.0, 15.0, 15.0};
     QuadPoint* results = NULL;
     size_t count = quadtree_query_range(tree, query_range, &results);
 
-    printf("\n2D Bounding Box Query Range [0.0, 30.0] x [0.0, 30.0] Found %zu points:\n", count);
+    printf("\n2D Bounding Box Query Range [0.0, 30.0] x [0.0, 30.0] Found %lu points:\n",
+           (unsigned long)count);
     for (size_t i = 0; i < count; i++)
     {
-        printf(" -> Point %zu: (%.1f, %.1f)\n", i + 1, results[i].x, results[i].y);
+        printf(" -> Point %lu: (%.1f, %.1f)\n", (unsigned long)(i + 1), results[i].x, results[i].y);
     }
 
     free(results);

@@ -89,8 +89,8 @@ void huffman_demo(void)
         printf("Encoded Bitstream : %s\n", encoded);
         printf("Decoded String : %s\n", decoded);
 
-        printf("\nOriginal Size : %zu bytes\n", strlen(input));
-        printf("Encoded Bits  : %zu bits\n", strlen(encoded));
+        printf("\nOriginal Size : %lu bytes\n", (unsigned long)strlen(input));
+        printf("Encoded Bits  : %lu bits\n", (unsigned long)strlen(encoded));
 
         free_huffman_tree(root);
 
