@@ -127,7 +127,7 @@ void sorting_telemetry_dashboard_demo(void)
 
         for (int i = 0; i < 9; i++)
         {
-            printf("| %-18s | %13.2f | %12lld | %10lld | %10lld | %13d | %10d |\n",
+            printf("| %-18s | %13.2f | %12I64d | %10I64d | %10I64d | %13d | %10d |\n",
                    results[i].algorithm_name, results[i].elapsed_microseconds,
                    results[i].comparisons, results[i].swaps, results[i].copies,
                    results[i].max_recursion_depth, results[i].pass_count);

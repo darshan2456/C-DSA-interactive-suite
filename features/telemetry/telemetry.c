@@ -4,6 +4,12 @@
 #include <string.h>
 #include <sys/stat.h>
 #include <sys/types.h>
+#ifdef _WIN32
+#include <direct.h>
+#define make_dir(path) _mkdir(path)
+#else
+#define make_dir(path) mkdir(path, 0755)
+#endif
 
 static bool telemetry_enabled = false;
 static char telemetry_filepath[512] = "benchmarks/algo_trace.json";
@@ -25,7 +31,7 @@ static void ensure_parent_dir_exists(const char* filepath)
             struct stat st;
             if (stat(temp, &st) == -1)
             {
-                mkdir(temp, 0755);
+                make_dir(temp);
             }
         }
     }

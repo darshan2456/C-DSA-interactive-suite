@@ -14,22 +14,44 @@ int benchmark_iterations = 5;
 #endif
 BenchmarkFormat benchmark_output_format = FORMAT_CSV;
 
+#ifdef _WIN32
+#include <direct.h>
+#include <windows.h>
+#include <psapi.h>
+#define make_dir(path) _mkdir(path)
+#else
 #include <sys/resource.h>
 #include <sys/stat.h>
 #define make_dir(path) mkdir(path, 0777)
+#endif
 
 double benchmark_get_time(void)
 {
+#ifdef _WIN32
+    LARGE_INTEGER freq, count;
+    QueryPerformanceFrequency(&freq);
+    QueryPerformanceCounter(&count);
+    return (double)count.QuadPart / (double)freq.QuadPart;
+#else
     struct timespec ts;
     if (clock_gettime(CLOCK_MONOTONIC, &ts) == 0)
     {
         return (double)ts.tv_sec + (double)ts.tv_nsec / 1e9;
     }
     return 0.0;
+#endif
 }
 
 size_t benchmark_get_peak_memory(void)
 {
+#ifdef _WIN32
+    PROCESS_MEMORY_COUNTERS pmc;
+    if (GetProcessMemoryInfo(GetCurrentProcess(), &pmc, sizeof(pmc)))
+    {
+        return (size_t)(pmc.PeakWorkingSetSize / 1024);
+    }
+    return 0;
+#else
     struct rusage r_usage;
     if (getrusage(RUSAGE_SELF, &r_usage) == 0)
     {
@@ -42,6 +64,7 @@ size_t benchmark_get_peak_memory(void)
 #endif
     }
     return 0;
+#endif
 }
 
 int benchmark_export_csv(const char* category_name, const char* algo_name, int input_size,
@@ -111,8 +134,8 @@ int benchmark_export_csv(const char* category_name, const char* algo_name, int i
     }
 
     // Write data row
-    fprintf(csv_file, "%s,%d,%.6f,%zu,%s\n", algo_name, input_size, time_seconds, memory_kb,
-            timestamp);
+    fprintf(csv_file, "%s,%d,%.6f,%lu,%s\n", algo_name, input_size, time_seconds,
+            (unsigned long)memory_kb, timestamp);
     fclose(csv_file);
 
     return 0;
@@ -188,7 +211,7 @@ int benchmark_export_markdown(const char* category, const char* name, int n, dou
         fprintf(file, "| Algorithm | Input Size | Time (Seconds) | Peak Memory (KB) |\n");
         fprintf(file, "| --- | --- | --- | --- |\n");
     }
-    fprintf(file, "| %s | %d | %.6f | %zu |\n", name, n, time_sec, mem);
+    fprintf(file, "| %s | %d | %.6f | %lu |\n", name, n, time_sec, (unsigned long)mem);
     fclose(file);
     return 0;
 }
@@ -239,8 +262,8 @@ int benchmark_export_json(const char* category, const char* name, int n, double 
     }
     fprintf(file,
             "  {\n    \"algorithm\": \"%s\",\n    \"input_size\": %d,\n    \"time_seconds\": "
-            "%.6f,\n    \"peak_memory_kb\": %zu\n  }",
-            name, n, time_sec, mem);
+            "%.6f,\n    \"peak_memory_kb\": %lu\n  }",
+            name, n, time_sec, (unsigned long)mem);
     fclose(file);
     return 0;
 }
@@ -266,7 +289,7 @@ void benchmark_report_result(const char* category, const char* name, int n, cons
     }
 
     char mem_str[32];
-    snprintf(mem_str, sizeof(mem_str), "%zu KB", peak_mem);
+    snprintf(mem_str, sizeof(mem_str), "%lu KB", (unsigned long)peak_mem);
 
     printf("%-30s %-25s %-15s %-10s\n", name, time_str, mem_str, "PASSED");
 

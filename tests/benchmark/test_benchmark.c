@@ -32,7 +32,7 @@ void test_memory(void)
     size_t mem_after = benchmark_get_peak_memory();
     free(buf);
 
-    printf("test_memory passed. Peak RAM: %zu KB\n", mem_after);
+    printf("test_memory passed. Peak RAM: %lu KB\n", (unsigned long)mem_after);
 }
 
 void test_csv_export(void)

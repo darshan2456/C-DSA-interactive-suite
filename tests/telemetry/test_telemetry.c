@@ -5,12 +5,19 @@
 #include <string.h>
 #include <sys/stat.h>
 #include <sys/types.h>
+#ifdef _WIN32
+#include <direct.h>
+#define make_dir(path) _mkdir(path)
+#else
+#define make_dir(path) mkdir(path, 0755)
+#endif
+
 static void ensure_dir_exists(const char* path)
 {
     struct stat st;
     if (stat(path, &st) == -1)
     {
-        mkdir(path, 0755);
+        make_dir(path);
     }
 }
 

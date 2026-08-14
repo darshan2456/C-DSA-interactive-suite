@@ -92,11 +92,11 @@ void visualize_dp_table_1d(const char* label, const long long* table, int size, 
         {
             if (i == active_index)
             {
-                printf(" \033[1;31m%7lld\033[0m |", table[i]); // Red active value
+                printf(" \033[1;31m%7I64d\033[0m |", table[i]); // Red active value
             }
             else
             {
-                printf(" %7lld |", table[i]);
+                printf(" %7I64d |", table[i]);
             }
         }
     }

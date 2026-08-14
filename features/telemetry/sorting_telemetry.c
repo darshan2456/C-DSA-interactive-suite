@@ -98,9 +98,9 @@ void sorting_telemetry_print_summary(const SortingTelemetry* t)
     printf("\n=== Telemetry Summary: %s ===\n", t->algorithm_name);
     printf("  Execution Time      : %.2f us (%.4f ms)\n", t->elapsed_microseconds,
            t->elapsed_microseconds / 1000.0);
-    printf("  Comparisons         : %lld\n", t->comparisons);
-    printf("  Swaps               : %lld\n", t->swaps);
-    printf("  Copies/Writes       : %lld\n", t->copies);
+    printf("  Comparisons         : %I64d\n", t->comparisons);
+    printf("  Swaps               : %I64d\n", t->swaps);
+    printf("  Copies/Writes       : %I64d\n", t->copies);
     printf("  Max Recursion Depth : %d\n", t->max_recursion_depth);
     printf("  Pass Count          : %d\n", t->pass_count);
     printf("=======================================\n");

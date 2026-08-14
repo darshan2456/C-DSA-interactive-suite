@@ -78,8 +78,8 @@ void memory_inspector_demo(void)
             case 4:
             {
                 char custom_str[128] = "C_DSA_Interactive_Suite_Memory_Inspector_2026";
-                printf("\n>>> Hexdumping Custom Memory Buffer at %p (%zu bytes):\n",
-                       (void*)custom_str, strlen(custom_str) + 1);
+                printf("\n>>> Hexdumping Custom Memory Buffer at %p (%lu bytes):\n",
+                       (void*)custom_str, (unsigned long)(strlen(custom_str) + 1));
                 print_hexdump(custom_str, strlen(custom_str) + 1);
                 break;
             }

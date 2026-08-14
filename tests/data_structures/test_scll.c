@@ -61,7 +61,7 @@ static int compare_ints(const void* a, const void* b)
     return *(const int*)a - *(const int*)b;
 }
 
-void test_insert_begin_end()
+static void test_insert_begin_end()
 {
     scll list;
     scll_init(&list);
@@ -94,7 +94,7 @@ void test_insert_begin_end()
     printf("scll insert begin/end tests passed\n");
 }
 
-void test_insert_at_position()
+static void test_insert_at_position()
 {
     scll list;
     scll_init(&list);
@@ -131,7 +131,7 @@ void test_insert_at_position()
     printf("scll insert at position tests passed\n");
 }
 
-void test_delete_begin_end()
+static void test_delete_begin_end()
 {
     scll list;
     scll_init(&list);
@@ -158,7 +158,7 @@ void test_delete_begin_end()
     printf("scll delete begin/end tests passed\n");
 }
 
-void test_delete_by_value()
+static void test_delete_by_value()
 {
     scll list;
     scll_init(&list);
@@ -198,7 +198,7 @@ void test_delete_by_value()
     printf("scll delete by value tests passed\n");
 }
 
-void test_delete_at_position()
+static void test_delete_at_position()
 {
     scll list;
     scll_init(&list);
@@ -228,7 +228,7 @@ void test_delete_at_position()
     printf("scll delete at position tests passed\n");
 }
 
-void test_search_and_length()
+static void test_search_and_length()
 {
     scll list;
     scll_init(&list);
@@ -254,7 +254,7 @@ void test_search_and_length()
     printf("scll search and length tests passed\n");
 }
 
-void test_edge_cases()
+static void test_edge_cases()
 {
     scll list;
     scll_init(&list);
@@ -292,7 +292,7 @@ void test_edge_cases()
     printf("scll edge case tests passed\n");
 }
 
-void test_destroy_is_idempotent()
+static void test_destroy_is_idempotent()
 {
     scll list;
     scll_init(&list);

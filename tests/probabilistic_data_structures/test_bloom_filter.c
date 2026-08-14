@@ -85,14 +85,14 @@ void test_bloom_false_positive_rate(void)
     char buf[64];
     for (size_t i = 0; i < n; i++)
     {
-        snprintf(buf, sizeof(buf), "item_inserted_%zu", i);
+        snprintf(buf, sizeof(buf), "item_inserted_%lu", (unsigned long)i);
         assert(bloom_add(filter, buf, strlen(buf)) == true);
     }
 
     /* Check inserted items (must all be true) */
     for (size_t i = 0; i < n; i++)
     {
-        snprintf(buf, sizeof(buf), "item_inserted_%zu", i);
+        snprintf(buf, sizeof(buf), "item_inserted_%lu", (unsigned long)i);
         assert(bloom_check(filter, buf, strlen(buf)) == true);
     }
 
@@ -101,7 +101,7 @@ void test_bloom_false_positive_rate(void)
     size_t queries = 1000;
     for (size_t i = 0; i < queries; i++)
     {
-        snprintf(buf, sizeof(buf), "item_absent_%zu", i);
+        snprintf(buf, sizeof(buf), "item_absent_%lu", (unsigned long)i);
         if (bloom_check(filter, buf, strlen(buf)))
         {
             false_positives++;

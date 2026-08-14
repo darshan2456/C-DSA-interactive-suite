@@ -116,7 +116,7 @@ void run_mst_benchmark(int v)
         }
 
         char mem_str[30];
-        snprintf(mem_str, sizeof(mem_str), "%zu KB", peak_mem);
+        snprintf(mem_str, sizeof(mem_str), "%lu KB", (unsigned long)peak_mem);
 
         printf("%-30s %-20s %-12s %-10s\n", name, time_str, mem_str, "PASSED");
 

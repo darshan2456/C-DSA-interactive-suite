@@ -3,7 +3,11 @@
 #include "sorting_telemetry.h"
 #include <assert.h>
 #include <stdio.h>
+#ifdef _WIN32
+#include <windows.h>
+#else
 #include <unistd.h>
+#endif
 
 void test_sorting_telemetry_basic(void)
 {
@@ -16,7 +20,11 @@ void test_sorting_telemetry_basic(void)
     assert(t.current_recursion_depth == 0);
 
     sorting_telemetry_start(&t);
+#ifdef _WIN32
+    Sleep(1);
+#else
     usleep(1000); // 1 ms delay
+#endif
     sorting_telemetry_stop(&t);
 
     assert(t.elapsed_microseconds > 0.0);

@@ -50,20 +50,20 @@ void test_hll_cardinality_accuracy(void)
     /* Insert 5000 unique items */
     for (size_t i = 0; i < unique_items; i++)
     {
-        snprintf(buf, sizeof(buf), "unique_user_id_%zu", i);
+        snprintf(buf, sizeof(buf), "unique_user_id_%lu", (unsigned long)i);
         assert(hll_add(hll, buf, strlen(buf)) == true);
     }
 
     /* Insert duplicate items to ensure duplicates don't inflate count */
     for (size_t i = 0; i < 1000; i++)
     {
-        snprintf(buf, sizeof(buf), "unique_user_id_%zu", i % 100);
+        snprintf(buf, sizeof(buf), "unique_user_id_%lu", (unsigned long)(i % 100));
         assert(hll_add(hll, buf, strlen(buf)) == true);
     }
 
     uint64_t est = hll_count(hll);
-    printf("Actual Unique Items: %zu, HLL Estimated Cardinality: %llu\n", unique_items,
-           (unsigned long long)est);
+    printf("Actual Unique Items: %lu, HLL Estimated Cardinality: %I64u\n",
+           (unsigned long)unique_items, (unsigned long long)est);
 
     /* Allow standard error margin for HLL (~3.5%) */
     double lower_bound = (double)unique_items * 0.90;

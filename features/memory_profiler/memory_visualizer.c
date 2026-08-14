@@ -13,11 +13,11 @@ void print_live_memory_card(void)
     printf("\n┌──────────────────────────────────────────────────┐\n");
     printf("│             LIVE MEMORY PROFILE CARD             │\n");
     printf("├──────────────────────────────────────────────────┤\n");
-    printf("│ Current Allocated : %-28zu │\n", current);
-    printf("│ Peak Allocated    : %-28zu │\n", peak);
-    printf("│ Active Blocks     : %-28zu │\n", allocated - freed);
-    printf("│ Cumulative Alloc  : %-28zu │\n", allocated);
-    printf("│ Cumulative Freed  : %-28zu │\n", freed);
+    printf("│ Current Allocated : %-28lu │\n", (unsigned long)current);
+    printf("│ Peak Allocated    : %-28lu │\n", (unsigned long)peak);
+    printf("│ Active Blocks     : %-28lu │\n", (unsigned long)(allocated - freed));
+    printf("│ Cumulative Alloc  : %-28lu │\n", (unsigned long)allocated);
+    printf("│ Cumulative Freed  : %-28lu │\n", (unsigned long)freed);
     printf("│ Est. Fragmentation: %-27.2f%% │\n", frag * 100.0);
     printf("└──────────────────────────────────────────────────┘\n");
 }
@@ -52,7 +52,7 @@ void print_ascii_memory_graph(size_t* values, int count)
         {
             printf(" ");
         }
-        printf(" %zu bytes\n", values[i]);
+        printf(" %lu bytes\n", (unsigned long)values[i]);
     }
     printf("----------------------------------------------\n");
 }
@@ -73,8 +73,8 @@ void compare_algorithms_memory(const char* algo1_name, void (*algo1_func)(void*)
     printf("\n==================================================\n");
     printf("         MEMORY PROFILER: COMPARISON ENGINE        \n");
     printf("==================================================\n");
-    printf("%-25s : %zu bytes (Peak)\n", algo1_name, peak1);
-    printf("%-25s : %zu bytes (Peak)\n", algo2_name, peak2);
+    printf("%-25s : %lu bytes (Peak)\n", algo1_name, (unsigned long)peak1);
+    printf("%-25s : %lu bytes (Peak)\n", algo2_name, (unsigned long)peak2);
     printf("--------------------------------------------------\n");
     if (peak1 < peak2)
     {

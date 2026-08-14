@@ -10,7 +10,8 @@ void test_algorithm_registry_get(void)
     assert(reg != NULL);
     assert(reg->count >= 50);
     assert(reg->entries != NULL);
-    printf("--> test_algorithm_registry_get PASSED! (Total Registered: %zu)\n", reg->count);
+    printf("--> test_algorithm_registry_get PASSED! (Total Registered: %lu)\n",
+           (unsigned long)reg->count);
 }
 
 void test_search_algorithms_exact_and_keyword(void)

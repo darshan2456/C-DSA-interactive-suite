@@ -3,10 +3,14 @@
 #include <stdio.h>
 #include <string.h>
 
+#ifndef _WIN32
 #include <ncurses.h>
 #include <sys/select.h>
 #include <termios.h>
 #include <unistd.h>
+#else
+#include <conio.h>
+#endif
 
 #define DEBUGGER_HISTORY_MAX 64
 
@@ -20,6 +24,20 @@ static int inspector_active = 0;
 
 static int get_keypress(int block)
 {
+#ifdef _WIN32
+    if (block)
+    {
+        return _getch();
+    }
+    else
+    {
+        if (_kbhit())
+        {
+            return _getch();
+        }
+        return -1;
+    }
+#else
     if (stdscr != NULL && !isendwin())
     {
         nodelay(stdscr, block ? FALSE : TRUE);
@@ -60,6 +78,7 @@ static int get_keypress(int block)
         tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
     }
     return ch;
+#endif
 }
 
 int debugger_get_history_count(void)

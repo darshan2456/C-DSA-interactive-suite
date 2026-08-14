@@ -18,13 +18,13 @@ void print_hexdump(const void* ptr, size_t size)
     }
 
     const unsigned char* bytes = (const unsigned char*)ptr;
-    printf("\n--- Memory Layout Hexdump (%zu bytes at %p) ---\n", size, ptr);
+    printf("\n--- Memory Layout Hexdump (%lu bytes at %p) ---\n", (unsigned long)size, ptr);
     printf("  Offset    00 01 02 03 04 05 06 07  08 09 0A 0B 0C 0D 0E 0F  |ASCII|\n");
     printf("  --------  -----------------------------------------------  |----------------|\n");
 
     for (size_t i = 0; i < size; i += 16)
     {
-        printf("  %08zX  ", i);
+        printf("  %08lX  ", (unsigned long)i);
 
         // Print hex bytes
         for (size_t j = 0; j < 16; j++)
@@ -80,7 +80,7 @@ size_t format_hexdump(const void* ptr, size_t size, char* out_buf, size_t buf_si
     size_t offset = 0;
 
     int written = snprintf(out_buf + offset, buf_size > offset ? buf_size - offset : 0,
-                           "Address: %p (%zu bytes)\n", ptr, size);
+                           "Address: %p (%lu bytes)\n", ptr, (unsigned long)size);
     if (written > 0)
     {
         offset += (size_t)written;
@@ -88,8 +88,8 @@ size_t format_hexdump(const void* ptr, size_t size, char* out_buf, size_t buf_si
 
     for (size_t i = 0; i < size && offset < buf_size; i += 16)
     {
-        written =
-            snprintf(out_buf + offset, buf_size > offset ? buf_size - offset : 0, "%08zX  ", i);
+        written = snprintf(out_buf + offset, buf_size > offset ? buf_size - offset : 0,
+                           "%08lX  ", (unsigned long)i);
         if (written > 0)
         {
             offset += (size_t)written;
@@ -210,13 +210,14 @@ void print_struct_layout_report(const StructLayout* layout, const void* instance
     printf("        STRUCT MEMORY LAYOUT & ALIGNMENT ANALYSIS: %s        \n",
            layout->struct_name ? layout->struct_name : "Anonymous Struct");
     printf("========================================================================\n");
-    printf("Total Size: %zu bytes | Payload: %zu bytes | Padding: %zu bytes\n", layout->total_size,
-           layout->payload_size, layout->total_padding);
+    printf("Total Size: %lu bytes | Payload: %lu bytes | Padding: %lu bytes\n",
+           (unsigned long)layout->total_size, (unsigned long)layout->payload_size,
+           (unsigned long)layout->total_padding);
     if (instance_ptr)
     {
         uintptr_t addr = (uintptr_t)instance_ptr;
-        printf("Instance Base Address: %p (Alignment: %zu-byte boundary %s)\n", instance_ptr,
-               layout->alignment,
+        printf("Instance Base Address: %p (Alignment: %lu-byte boundary %s)\n", instance_ptr,
+               (unsigned long)layout->alignment,
                (addr % (layout->alignment ? layout->alignment : 1) == 0) ? "[OK]" : "[MISALIGNED]");
     }
     printf("------------------------------------------------------------------------\n");
@@ -228,8 +229,9 @@ void print_struct_layout_report(const StructLayout* layout, const void* instance
     {
         const StructField* f = &layout->fields[i];
         size_t end_byte = f->offset + f->size - 1;
-        printf("  %-18s | +%-7zu | %-6zu | %-12zu | [%zu - %zu]\n", f->name, f->offset, f->size,
-               f->padding_after, f->offset, end_byte);
+        printf("  %-18s | +%-7lu | %-6lu | %-12lu | [%lu - %lu]\n", f->name,
+               (unsigned long)f->offset, (unsigned long)f->size, (unsigned long)f->padding_after,
+               (unsigned long)f->offset, (unsigned long)end_byte);
     }
     printf("========================================================================\n\n");
 
@@ -395,13 +397,14 @@ void memory_inspector_draw_heap_map(void)
             const char* status_str = (tracked_blocks[i].state == BLOCK_STATE_ACTIVE)
                                          ? "\033[1;32m[ACTIVE]\033[0m"
                                          : "\033[1;31m[FREED]\033[0m ";
-            printf("│ [%02d]  %-8s %-18p %-8zu %-25s │\n", i + 1, status_str,
-                   tracked_blocks[i].address, tracked_blocks[i].size,
+            printf("│ [%02d]  %-8s %-18p %-8lu %-25s │\n", i + 1, status_str,
+                   tracked_blocks[i].address, (unsigned long)tracked_blocks[i].size,
                    tracked_blocks[i].label ? tracked_blocks[i].label : "Block");
         }
     }
     printf("├────────────────────────────────────────────────────────────────────────┤\n");
-    printf("│ Total Active Blocks: %-3d | Total Active Bytes: %-15zu │\n",
-           memory_inspector_get_active_block_count(), memory_inspector_get_total_allocated_bytes());
+    printf("│ Total Active Blocks: %-3d | Total Active Bytes: %-15lu │\n",
+           memory_inspector_get_active_block_count(),
+           (unsigned long)memory_inspector_get_total_allocated_bytes());
     printf("└────────────────────────────────────────────────────────────────────────┘\n");
 }

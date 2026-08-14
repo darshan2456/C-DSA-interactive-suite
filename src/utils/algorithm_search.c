@@ -325,7 +325,7 @@ void run_algorithm_search_menu(void)
 
     char query[64] = {0};
     int status =
-        safe_input_string(query, "\nEnter search keyword (e.g. 'dijkstra', 'avl', 'sort'): ");
+        safe_input_string(query, sizeof(query), "\nEnter search keyword (e.g. 'dijkstra', 'avl', 'sort'): ");
     if (status == INPUT_EXIT_SIGNAL || strlen(query) == 0)
     {
         printf("\nExiting interactive algorithm finder...\n");
@@ -342,11 +342,11 @@ void run_algorithm_search_menu(void)
         return;
     }
 
-    printf("\nFound %zu matching algorithm demo(s):\n", count);
+    printf("\nFound %lu matching algorithm demo(s):\n", (unsigned long)count);
     for (size_t i = 0; i < count; i++)
     {
-        printf("  %zu. %s [%s] (Menu Option %d)\n", i + 1, results[i]->name, results[i]->category,
-               results[i]->menu_option);
+        printf("  %lu. %s [%s] (Menu Option %d)\n", (unsigned long)(i + 1), results[i]->name,
+               results[i]->category, results[i]->menu_option);
     }
 
     int choice;

@@ -40,7 +40,9 @@
 #include "step_debugger.h"
 #include "string_algorithms.h"
 #include "trees.h"
+#ifndef _WIN32
 #include "tui.h"
+#endif
 
 void probabilistic_ds_demo(void);
 void spatial_indexing_demo(void);
@@ -360,7 +362,12 @@ void tui_menu(void)
                 run_legacy_menu();
                 break;
             case 2:
+#ifndef _WIN32
                 tui_run();
+#else
+                printf("\nTUI mode is not available on Windows. Running legacy menu...\n");
+                run_legacy_menu();
+#endif
                 break;
         }
     }
@@ -368,6 +375,10 @@ void tui_menu(void)
 
 int main(void)
 {
+#ifndef _WIN32
     tui_menu();
+#else
+    run_legacy_menu();
+#endif
     return 0;
 }

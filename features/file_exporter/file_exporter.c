@@ -4,6 +4,19 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/stat.h>
+#include <sys/types.h>
+#ifdef _WIN32
+#include <direct.h>
+#define make_dir(path) _mkdir(path)
+#ifndef S_ISDIR
+#define S_ISDIR(mode) (((mode) & _S_IFMT) == _S_IFDIR)
+#endif
+#ifndef S_ISREG
+#define S_ISREG(mode) (((mode) & _S_IFMT) == _S_IFREG)
+#endif
+#else
+#define make_dir(path) mkdir(path, 0755)
+#endif
 
 static void ensure_dir_exists(const char* dirpath)
 {
@@ -27,11 +40,11 @@ static void ensure_dir_exists(const char* dirpath)
         if (*p == '/')
         {
             *p = '\0';
-            mkdir(tmp, 0755);
+            make_dir(tmp);
             *p = '/';
         }
     }
-    mkdir(tmp, 0755);
+    make_dir(tmp);
 }
 
 bool dfs_search_file(const char* base_dir, const char* target_filename, char* found_path_out)
