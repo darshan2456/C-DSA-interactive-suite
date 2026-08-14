@@ -1,4 +1,5 @@
 #include "array.h"
+#include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -37,6 +38,10 @@ void print_array(const int arr[], int length_of_array)
 
 int max_array(const int arr[], int length_of_array)
 {
+    if (length_of_array <= 0)
+    {
+        return INT_MIN;
+    }
     int max_element = arr[0];
     for (int i = 1; i < length_of_array; i++)
     {
@@ -50,6 +55,10 @@ int max_array(const int arr[], int length_of_array)
 
 int min_array(const int arr[], int length_of_array)
 {
+    if (length_of_array <= 0)
+    {
+        return INT_MAX;
+    }
     int min_element = arr[0];
     for (int i = 1; i < length_of_array; i++)
     {

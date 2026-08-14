@@ -1,5 +1,6 @@
 #include "array.h"
 #include <assert.h>
+#include <limits.h>
 #include <stdio.h>
 
 /* swap tests */
@@ -89,6 +90,17 @@ void test_negative_values()
     printf("Array negative value test passed\n");
 }
 
+/* empty array edge case */
+void test_empty_array()
+{
+    int arr[] = {1, 2, 3};
+
+    assert(max_array(arr, 0) == INT_MIN);
+    assert(min_array(arr, 0) == INT_MAX);
+
+    printf("Array empty array test passed\n");
+}
+
 int main()
 {
 
@@ -99,6 +111,7 @@ int main()
     test_max_array();
     test_min_array();
     test_negative_values();
+    test_empty_array();
 
     printf("All array tests passed\n");
 
