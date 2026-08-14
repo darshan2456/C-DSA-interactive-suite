@@ -1,4 +1,4 @@
-#include "help.h" 
+#include "help.h"
 #include "safe_input.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -35,15 +35,15 @@ int safe_input_string(char* buffer, size_t buffer_size, const char* prompt)
                 ;
         }
 
-        if (len == 0) 
+        if (len == 0)
         {
             continue;
         }
 
         if (strcmp(buffer, "help") == 0)
         {
-            launch_help_page(); 
-            continue;           
+            launch_help_page();
+            continue;
         }
 
         if (strcmp(buffer, "X") == 0)
