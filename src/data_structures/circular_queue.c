@@ -74,3 +74,17 @@ void display_circ_queue(Queue* queue_ptr)
         i = (i + 1) % queue_ptr->N;
     }
 }
+
+bool circ_queue_is_empty(const Queue* q)
+{
+    if (q == NULL || q->arr == NULL)
+        return true;
+    return q->rear == q->front;
+}
+
+bool circ_queue_is_full(const Queue* q)
+{
+    if (q == NULL || q->arr == NULL)
+        return false;
+    return ((q->rear + 1) % q->N) == q->front;
+}

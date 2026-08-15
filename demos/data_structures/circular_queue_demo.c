@@ -38,7 +38,7 @@ void circular_queue_demo(void)
             int circ_queue_choice;
             int circ_queue_status =
                 safe_input_int(&circ_queue_choice,
-                               "\n\nenter 1 for enqueue, 2 for dequeue and '-1' for exit:- ", 1, 2);
+                               "\n\nenter 1 for enqueue, 2 for dequeue, 3 to check if empty, 4 to check if full and '-1' for exit:- ", 1, 4);
 
             if (circ_queue_status == INPUT_EXIT_SIGNAL)
             {
@@ -102,6 +102,20 @@ void circular_queue_demo(void)
                 }
 
                 display_circ_queue(&rollnos);
+            }
+            else if (circ_queue_choice == 3)
+            {
+                if (circ_queue_is_empty(&rollnos))
+                    printf("\nQueue is empty.\n");
+                else
+                    printf("\nQueue is not empty.\n");
+            }
+            else if (circ_queue_choice == 4)
+            {
+                if (circ_queue_is_full(&rollnos))
+                    printf("\nQueue is full.\n");
+                else
+                    printf("\nQueue is not full.\n");
             }
         }
     }

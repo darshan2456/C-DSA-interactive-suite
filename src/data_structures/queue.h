@@ -27,6 +27,12 @@ void* dequeue(Queue* queue_ptr);
 // Display the contents of a circular queue.
 void display_circ_queue(Queue* queue_ptr);
 
+// Check whether a circular queue is empty. Returns true if empty, false otherwise.
+bool circ_queue_is_empty(const Queue* q);
+
+// Check whether a circular queue is full. Returns true if full, false otherwise.
+bool circ_queue_is_full(const Queue* q);
+
 // Run the circular queue demonstration module.
 void circular_queue_demo(void);
 

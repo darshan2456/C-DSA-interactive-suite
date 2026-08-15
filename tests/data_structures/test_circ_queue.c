@@ -118,6 +118,44 @@ void test_wraparound()
     printf("Circular queue wraparound test passed\n");
 }
 
+void test_is_empty_is_full()
+{
+    assert(circ_queue_is_empty(NULL) == true);
+    assert(circ_queue_is_full(NULL) == false);
+
+    Queue q;
+    init_circ_queue(4, &q);
+
+    assert(circ_queue_is_empty(&q) == true);
+    assert(circ_queue_is_full(&q) == false);
+
+    enqueue(&q, returnMallocInt(10));
+    assert(circ_queue_is_empty(&q) == false);
+    assert(circ_queue_is_full(&q) == false);
+
+    enqueue(&q, returnMallocInt(20));
+    enqueue(&q, returnMallocInt(30));
+    assert(circ_queue_is_empty(&q) == false);
+    assert(circ_queue_is_full(&q) == true);
+
+    int* val = dequeue(&q);
+    assert(val != NULL);
+    free(val);
+    assert(circ_queue_is_full(&q) == false);
+
+    val = dequeue(&q);
+    assert(val != NULL);
+    free(val);
+    val = dequeue(&q);
+    assert(val != NULL);
+    free(val);
+    assert(circ_queue_is_empty(&q) == true);
+
+    destroy_circ_queue(&q);
+
+    printf("Circular queue is_empty/is_full test passed\n");
+}
+
 int main()
 {
     test_init();
@@ -125,6 +163,7 @@ int main()
     test_underflow();
     test_overflow();
     test_wraparound();
+    test_is_empty_is_full();
 
     printf("All circular queue tests passed\n");
     return 0;
