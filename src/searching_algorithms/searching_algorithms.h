@@ -45,7 +45,8 @@ void exponential_search_demo(void);
 // Search for a value using ternary search. Returns The index of the target or -1 if not found.
 int ternary_search(int arr[], int target, int length_of_array);
 
-// Search for a value using recursive ternary search. Returns The index of the target or -1 if not found.
+// Search for a value using recursive ternary search. Returns The index of the target or -1 if not
+// found.
 int ternary_search_recursive(int arr[], int target, int low, int high);
 
 // Run the ternary search demonstration module.
