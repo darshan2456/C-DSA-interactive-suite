@@ -21,7 +21,7 @@ static int get_max(int arr[], int n, SortingTelemetry* telemetry)
     return max;
 }
 
-static void counting_sort(int arr[], int n, int exp, SortingTelemetry* telemetry)
+static void radix_counting_sort(int arr[], int n, int exp, SortingTelemetry* telemetry)
 {
     int* output = malloc(sizeof(int) * n);
     if (output == NULL)
@@ -86,7 +86,7 @@ void radix_sort_with_telemetry(int arr[], int n, SortingTelemetry* telemetry)
     for (int exp = 1; max / exp > 0; exp *= 10)
     {
         sorting_telemetry_add_pass(telemetry, 1);
-        counting_sort(arr, n, exp, telemetry);
+        radix_counting_sort(arr, n, exp, telemetry);
     }
 
     telemetry_close();
