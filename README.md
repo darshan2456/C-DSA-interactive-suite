@@ -1,4 +1,4 @@
-#C_DSA_interactive_suite
+# C_DSA_interactive_suite
 
 A modular, console-based **Data Structures & Algorithms library** written entirely in **C**, built from scratch with pointer-level control, manual memory management (`malloc` / `free`), and defensive input validation.
 
@@ -359,7 +359,7 @@ This suite includes over **100+ interactive, memory-audited data structures and 
 | **Readers-Writers Problem** | Semaphore Sync | $\mathcal{O}(1)$ per access | Priority reader/writer access control via semaphores. |
 | **Producer-Consumer Problem** | Bounded Buffer | $\mathcal{O}(1)$ per item | Bounded buffer synchronization with mutexes and condition variables. |
 
-### 9. CPU & Job Scheduling Algorithms (Menu Option 9)
+### 10. CPU & Job Scheduling Algorithms (Menu Option 9)
 | Scheduling Policy | Category | Preemptive | Complexity | Description |
 | :--- | :--- | :--- | :--- | :--- |
 | **First-Come First-Served (FCFS)** | CPU Scheduling | No | $\mathcal{O}(N \log N)$ | Non-preemptive arrival order job execution. |
@@ -369,7 +369,7 @@ This suite includes over **100+ interactive, memory-audited data structures and 
 | **Preemptive Priority Scheduling** | CPU Scheduling | Yes | $\mathcal{O}(N \log N)$ | Preemptive higher-priority job execution. |
 | **Round Robin (RR)** | CPU Scheduling | Yes | $\mathcal{O}(N)$ | Preemptive time-slice quantum round-robin scheduler. |
 
-### 10. Backtracking Algorithms (Menu Option 10)
+### 11. Backtracking Algorithms (Menu Option 10)
 | Algorithm / Problem | Category | Time Complexity | Space Complexity | Description |
 | :--- | :--- | :--- | :--- | :--- |
 | **Knight's Tour Problem** | Backtracking | $\mathcal{O}(8^{N^2})$ | $\mathcal{O}(N^2)$ | Warnsdorff's heuristic knight's tour board traversal. |
@@ -378,7 +378,7 @@ This suite includes over **100+ interactive, memory-audited data structures and 
 | **Subset Sum Problem** | Backtracking | $\mathcal{O}(2^N)$ | $\mathcal{O}(N)$ | Finds subsets matching target sum using pruning. |
 | **Rat in a Maze** | Backtracking | $\mathcal{O}(2^{N^2})$ | $\mathcal{O}(N^2)$ | Grid maze pathfinding from source to destination. |
 
-### 11. Dynamic Programming (Menu Option 11)
+### 12. Dynamic Programming (Menu Option 11)
 | Algorithm / Problem | Category | Time Complexity | Space Complexity | Description |
 | :--- | :--- | :--- | :--- | :--- |
 | **0/1 Knapsack Problem** | Optimization DP | $\mathcal{O}(N \cdot W)$ | $\mathcal{O}(N \cdot W)$ | Maximizes item values under capacity constraint $W$. |
@@ -388,7 +388,7 @@ This suite includes over **100+ interactive, memory-audited data structures and 
 | **Edit Distance (Levenshtein)** | String DP | $\mathcal{O}(M \cdot N)$ | $\mathcal{O}(M \cdot N)$ | Minimum insertion, deletion, and replacement operations. |
 | **Coin Change Problem** | Optimization DP | $\mathcal{O}(N \cdot A)$ | $\mathcal{O}(A)$ | Minimum coins needed to make target amount $A$. |
 
-### 12. String Processing & Compression Algorithms (Menu Option 12)
+### 13. String Processing & Compression Algorithms (Menu Option 12)
 | Algorithm | Category | Time Complexity | Space Complexity | Description |
 | :--- | :--- | :--- | :--- | :--- |
 | **Huffman Coding** | Lossless Compression | $\mathcal{O}(N \log K)$ | $\mathcal{O}(K)$ | Prefix-free variable-length entropy encoding. |
@@ -398,7 +398,7 @@ This suite includes over **100+ interactive, memory-audited data structures and 
 | **Knuth-Morris-Pratt (KMP)** | Pattern Matching | $\mathcal{O}(N + M)$ | $\mathcal{O}(M)$ | String search using partial match failure function table. |
 | **Rabin-Karp Algorithm** | Pattern Matching | $\mathcal{O}(N + M)$ | $\mathcal{O}(1)$ | Rolling hash string search supporting multi-pattern lookup. |
 
-### 13. Advanced Heaps & Priority Queues (Menu Option 13)
+### 14. Advanced Heaps & Priority Queues (Menu Option 13)
 | Heap Structure | Category | Time Complexity (Push / Pop / Meld) | Space Complexity | Description |
 | :--- | :--- | :--- | :--- | :--- |
 | **Binomial Heap** | Priority Queue | $\mathcal{O}(1) / \mathcal{O}(\log N) / \mathcal{O}(\log N)$ | $\mathcal{O}(N)$ | Collection of binomial trees supporting fast heap merges. |
@@ -409,7 +409,7 @@ This suite includes over **100+ interactive, memory-audited data structures and 
 | **d-Ary Heap** | Priority Queue | $\mathcal{O}(\log_d N) / \mathcal{O}(d \log_d N) / \mathcal{O}(N)$ | $\mathcal{O}(N)$ | Multi-way branching tree generalization of binary heaps. |
 | **Treap** | Randomized Search | $\mathcal{O}(\log N) / \mathcal{O}(\log N) / \mathcal{O}(\log N)$ | $\mathcal{O}(N)$ | Randomized combination of Binary Search Tree and Heap. |
 
-### 14. Bit Manipulation & Bitwise Operations (Menu Option 14)
+### 15. Bit Manipulation & Bitwise Operations (Menu Option 14)
 | Bitwise Feature | Category | Time Complexity | Description |
 | :--- | :--- | :--- | :--- |
 | **Basic Bitwise Operations** | Bit Operations | $\mathcal{O}(1)$ | Set, clear, toggle, and test individual bit positions. |
@@ -417,14 +417,14 @@ This suite includes over **100+ interactive, memory-audited data structures and 
 | **Bitwise Applications** | Bit Operations | $\mathcal{O}(1)$ | Single number finder, subset generation, and XOR tricks. |
 | **Interactive Bit Visualizer** | Bit Visualization | $\mathcal{O}(1)$ | Step-by-step 32-bit register bitwise visualizer. |
 
-### 15. Probabilistic Data Structures (Menu Option 15)
+### 16. Probabilistic Data Structures (Menu Option 15)
 | Data Structure | Category | Time Complexity | Space Complexity | Description |
 | :--- | :--- | :--- | :--- | :--- |
 | **Bloom Filter** | Membership Estimator | $\mathcal{O}(k)$ | $\mathcal{O}(m)$ | Space-efficient set membership test with configurable false positive rate. |
 | **Count-Min Sketch** | Frequency Estimator | $\mathcal{O}(k)$ | $\mathcal{O}(w \cdot d)$ | Sub-linear memory stream frequency estimation matrix. |
 | **HyperLogLog (HLL)** | Cardinality Estimator | $\mathcal{O}(1)$ | $\mathcal{O}(\log \log N)$ | Estimates unique element counts using harmonic mean of zero-runs. |
 
-### 16. Spatial & Multi-Dimensional Indexing (Menu Option 16)
+### 17. Spatial & Multi-Dimensional Indexing (Menu Option 16)
 | Index Structure | Category | Time Complexity (Search / Insert) | Space Complexity | Description |
 | :--- | :--- | :--- | :--- | :--- |
 | **k-d Tree** | Spatial Indexing | $\mathcal{O}(\log N) / \mathcal{O}(\log N)$ | $\mathcal{O}(N)$ | $k$-dimensional point search tree for nearest-neighbor queries. |
@@ -440,7 +440,7 @@ This suite includes over **100+ interactive, memory-audited data structures and 
 | **CLOCK (Second-Chance)** | Cache Replacement | $\mathcal{O}(1)$ avg | Circular buffer pointer approximation of LRU using reference bits. |
 | **Optimal (Belady's OPT)** | Theoretical Limit | $\mathcal{O}(N)$ | Evicts page that will not be used for longest time in future. |
 
-### 17. & 19. System Utilities & Algorithm Finder (Menu Options 17, 19)
+### 19. System Utilities & Algorithm Finder (Menu Options 17, 19)
 | Utility Feature | Category | Description |
 | :--- | :--- | :--- |
 | **Sorting Telemetry Dashboard** | Performance Audit | Real-time comparative execution metrics, comparison counters, and swap timers. |
