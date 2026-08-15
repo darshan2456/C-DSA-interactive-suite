@@ -67,8 +67,7 @@ int separate_chaining_delete(Node* table[], int length_of_array, int value)
         return -1;
     }
 
-    int result =
-        sll_deleteByValue(&table[hash_location], (void*)(intptr_t)value, NULL, NULL);
+    int result = sll_deleteByValue(&table[hash_location], (void*)(intptr_t)value, NULL, NULL);
     if (result == 1)
     {
         return 1;
