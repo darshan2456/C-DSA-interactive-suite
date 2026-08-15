@@ -1,4 +1,4 @@
-# C_DSA_interactive_suite
+#C_DSA_interactive_suite
 
 A modular, console-based **Data Structures & Algorithms library** written entirely in **C**, built from scratch with pointer-level control, manual memory management (`malloc` / `free`), and defensive input validation.
 
@@ -6,7 +6,6 @@ This project emphasizes **conceptual clarity**, **low-level fundamentals**, and 
 
 The codebase is structured as a reusable **DSA library**, with an interactive, console-driven **demo layer** built on top.
 
----
 
 ## Table of Contents
 - [Demos](#demos)
@@ -19,7 +18,6 @@ The codebase is structured as a reusable **DSA library**, with an interactive, c
 - [List of All Implemented Data Structures & Algorithms](#list-of-all-implemented-data-structures--algorithms)
 - [License](#license)
 
----
 
 ## Demos
 
@@ -40,7 +38,6 @@ The codebase is structured as a reusable **DSA library**, with an interactive, c
 [![asciinema demo](https://asciinema.org/a/d2BU9AVDS94GVovS.svg)](https://asciinema.org/a/d2BU9AVDS94GVovS)
 
 
----
 
 ## Build Instructions
 
@@ -119,7 +116,6 @@ make clean
 ```
 Removes executables and generated object/test binaries.
 
----
 
 ## Continuous Integration
 
@@ -144,7 +140,6 @@ On every push or pull request:
 
 If any test fails or Valgrind detects a memory error, the CI job fails automatically.
 
----
 
 ## Architectural Breakdown: Docker & The Build System
 
@@ -243,7 +238,6 @@ Helper targets have been added to the local `Makefile` to simplify building, run
 | `make docker-build-dev` | Builds the development stage image (`c-dsa-suite:dev`). |
 | `make docker-build-runtime` | Builds the slim production stage image (`c-dsa-suite:slim`). |
 
----
 
 ### Multi-Stage Architecture
 
@@ -251,7 +245,6 @@ The project uses a multi-stage `Dockerfile` to separate the build environment fr
 - **Stage 1 (`dev`)**: A heavy development environment containing the full C build toolchain, `valgrind`, `gdb`, and the complete source repository.
 - **Stage 2 (`runtime`)**: A minimal image packaging only the compiled binary and `libncurses6` runtime library (no source code or compiler).
 
----
 
 ## List of All Implemented Data Structures & Algorithms
 
@@ -282,7 +275,7 @@ This suite includes over **100+ interactive, memory-audited data structures and 
 | **Insertion Sort** | Elementary Sorting | $\mathcal{O}(N) / \mathcal{O}(N^2) / \mathcal{O}(N^2)$ | $\mathcal{O}(1)$ | Builds sorted array one item at a time by shifting elements. |
 | **Shell Sort** | Elementary Sorting | $\mathcal{O}(N \log N) / \mathcal{O}(N^{1.5}) / \mathcal{O}(N^2)$ | $\mathcal{O}(1)$ | In-place comparison sort using diminishing gap increments. |
 
-### 4. Advanced Sorting Algorithms $\mathcal{O}(N \log N)$ (Menu Option 3)
+### 3. Advanced Sorting Algorithms $\mathcal{O}(N \log N)$ (Menu Option 3)
 | Algorithm | Category | Time Complexity (Best / Avg / Worst) | Space Complexity | Description |
 | :--- | :--- | :--- | :--- | :--- |
 | **Quick Sort** | Divide & Conquer | $\mathcal{O}(N \log N) / \mathcal{O}(N \log N) / \mathcal{O}(N^2)$ | $\mathcal{O}(\log N)$ | Partitions array around a pivot element recursively. |
@@ -291,7 +284,7 @@ This suite includes over **100+ interactive, memory-audited data structures and 
 | **Radix Sort** | Non-comparison Sort | $\mathcal{O}(N \cdot k) / \mathcal{O}(N \cdot k) / \mathcal{O}(N \cdot k)$ | $\mathcal{O}(N + k)$ | Digit-by-digit distribution sort using counting sort buckets. |
 | **Bucket Sort** | Distribution Sort | $\mathcal{O}(N + k) / \mathcal{O}(N + k) / \mathcal{O}(N^2)$ | $\mathcal{O}(N)$ | Distributes elements into uniform floating-point buckets. |
 
-### 5. Searching Algorithms (Menu Option 4)
+### 4. Searching Algorithms (Menu Option 4)
 | Algorithm | Category | Time Complexity (Best / Avg / Worst) | Space Complexity | Description |
 | :--- | :--- | :--- | :--- | :--- |
 | **Linear Search** | Sequential Search | $\mathcal{O}(1) / \mathcal{O}(N) / \mathcal{O}(N)$ | $\mathcal{O}(1)$ | Sequential element comparison across unsorted arrays. |
@@ -299,7 +292,7 @@ This suite includes over **100+ interactive, memory-audited data structures and 
 | **Jump Search** | Block Search | $\mathcal{O}(1) / \mathcal{O}(\sqrt{N}) / \mathcal{O}(\sqrt{N})$ | $\mathcal{O}(1)$ | Jumps ahead by fixed steps ($\sqrt{N}$) followed by linear search. |
 | **Interpolation Search** | Position Estimator | $\mathcal{O}(1) / \mathcal{O}(\log \log N) / \mathcal{O}(N)$ | $\mathcal{O}(1)$ | Position probe search for uniformly distributed sorted arrays. |
 
-### 6. Graph Traversals & Pathfinding (Menu Option 5)
+### 5. Graph Traversals & Pathfinding (Menu Option 5)
 | Algorithm | Category | Time Complexity | Space Complexity | Description |
 | :--- | :--- | :--- | :--- | :--- |
 | **Breadth-First Search (BFS)** | Graph Traversal | $\mathcal{O}(V + E)$ | $\mathcal{O}(V)$ | Level-order graph traversal using queue data structure. |
@@ -313,7 +306,7 @@ This suite includes over **100+ interactive, memory-audited data structures and 
 | **Prim's Algorithm** | Minimum Spanning Tree | $\mathcal{O}((V + E) \log V)$ | $\mathcal{O}(V)$ | Greedy MST growth from seed vertex using priority queue. |
 | **Floyd-Warshall Algorithm** | All-Pairs Shortest Path | $\mathcal{O}(V^3)$ | $\mathcal{O}(V^2)$ | All-pairs shortest path dynamic programming matrix solver. |
 
-### 7. Advanced Graph Algorithms (Menu Option 6)
+### 5. Advanced Graph Algorithms (Menu Option 5)
 | Algorithm | Category | Time Complexity | Space Complexity | Description |
 | :--- | :--- | :--- | :--- | :--- |
 | **Tarjan's SCC Algorithm** | Graph Connectivity | $\mathcal{O}(V + E)$ | $\mathcal{O}(V)$ | Strongly Connected Components using DFS lowlink values. |
@@ -327,7 +320,15 @@ This suite includes over **100+ interactive, memory-audited data structures and 
 | **Bridges Analysis** | Network Vulnerability | $\mathcal{O}(V + E)$ | $\mathcal{O}(V)$ | Identifies critical edges whose deletion increases components. |
 | **Network Vulnerability Simulator** | Network Resilience | $\mathcal{O}(V + E)$ | $\mathcal{O}(V + E)$ | Interactive resilience testing and critical failure simulation. |
 
-### 8. Trees & Advanced Tree Structures (Menu Option 7)
+### 6. Hashing & Collision Resolution (Menu Option 6)
+| Hash Technique | Category | Time Complexity (Avg / Worst) | Space Complexity | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| **Separate Chaining** | Open Hashing | $\mathcal{O}(1) / \mathcal{O}(N)$ | $\mathcal{O}(N + M)$ | Collision resolution via linked lists per table bucket. |
+| **Linear Probing** | Closed Hashing | $\mathcal{O}(1) / \mathcal{O}(N)$ | $\mathcal{O}(M)$ | Open addressing with sequential index step probing. |
+| **Quadratic Probing** | Closed Hashing | $\mathcal{O}(1) / \mathcal{O}(N)$ | $\mathcal{O}(M)$ | Open addressing with quadratic step $i^2$ probing. |
+| **Double Hashing** | Closed Hashing | $\mathcal{O}(1) / \mathcal{O}(N)$ | $\mathcal{O}(M)$ | Open addressing using independent secondary hash function. |
+
+### 7. Trees & Advanced Tree Structures (Menu Option 7)
 | Data Structure | Category | Time Complexity (Search / Insert / Delete) | Space Complexity | Description |
 | :--- | :--- | :--- | :--- | :--- |
 | **Binary Search Tree (BST)** | Binary Tree | $\mathcal{O}(\log N) / \mathcal{O}(\log N) / \mathcal{O}(N)$ | $\mathcal{O}(N)$ | Standard ordered binary search tree. |
@@ -341,7 +342,43 @@ This suite includes over **100+ interactive, memory-audited data structures and 
 | **Splay Tree** | Self-Adjusting Tree | $\mathcal{O}(\log N) / \mathcal{O}(\log N) / \mathcal{O}(\log N)$ | $\mathcal{O}(N)$ | Amortized self-adjusting search tree moving recent nodes to root. |
 | **Red-Black Tree** | Self-Balancing Tree | $\mathcal{O}(\log N) / \mathcal{O}(\log N) / \mathcal{O}(\log N)$ | $\mathcal{O}(N)$ | Color-balanced binary search tree using black-height invariant. |
 
-### 9. Dynamic Programming (Menu Option 8)
+### 8. Error Correction & Integrity Algorithms (Menu Option 8)
+| Algorithm | Category | Time Complexity | Space Complexity | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| **Checksum Validation** | Data Integrity | $\mathcal{O}(N)$ | $\mathcal{O}(1)$ | Simple additive sum verification across byte streams. |
+| **Cyclic Redundancy Check (CRC-32)** | Error Detection | $\mathcal{O}(N)$ | $\mathcal{O}(1)$ | Polynomial division remainder calculation for burst errors. |
+| **Hamming Code (7,4)** | Error Correction | $\mathcal{O}(N)$ | $\mathcal{O}(N)$ | Single-error correction and double-error detection (SEC-DED). |
+| **Vertical Redundancy Check (VRC)** | Error Detection | $\mathcal{O}(N)$ | $\mathcal{O}(1)$ | Single parity bit verification per character. |
+| **Longitudinal Redundancy Check (LRC)** | Error Detection | $\mathcal{O}(N)$ | $\mathcal{O}(1)$ | Block parity bit calculation across character streams. |
+
+### 9. Process Synchronization Simulators (Menu Option 9)
+| Simulator / Problem | Category | Complexity | Description |
+| :--- | :--- | :--- | :--- |
+| **Peterson's Algorithm** | Concurrency | $\mathcal{O}(1)$ per step | 2-process mutual exclusion with flags and turn variables. |
+| **Dining Philosophers Problem** | Deadlock Simulation | $\mathcal{O}(N)$ threads | Simulates resource contention, circular wait, and asymmetric fixes. |
+| **Readers-Writers Problem** | Semaphore Sync | $\mathcal{O}(1)$ per access | Priority reader/writer access control via semaphores. |
+| **Producer-Consumer Problem** | Bounded Buffer | $\mathcal{O}(1)$ per item | Bounded buffer synchronization with mutexes and condition variables. |
+
+### 9. CPU & Job Scheduling Algorithms (Menu Option 9)
+| Scheduling Policy | Category | Preemptive | Complexity | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| **First-Come First-Served (FCFS)** | CPU Scheduling | No | $\mathcal{O}(N \log N)$ | Non-preemptive arrival order job execution. |
+| **Shortest Job First (SJF)** | CPU Scheduling | No | $\mathcal{O}(N \log N)$ | Non-preemptive shortest burst time job scheduling. |
+| **Shortest Remaining Time First (SRTF)** | CPU Scheduling | Yes | $\mathcal{O}(N \log N)$ | Preemptive shortest remaining burst time scheduling. |
+| **Priority Scheduling** | CPU Scheduling | No | $\mathcal{O}(N \log N)$ | Non-preemptive priority-rank based process execution. |
+| **Preemptive Priority Scheduling** | CPU Scheduling | Yes | $\mathcal{O}(N \log N)$ | Preemptive higher-priority job execution. |
+| **Round Robin (RR)** | CPU Scheduling | Yes | $\mathcal{O}(N)$ | Preemptive time-slice quantum round-robin scheduler. |
+
+### 10. Backtracking Algorithms (Menu Option 10)
+| Algorithm / Problem | Category | Time Complexity | Space Complexity | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| **Knight's Tour Problem** | Backtracking | $\mathcal{O}(8^{N^2})$ | $\mathcal{O}(N^2)$ | Warnsdorff's heuristic knight's tour board traversal. |
+| **N-Queens Problem** | Backtracking | $\mathcal{O}(N!)$ | $\mathcal{O}(N)$ | Places $N$ non-attacking queens on $N \times N$ chessboard. |
+| **Sudoku Solver** | Backtracking | $\mathcal{O}(9^{D})$ | $\mathcal{O}(D)$ | Backtracking constraint satisfaction 9x9 grid solver. |
+| **Subset Sum Problem** | Backtracking | $\mathcal{O}(2^N)$ | $\mathcal{O}(N)$ | Finds subsets matching target sum using pruning. |
+| **Rat in a Maze** | Backtracking | $\mathcal{O}(2^{N^2})$ | $\mathcal{O}(N^2)$ | Grid maze pathfinding from source to destination. |
+
+### 11. Dynamic Programming (Menu Option 11)
 | Algorithm / Problem | Category | Time Complexity | Space Complexity | Description |
 | :--- | :--- | :--- | :--- | :--- |
 | **0/1 Knapsack Problem** | Optimization DP | $\mathcal{O}(N \cdot W)$ | $\mathcal{O}(N \cdot W)$ | Maximizes item values under capacity constraint $W$. |
@@ -351,7 +388,17 @@ This suite includes over **100+ interactive, memory-audited data structures and 
 | **Edit Distance (Levenshtein)** | String DP | $\mathcal{O}(M \cdot N)$ | $\mathcal{O}(M \cdot N)$ | Minimum insertion, deletion, and replacement operations. |
 | **Coin Change Problem** | Optimization DP | $\mathcal{O}(N \cdot A)$ | $\mathcal{O}(A)$ | Minimum coins needed to make target amount $A$. |
 
-### 10. Advanced Heaps & Priority Queues (Menu Option 9)
+### 12. String Processing & Compression Algorithms (Menu Option 12)
+| Algorithm | Category | Time Complexity | Space Complexity | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| **Huffman Coding** | Lossless Compression | $\mathcal{O}(N \log K)$ | $\mathcal{O}(K)$ | Prefix-free variable-length entropy encoding. |
+| **Run-Length Encoding (RLE)** | Lossless Compression | $\mathcal{O}(N)$ | $\mathcal{O}(N)$ | Replaces consecutive repeated characters with run counts. |
+| **LZW Compression** | Dictionary Compression | $\mathcal{O}(N)$ | $\mathcal{O}(D)$ | Dictionary-based string substitution algorithm. |
+| **Burrows-Wheeler Transform (BWT)** | Block Compression | $\mathcal{O}(N \log N)$ | $\mathcal{O}(N)$ | Permutes character positions to create long runs of repeated bytes. |
+| **Knuth-Morris-Pratt (KMP)** | Pattern Matching | $\mathcal{O}(N + M)$ | $\mathcal{O}(M)$ | String search using partial match failure function table. |
+| **Rabin-Karp Algorithm** | Pattern Matching | $\mathcal{O}(N + M)$ | $\mathcal{O}(1)$ | Rolling hash string search supporting multi-pattern lookup. |
+
+### 13. Advanced Heaps & Priority Queues (Menu Option 13)
 | Heap Structure | Category | Time Complexity (Push / Pop / Meld) | Space Complexity | Description |
 | :--- | :--- | :--- | :--- | :--- |
 | **Binomial Heap** | Priority Queue | $\mathcal{O}(1) / \mathcal{O}(\log N) / \mathcal{O}(\log N)$ | $\mathcal{O}(N)$ | Collection of binomial trees supporting fast heap merges. |
@@ -362,48 +409,29 @@ This suite includes over **100+ interactive, memory-audited data structures and 
 | **d-Ary Heap** | Priority Queue | $\mathcal{O}(\log_d N) / \mathcal{O}(d \log_d N) / \mathcal{O}(N)$ | $\mathcal{O}(N)$ | Multi-way branching tree generalization of binary heaps. |
 | **Treap** | Randomized Search | $\mathcal{O}(\log N) / \mathcal{O}(\log N) / \mathcal{O}(\log N)$ | $\mathcal{O}(N)$ | Randomized combination of Binary Search Tree and Heap. |
 
-### 11. String Processing & Compression Algorithms (Menu Option 12)
-| Algorithm | Category | Time Complexity | Space Complexity | Description |
-| :--- | :--- | :--- | :--- | :--- |
-| **Huffman Coding** | Lossless Compression | $\mathcal{O}(N \log K)$ | $\mathcal{O}(K)$ | Prefix-free variable-length entropy encoding. |
-| **Run-Length Encoding (RLE)** | Lossless Compression | $\mathcal{O}(N)$ | $\mathcal{O}(N)$ | Replaces consecutive repeated characters with run counts. |
-| **LZW Compression** | Dictionary Compression | $\mathcal{O}(N)$ | $\mathcal{O}(D)$ | Dictionary-based string substitution algorithm. |
-| **Burrows-Wheeler Transform (BWT)** | Block Compression | $\mathcal{O}(N \log N)$ | $\mathcal{O}(N)$ | Permutes character positions to create long runs of repeated bytes. |
-| **Knuth-Morris-Pratt (KMP)** | Pattern Matching | $\mathcal{O}(N + M)$ | $\mathcal{O}(M)$ | String search using partial match failure function table. |
-| **Rabin-Karp Algorithm** | Pattern Matching | $\mathcal{O}(N + M)$ | $\mathcal{O}(1)$ | Rolling hash string search supporting multi-pattern lookup. |
+### 14. Bit Manipulation & Bitwise Operations (Menu Option 14)
+| Bitwise Feature | Category | Time Complexity | Description |
+| :--- | :--- | :--- | :--- |
+| **Basic Bitwise Operations** | Bit Operations | $\mathcal{O}(1)$ | Set, clear, toggle, and test individual bit positions. |
+| **Advanced Bit Manipulation** | Bit Operations | $\mathcal{O}(1)$ | Count set bits (popcount), power of 2 check, and bit reversal. |
+| **Bitwise Applications** | Bit Operations | $\mathcal{O}(1)$ | Single number finder, subset generation, and XOR tricks. |
+| **Interactive Bit Visualizer** | Bit Visualization | $\mathcal{O}(1)$ | Step-by-step 32-bit register bitwise visualizer. |
 
-### 12. Probabilistic Data Structures (Menu Option 16)
+### 15. Probabilistic Data Structures (Menu Option 15)
 | Data Structure | Category | Time Complexity | Space Complexity | Description |
 | :--- | :--- | :--- | :--- | :--- |
 | **Bloom Filter** | Membership Estimator | $\mathcal{O}(k)$ | $\mathcal{O}(m)$ | Space-efficient set membership test with configurable false positive rate. |
 | **Count-Min Sketch** | Frequency Estimator | $\mathcal{O}(k)$ | $\mathcal{O}(w \cdot d)$ | Sub-linear memory stream frequency estimation matrix. |
 | **HyperLogLog (HLL)** | Cardinality Estimator | $\mathcal{O}(1)$ | $\mathcal{O}(\log \log N)$ | Estimates unique element counts using harmonic mean of zero-runs. |
 
-### 13. Spatial & Multi-Dimensional Indexing (Menu Option 17)
+### 16. Spatial & Multi-Dimensional Indexing (Menu Option 16)
 | Index Structure | Category | Time Complexity (Search / Insert) | Space Complexity | Description |
 | :--- | :--- | :--- | :--- | :--- |
 | **k-d Tree** | Spatial Indexing | $\mathcal{O}(\log N) / \mathcal{O}(\log N)$ | $\mathcal{O}(N)$ | $k$-dimensional point search tree for nearest-neighbor queries. |
 | **QuadTree** | Spatial Partitioning | $\mathcal{O}(\log N) / \mathcal{O}(\log N)$ | $\mathcal{O}(N)$ | 2D space recursive quadrant partitioning tree. |
 | **R-Tree** | Bounding Box Index | $\mathcal{O}(\log_M N) / \mathcal{O}(\log_M N)$ | $\mathcal{O}(N)$ | Minimum Bounding Rectangle (MBR) spatial indexing. |
 
-### 14. Error Correction & Integrity Algorithms (Menu Option 13)
-| Algorithm | Category | Time Complexity | Space Complexity | Description |
-| :--- | :--- | :--- | :--- | :--- |
-| **Checksum Validation** | Data Integrity | $\mathcal{O}(N)$ | $\mathcal{O}(1)$ | Simple additive sum verification across byte streams. |
-| **Cyclic Redundancy Check (CRC-32)** | Error Detection | $\mathcal{O}(N)$ | $\mathcal{O}(1)$ | Polynomial division remainder calculation for burst errors. |
-| **Hamming Code (7,4)** | Error Correction | $\mathcal{O}(N)$ | $\mathcal{O}(N)$ | Single-error correction and double-error detection (SEC-DED). |
-| **Vertical Redundancy Check (VRC)** | Error Detection | $\mathcal{O}(N)$ | $\mathcal{O}(1)$ | Single parity bit verification per character. |
-| **Longitudinal Redundancy Check (LRC)** | Error Detection | $\mathcal{O}(N)$ | $\mathcal{O}(1)$ | Block parity bit calculation across character streams. |
-
-### 15. Process Synchronization Simulators (Menu Option 14)
-| Simulator / Problem | Category | Complexity | Description |
-| :--- | :--- | :--- | :--- |
-| **Peterson's Algorithm** | Concurrency | $\mathcal{O}(1)$ per step | 2-process mutual exclusion with flags and turn variables. |
-| **Dining Philosophers Problem** | Deadlock Simulation | $\mathcal{O}(N)$ threads | Simulates resource contention, circular wait, and asymmetric fixes. |
-| **Readers-Writers Problem** | Semaphore Sync | $\mathcal{O}(1)$ per access | Priority reader/writer access control via semaphores. |
-| **Producer-Consumer Problem** | Bounded Buffer | $\mathcal{O}(1)$ per item | Bounded buffer synchronization with mutexes and condition variables. |
-
-### 16. Cache Simulator & Eviction Policies (Menu Option 15)
+### 18. Cache Simulator & Eviction Policies (Menu Option 18)
 | Eviction Policy | Category | Time Complexity | Description |
 | :--- | :--- | :--- | :--- |
 | **Least Recently Used (LRU)** | Cache Replacement | $\mathcal{O}(1)$ | Evicts page with oldest access timestamp. |
@@ -412,42 +440,7 @@ This suite includes over **100+ interactive, memory-audited data structures and 
 | **CLOCK (Second-Chance)** | Cache Replacement | $\mathcal{O}(1)$ avg | Circular buffer pointer approximation of LRU using reference bits. |
 | **Optimal (Belady's OPT)** | Theoretical Limit | $\mathcal{O}(N)$ | Evicts page that will not be used for longest time in future. |
 
-### 17. Backtracking Algorithms
-| Algorithm / Problem | Category | Time Complexity | Space Complexity | Description |
-| :--- | :--- | :--- | :--- | :--- |
-| **Knight's Tour Problem** | Backtracking | $\mathcal{O}(8^{N^2})$ | $\mathcal{O}(N^2)$ | Warnsdorff's heuristic knight's tour board traversal. |
-| **N-Queens Problem** | Backtracking | $\mathcal{O}(N!)$ | $\mathcal{O}(N)$ | Places $N$ non-attacking queens on $N \times N$ chessboard. |
-| **Sudoku Solver** | Backtracking | $\mathcal{O}(9^{D})$ | $\mathcal{O}(D)$ | Backtracking constraint satisfaction 9x9 grid solver. |
-| **Subset Sum Problem** | Backtracking | $\mathcal{O}(2^N)$ | $\mathcal{O}(N)$ | Finds subsets matching target sum using pruning. |
-| **Rat in a Maze** | Backtracking | $\mathcal{O}(2^{N^2})$ | $\mathcal{O}(N^2)$ | Grid maze pathfinding from source to destination. |
-
-### 18. Hashing & Collision Resolution
-| Hash Technique | Category | Time Complexity (Avg / Worst) | Space Complexity | Description |
-| :--- | :--- | :--- | :--- | :--- |
-| **Separate Chaining** | Open Hashing | $\mathcal{O}(1) / \mathcal{O}(N)$ | $\mathcal{O}(N + M)$ | Collision resolution via linked lists per table bucket. |
-| **Linear Probing** | Closed Hashing | $\mathcal{O}(1) / \mathcal{O}(N)$ | $\mathcal{O}(M)$ | Open addressing with sequential index step probing. |
-| **Quadratic Probing** | Closed Hashing | $\mathcal{O}(1) / \mathcal{O}(N)$ | $\mathcal{O}(M)$ | Open addressing with quadratic step $i^2$ probing. |
-| **Double Hashing** | Closed Hashing | $\mathcal{O}(1) / \mathcal{O}(N)$ | $\mathcal{O}(M)$ | Open addressing using independent secondary hash function. |
-
-### 19. CPU & Job Scheduling Algorithms
-| Scheduling Policy | Category | Preemptive | Complexity | Description |
-| :--- | :--- | :--- | :--- | :--- |
-| **First-Come First-Served (FCFS)** | CPU Scheduling | No | $\mathcal{O}(N \log N)$ | Non-preemptive arrival order job execution. |
-| **Shortest Job First (SJF)** | CPU Scheduling | No | $\mathcal{O}(N \log N)$ | Non-preemptive shortest burst time job scheduling. |
-| **Shortest Remaining Time First (SRTF)** | CPU Scheduling | Yes | $\mathcal{O}(N \log N)$ | Preemptive shortest remaining burst time scheduling. |
-| **Priority Scheduling** | CPU Scheduling | No | $\mathcal{O}(N \log N)$ | Non-preemptive priority-rank based process execution. |
-| **Preemptive Priority Scheduling** | CPU Scheduling | Yes | $\mathcal{O}(N \log N)$ | Preemptive higher-priority job execution. |
-| **Round Robin (RR)** | CPU Scheduling | Yes | $\mathcal{O}(N)$ | Preemptive time-slice quantum round-robin scheduler. |
-
-### 20. Bit Manipulation & Bitwise Operations
-| Bitwise Feature | Category | Time Complexity | Description |
-| :--- | :--- | :--- | :--- |
-| **Basic Bitwise Operations** | Bit Operations | $\mathcal{O}(1)$ | Set, clear, toggle, and test individual bit positions. |
-| **Advanced Bit Manipulation** | Bit Operations | $\mathcal{O}(1)$ | Count set bits (popcount), power of 2 check, and bit reversal. |
-| **Bitwise Applications** | Bit Operations | $\mathcal{O}(1)$ | Single number finder, subset generation, and XOR tricks. |
-| **Interactive Bit Visualizer** | Bit Visualization | $\mathcal{O}(1)$ | Step-by-step 32-bit register bitwise visualizer. |
-
-### 21. System Utilities: Telemetry, Memory Inspector & Serialization (Menu Options 10, 11, 18)
+### 17. & 19. System Utilities & Algorithm Finder (Menu Options 17, 19)
 | Utility Feature | Category | Description |
 | :--- | :--- | :--- |
 | **Sorting Telemetry Dashboard** | Performance Audit | Real-time comparative execution metrics, comparison counters, and swap timers. |
@@ -459,8 +452,6 @@ This suite includes over **100+ interactive, memory-audited data structures and 
 
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details.
-
----
 
 ## Author
 
