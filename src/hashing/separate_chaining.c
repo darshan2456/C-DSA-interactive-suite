@@ -8,7 +8,7 @@ static int compare_ints(const void* a, const void* b)
 {
     int val_a = (int)(intptr_t)a;
     int val_b = (int)(intptr_t)b;
-    return val_a - val_b;
+    return (val_a > val_b) - (val_a < val_b);
 }
 
 int separate_chaining_insert(Node* table[], int length_of_array, int value)
