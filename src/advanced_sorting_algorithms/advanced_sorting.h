@@ -24,4 +24,3 @@ void counting_sort_with_telemetry(int arr[], int n, SortingTelemetry* telemetry)
 void counting_sort_demo(void);
 
 #endif
-

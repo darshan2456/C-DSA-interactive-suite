@@ -33,8 +33,7 @@ void counting_sort_demo(void)
         for (int i = 0; i < length_of_array; i++)
         {
         retry:
-            printf("\nenter element number %d (between -1000 and 10000), enter '-1' to exit:- ",
-                   i);
+            printf("\nenter element number %d (between -1000 and 10000), enter '-1' to exit:- ", i);
             int element_status = safe_input_int(&arr[i], NULL, -1000, 10000);
 
             if (element_status == INPUT_EXIT_SIGNAL)
