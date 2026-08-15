@@ -16,8 +16,10 @@ void searching_algorithms_demo(void)
                                                "\nenter 3 for recursive binary search"
                                                "\nenter 4 for interpolation search"
                                                "\nenter 5 for jump search"
+                                               "\nenter 6 for exponential search"
+                                               "\nenter 7 for ternary search"
                                                "\nenter choice (\'-1\' to exit, or \'help\') : ",
-                                               1, 5);
+                                               1, 7);
 
         if (searching_algo_status == INPUT_EXIT_SIGNAL)
         {
@@ -49,6 +51,14 @@ void searching_algorithms_demo(void)
             case 5:
                 display_header("Jump Search");
                 jump_search_demo();
+                break;
+            case 6:
+                display_header("Exponential Search");
+                exponential_search_demo();
+                break;
+            case 7:
+                display_header("Ternary Search");
+                ternary_search_demo();
                 break;
         }
     }
