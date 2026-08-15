@@ -10,6 +10,12 @@ int max_array(const int arr[], int length_of_array);
 // Find the minimum element in an integer array. Returns The minimum value in the array.
 int min_array(const int arr[], int length_of_array);
 
+// Calculate the sum of all elements in an integer array. Returns the total sum.
+int sum_array(const int arr[], int length_of_array);
+
+// Calculate the average of all elements in an integer array. Returns the average as a double.
+double average_array(const int arr[], int length_of_array);
+
 // Print the contents of an integer array.
 void print_array(const int arr[], int length_of_array);
 

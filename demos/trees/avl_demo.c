@@ -70,7 +70,8 @@ void avl_demo(void)
         if (option == 2)
         {
             char path[256];
-            int path_status = safe_input_string(path, "\nenter filepath to load from:- ");
+            int path_status =
+                safe_input_string(path, sizeof(path), "\nenter filepath to load from:- ");
             if (path_status == INPUT_EXIT_SIGNAL)
             {
                 continue;
@@ -227,7 +228,8 @@ void avl_demo(void)
             else if (traversal_choice == 6)
             {
                 char path[256];
-                int path_status = safe_input_string(path, "\nenter filepath to save to:- ");
+                int path_status =
+                    safe_input_string(path, sizeof(path), "\nenter filepath to save to:- ");
                 if (path_status != INPUT_EXIT_SIGNAL)
                 {
                     if (serialize_avl_to_file(root, path))

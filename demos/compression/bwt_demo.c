@@ -20,7 +20,7 @@ void bwt_mtf_demo(void)
 
         char input[256];
 
-        int status = safe_input_string(input, "");
+        int status = safe_input_string(input, sizeof(input), "");
 
         if (status == INPUT_EXIT_SIGNAL)
             break;
