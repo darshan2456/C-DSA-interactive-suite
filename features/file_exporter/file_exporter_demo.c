@@ -35,7 +35,8 @@ void file_exporter_demo(void)
 
         char dest_dir[256] = {0};
         int input_res = safe_input_string(
-            dest_dir, sizeof(dest_dir), "\nEnter destination directory to export files (e.g. ./exported_files): ");
+            dest_dir, sizeof(dest_dir),
+            "\nEnter destination directory to export files (e.g. ./exported_files): ");
         if (input_res == INPUT_EXIT_SIGNAL)
         {
             printf("\nExiting File Exporter Dashboard...\n");
