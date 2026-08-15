@@ -19,8 +19,11 @@ void sudoku_demo(void);
 void rat_in_maze_demo(void);
 void graph_coloring_demo(void);
 void knights_tour_demo(void);
+void tower_of_hanoi_demo(void);
 
 // Exposed Solvers & Visualization Helper Functions
+int solve_tower_of_hanoi(int n, int source, int auxiliary, int destination, int disks,
+                         int pegs[3][10], int counts[3]);
 bool solve_n_queens_util(int N, char board[8][8], int col);
 
 bool solve_sudoku_util(int grid[6][6], int row, int col);

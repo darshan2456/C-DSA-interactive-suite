@@ -60,6 +60,22 @@ void test_knights_tour()
     printf("  --> PASSED\n");
 }
 
+// --- 6. Tower of Hanoi Tests ---
+void test_tower_of_hanoi()
+{
+    printf("[TEST] Running Tower of Hanoi...\n");
+    int pegs[3][10];
+    int counts[3];
+    // For testing, we pass disks=0 so it skips the visual printout
+    assert(solve_tower_of_hanoi(3, 0, 1, 2, 0, pegs, counts) == 7 &&
+           "3 disks should take exactly 7 moves");
+    assert(solve_tower_of_hanoi(4, 0, 1, 2, 0, pegs, counts) == 15 &&
+           "4 disks should take exactly 15 moves");
+    assert(solve_tower_of_hanoi(5, 0, 1, 2, 0, pegs, counts) == 31 &&
+           "5 disks should take exactly 31 moves");
+    printf("  --> PASSED\n");
+}
+
 int main()
 {
     printf("\n===================================\n");
@@ -71,6 +87,7 @@ int main()
     test_rat_in_maze();
     test_graph_coloring();
     test_knights_tour();
+    test_tower_of_hanoi();
 
     printf("\n===================================\n");
     printf(" ✅ ALL BACKTRACKING TESTS PASSED!\n");
