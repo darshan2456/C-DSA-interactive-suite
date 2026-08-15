@@ -17,7 +17,7 @@ int safe_input_string(char* buffer, size_t buffer_size, const char* prompt)
         fflush(stdout);
         if (fgets(buffer, buffer_size, stdin) == NULL)
         {
-            return 0; 
+            return 0;
         }
 
         size_t len = strlen(buffer);
@@ -32,7 +32,7 @@ int safe_input_string(char* buffer, size_t buffer_size, const char* prompt)
             while ((c = getchar()) != '\n' && c != EOF)
                 ;
         }
-        if (len == 0) 
+        if (len == 0)
         {
             continue;
         }

@@ -160,7 +160,8 @@ static void run_lzw_demo(void)
 
     char input[256];
     int input_status = safe_input_string(
-        input, sizeof(input), "Enter a string to compress (e.g., TOBEORNOTTOBEORTOBEORNOT), or 'X' to exit: ");
+        input, sizeof(input),
+        "Enter a string to compress (e.g., TOBEORNOTTOBEORTOBEORNOT), or 'X' to exit: ");
     if (input_status == INPUT_EXIT_SIGNAL)
     {
         return;
@@ -220,8 +221,8 @@ static void run_bwt_mtf_demo(void)
     display_header("Burrows-Wheeler (BWT) & Move-To-Front (MTF)");
 
     char input[256];
-    int input_status =
-        safe_input_string(input, sizeof(input), "Enter a string to transform (e.g., banana), or 'X' to exit: ");
+    int input_status = safe_input_string(
+        input, sizeof(input), "Enter a string to transform (e.g., banana), or 'X' to exit: ");
     if (input_status == INPUT_EXIT_SIGNAL)
     {
         return;
