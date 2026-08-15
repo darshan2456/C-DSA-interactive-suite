@@ -9,6 +9,8 @@ void test_set_bit(void)
     assert(set_bit(0, 3) == 8);
     assert(set_bit(5, 1) == 7);
     assert(set_bit(-1, 0) == -1); /* all bits already set */
+    assert(set_bit(0, 31) == (int)0x80000000);
+    assert(set_bit(0, 32) == 0);
 
     printf("set_bit tests passed\n");
 }
@@ -19,6 +21,8 @@ void test_clear_bit(void)
     assert(clear_bit(7, 0) == 6);
     assert(clear_bit(8, 3) == 0);
     assert(clear_bit(0, 5) == 0); /* no-op: bit already clear */
+    assert(clear_bit((int)0x80000000, 31) == 0);
+    assert(clear_bit((int)0x80000000, 32) == (int)0x80000000);
 
     printf("clear_bit tests passed\n");
 }
@@ -29,6 +33,8 @@ void test_toggle_bit(void)
     assert(toggle_bit(0, 2) == 4);
     assert(toggle_bit(7, 1) == 5);
     assert(toggle_bit(toggle_bit(10, 0), 0) == 10); /* double toggle = no change */
+    assert(toggle_bit(0, 31) == (int)0x80000000);
+    assert(toggle_bit(0, 32) == 0);
 
     printf("toggle_bit tests passed\n");
 }
@@ -40,6 +46,8 @@ void test_check_bit(void)
     assert(check_bit(5, 1) == 0); /* 5 = 101, bit 1 is clear */
     assert(check_bit(5, 2) == 1); /* 5 = 101, bit 2 is set */
     assert(check_bit(0, 7) == 0); /* no bits set */
+    assert(check_bit((int)0x80000000, 31) == 1);
+    assert(check_bit(0, 32) == 0);
 
     printf("check_bit tests passed\n");
 }

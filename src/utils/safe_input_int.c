@@ -35,6 +35,13 @@ int safe_input_int(int* input, const char* prompt, int min_val, int max_val)
             return INPUT_EXIT_SIGNAL;
         }
 
+        if (strchr(buffer, '\n') == NULL)
+        {
+            int c;
+            while ((c = getchar()) != '\n' && c != EOF)
+                ;
+        }
+
         // Remove trailing newline, if present
         trim_newline(buffer);
 

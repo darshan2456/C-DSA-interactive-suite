@@ -62,6 +62,12 @@ void array_demo(void)
         int min_element = min_array(arr, length_of_array); // min element of array
         printf("\nminimum element is :- %d", min_element);
 
+        int sum = sum_array(arr, length_of_array); // sum of array elements
+        printf("\nsum of elements is :- %d", sum);
+
+        double average = average_array(arr, length_of_array); // average of array elements
+        printf("\naverage of elements is :- %.2f", average);
+
         reverse_array(arr, length_of_array); // array is reversed in memory
         printf("\n\nreverse of the array is :- ");
         print_array(arr, length_of_array);
