@@ -69,3 +69,22 @@ int min_array(const int arr[], int length_of_array)
     }
     return min_element;
 }
+
+int sum_array(const int arr[], int length_of_array)
+{
+    int sum = 0;
+    for (int i = 0; i < length_of_array; i++)
+    {
+        sum += arr[i];
+    }
+    return sum;
+}
+
+double average_array(const int arr[], int length_of_array)
+{
+    if (length_of_array == 0)
+    {
+        return 0.0;
+    }
+    return (double)sum_array(arr, length_of_array) / length_of_array;
+}

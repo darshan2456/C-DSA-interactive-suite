@@ -113,6 +113,20 @@ int main()
     test_negative_values();
     test_empty_array();
 
+    /* Test sum_array */
+    int arr_sum[] = {1, 2, 3, 4, 5};
+    assert(sum_array(arr_sum, 5) == 15);
+    printf("Array sum test passed\n");
+
+    /* Test average_array */
+    assert(average_array(arr_sum, 5) == 3.0);
+    printf("Array average test passed\n");
+
+    /* Edge case for empty or zero length (if handled) */
+    assert(average_array(arr_sum, 0) == 0.0);
+    assert(sum_array(arr_sum, 0) == 0);
+    printf("Array zero length edge case test passed\n");
+
     printf("All array tests passed\n");
 
     return 0;
