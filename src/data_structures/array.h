@@ -22,6 +22,9 @@ void print_array(const int arr[], int length_of_array);
 // Reverse the contents of an integer array in place.
 void reverse_array(int arr[], int length_of_array);
 
+// Rotate the contents of an integer array to the right by k steps in place.
+void rotate_array(int arr[], int length_of_array, int k);
+
 // Run the array demonstration module.
 void array_demo(void);
 

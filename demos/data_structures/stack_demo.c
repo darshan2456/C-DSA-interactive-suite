@@ -24,8 +24,9 @@ void stack_demo(void)
                                     "1. Push (Insert element onto Stack)\n"
                                     "2. Pop (Remove element from Stack)\n"
                                     "3. Peek (View top element)\n"
+                                    "4. Size (View total number of elements)\n"
                                     "enter choice ('-1' to exit, or 'help') : ",
-                                    1, 3);
+                                    1, 4);
 
         if (status == INPUT_EXIT_SIGNAL)
         {
@@ -84,6 +85,11 @@ void stack_demo(void)
                 int val = (int)(intptr_t)peek(s);
                 printf("\nTop element: %d\n", val);
             }
+            printStackAsInts(s);
+        }
+        else if (choice == 4)
+        {
+            printf("\nCurrent stack size: %d\n", get_stack_size(s));
             printStackAsInts(s);
         }
     }

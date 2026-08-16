@@ -17,8 +17,9 @@ void advanced_sorting_demo(void)
             safe_input_int(&sorting_algo_choice,
                            "enter '1' for quick sort, '2' for merge sort, '3' "
                            "for heap sort, '4' for radix sort, '5' for bucket sort, '6' for "
+                           "counting sort, '7' for "
                            "Comparative Performance Dashboard, '-1' to exit:- ",
-                           1, 6);
+                           1, 7);
 
         if (sorting_algo_status == INPUT_EXIT_SIGNAL)
         {
@@ -57,6 +58,11 @@ void advanced_sorting_demo(void)
             bucket_sort_demo();
         }
         else if (sorting_algo_choice == 6)
+        {
+            display_header("Counting Sort");
+            counting_sort_demo();
+        }
+        else if (sorting_algo_choice == 7)
         {
             display_header("Comparative Performance Dashboard");
             sorting_telemetry_dashboard_demo();

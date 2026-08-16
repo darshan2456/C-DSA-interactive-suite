@@ -75,5 +75,28 @@ void array_demo(void)
         reverse_array(arr, length_of_array); // revert to normal
         printf("\noriginal array :- ");
         print_array(arr, length_of_array);
+
+        int k;
+        int k_status;
+    enter_k:
+        k_status = safe_input_int(
+            &k, "\n\nEnter number of places to rotate array right (enter '-1' to exit):- ", 1, 100);
+        if (k_status == INPUT_EXIT_SIGNAL)
+        {
+            printf("\nExiting array demo\n");
+            return;
+        }
+        if (k_status == 0)
+        {
+            goto enter_k;
+        }
+
+        rotate_array(arr, length_of_array, k);
+        printf("\narray rotated right by %d places :- ", k);
+        print_array(arr, length_of_array);
+
+        rotate_array(arr, length_of_array, -k); // revert to normal
+        printf("\noriginal array :- ");
+        print_array(arr, length_of_array);
     }
 }

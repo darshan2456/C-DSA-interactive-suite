@@ -28,4 +28,7 @@ int tsp_dp(int mask, int pos, int n, int** dist, int** memo);
 int* reconstruct_tsp_path(int n, int** dist, int** memo, int min_cost);
 int solve_tsp(int n, int** dist, int** path_out);
 
+int lis(const int arr[], int n);
+void lis_demo(void);
+
 #endif // DYNAMIC_PROGRAMMING_H

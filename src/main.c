@@ -93,13 +93,13 @@ void run_legacy_menu(void)
                 while (1)
                 {
                     int ds_type;
-                    int ds_status =
-                        safe_input_int(&ds_type,
-                                       "\n--- Core Data Structures ---\n"
-                                       "1. Linear Data Structures (SLL, DLL, Array, Queue, PQ)\n"
-                                       "2. Circular Data Structures (CQ, SCLL, DCLL, Deque)\n"
-                                       "\nenter choice (\'-1\' to exit) : ",
-                                       1, 2);
+                    int ds_status = safe_input_int(
+                        &ds_type,
+                        "\n--- Core Data Structures ---\n"
+                        "1. Linear Data Structures (SLL, DLL, Array, Queue, PQ, Stack)\n"
+                        "2. Circular Data Structures (CQ, SCLL, DCLL, Deque)\n"
+                        "\nenter choice (\'-1\' to exit) : ",
+                        1, 2);
                     if (ds_status == INPUT_EXIT_SIGNAL)
                         break;
                     if (ds_status == 0)
@@ -117,8 +117,9 @@ void run_legacy_menu(void)
                                                             "3. Array\n"
                                                             "4. Priority Queue\n"
                                                             "5. Linear Queue\n"
+                                                            "6. Stack\n"
                                                             "\nenter choice (\'-1\' to exit) : ",
-                                                            1, 5);
+                                                            1, 6);
                             if (lin_status == INPUT_EXIT_SIGNAL)
                                 break;
                             if (lin_status == 0)
@@ -133,6 +134,8 @@ void run_legacy_menu(void)
                                 priority_queue_demo();
                             else if (lin_choice == 5)
                                 simple_queue_demo();
+                            else if (lin_choice == 6)
+                                stack_demo();
                         }
                     }
                     else if (ds_type == 2)

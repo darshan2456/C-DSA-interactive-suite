@@ -169,6 +169,7 @@ static Entry ENTRIES[] = {
     {"Array", array_demo, 0, 0, 2},
     {"Priority Queue", priority_queue_demo, 0, 0, 2},
     {"Linear Queue", simple_queue_demo, 0, 0, 2},
+    {"Stack", stack_demo, 0, 0, 2},
     {"Circular Data Structures", NULL, 1, 0, 1},
     {"Circular Queue", circular_queue_demo, 0, 0, 2},
     {"Singly Circular Linked List", scll_demo, 0, 0, 2},

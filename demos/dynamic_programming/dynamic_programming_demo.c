@@ -18,8 +18,9 @@ void dynamic_programming_demo(void)
                                    "\nenter 5 for Edit Distance (Levenshtein) demo"
                                    "\nenter 6 for Coin Change demo"
                                    "\nenter 7 for Travelling Salesperson Problem (TSP) demo"
+                                   "\nenter 8 for Longest Increasing Subsequence (LIS) demo"
                                    "\nenter choice (\'-1\' to exit, or \'help\') : ",
-                                   1, 7);
+                                   1, 8);
 
         if (dp_status == INPUT_EXIT_SIGNAL)
         {
@@ -61,6 +62,10 @@ void dynamic_programming_demo(void)
             case 7:
                 display_header("Travelling Salesperson Problem");
                 tsp_demo();
+                break;
+            case 8:
+                display_header("Longest Increasing Subsequence");
+                lis_demo();
                 break;
         }
     }

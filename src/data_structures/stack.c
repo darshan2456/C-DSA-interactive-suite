@@ -54,6 +54,13 @@ void* peek(const stack* s)
     return s->top->data;
 }
 
+int get_stack_size(const stack* s)
+{
+    if (s == NULL)
+        return 0;
+    return sll_getLength(s->top);
+}
+
 /**
  * Prints stack contents as characters from top to bottom for infix-to-postfix visualization.
  * The format is: Stack (top -> bottom): | + | * |
