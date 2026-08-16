@@ -24,6 +24,24 @@ void reverse_array(int arr[], int length_of_array)
     }
 }
 
+void rotate_array(int arr[], int length_of_array, int k)
+{
+    if (length_of_array <= 1)
+        return;
+
+    k = k % length_of_array;
+    if (k < 0)
+    {
+        k += length_of_array;
+    }
+    if (k == 0)
+        return;
+
+    reverse_array(arr, length_of_array);
+    reverse_array(arr, k);
+    reverse_array(arr + k, length_of_array - k);
+}
+
 void print_array(const int arr[], int length_of_array)
 {
     printf("[");

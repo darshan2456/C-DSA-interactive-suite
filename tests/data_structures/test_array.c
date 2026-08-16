@@ -57,6 +57,50 @@ void test_reverse_single()
     printf("Array reverse single element test passed\n");
 }
 
+/* rotate right test */
+void test_rotate_array_normal()
+{
+    int arr[] = {1, 2, 3, 4, 5};
+    rotate_array(arr, 5, 2);
+
+    assert(arr[0] == 4);
+    assert(arr[1] == 5);
+    assert(arr[2] == 1);
+    assert(arr[3] == 2);
+    assert(arr[4] == 3);
+
+    printf("Array rotate right test passed\n");
+}
+
+/* rotate left test (negative k) */
+void test_rotate_array_left()
+{
+    int arr[] = {1, 2, 3, 4, 5};
+    rotate_array(arr, 5, -2); // equivalent to right shift by 3
+
+    assert(arr[0] == 3);
+    assert(arr[1] == 4);
+    assert(arr[2] == 5);
+    assert(arr[3] == 1);
+    assert(arr[4] == 2);
+
+    printf("Array rotate left test passed\n");
+}
+
+/* rotate large k test */
+void test_rotate_array_large_k()
+{
+    int arr[] = {1, 2, 3, 4};
+    rotate_array(arr, 4, 10); // 10 % 4 = 2
+
+    assert(arr[0] == 3);
+    assert(arr[1] == 4);
+    assert(arr[2] == 1);
+    assert(arr[3] == 2);
+
+    printf("Array rotate large k test passed\n");
+}
+
 /* max element test */
 void test_max_array()
 {
@@ -108,6 +152,9 @@ int main()
     test_swap_odd_length();
     test_reverse_array();
     test_reverse_single();
+    test_rotate_array_normal();
+    test_rotate_array_left();
+    test_rotate_array_large_k();
     test_max_array();
     test_min_array();
     test_negative_values();
