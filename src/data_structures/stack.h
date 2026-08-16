@@ -37,4 +37,7 @@ void printStackAsInts(const stack* s);
 // Run the stack demonstration module.
 void stack_demo(void);
 
+// Returns the number of elements currently in the stack. Returns 0 if the stack is NULL or empty.
+int get_stack_size(const stack* s);
+
 #endif

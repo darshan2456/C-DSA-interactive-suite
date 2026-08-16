@@ -117,6 +117,24 @@ void test_destroy_nonEmpty(void)
     printf("test_destroy_nonEmpty passed.\n");
 }
 
+void test_get_stack_size(void)
+{
+    assert(get_stack_size(NULL) == 0);
+    stack* s = createStack();
+    assert(get_stack_size(s) == 0);
+    push(s, (void*)(intptr_t)10);
+    push(s, (void*)(intptr_t)20);
+    push(s, (void*)(intptr_t)30);
+    assert(get_stack_size(s) == 3);
+    pop(s);
+    assert(get_stack_size(s) == 2);
+    pop(s);
+    pop(s);
+    assert(get_stack_size(s) == 0);
+    destroyStack(s, NULL);
+    printf("test_get_stack_size passed.\n");
+}
+
 int main(void)
 {
     test_push_pop_lifo();
@@ -124,6 +142,7 @@ int main(void)
     test_peek_no_remove();
     test_isEmpty();
     test_destroy_nonEmpty();
+    test_get_stack_size();
     test_printStack_empty();
     test_printStack_nonempty();
     test_printStackAsInts_empty();
