@@ -17,8 +17,9 @@ void backtracking_demo(void)
                                    "\nenter 3 for Rat in a Maze"
                                    "\nenter 4 for Graph Coloring"
                                    "\nenter 5 for Knight's Tour"
+                                   "\nenter 6 for Tower of Hanoi"
                                    "\nenter choice (\'-1\' to exit, or \'help\') : ",
-                                   1, 5);
+                                   1, 6);
 
         if (bt_status == INPUT_EXIT_SIGNAL)
         {
@@ -50,6 +51,10 @@ void backtracking_demo(void)
             case 5:
                 display_header("Knight's Tour");
                 knights_tour_demo();
+                break;
+            case 6:
+                display_header("Tower of Hanoi");
+                tower_of_hanoi_demo();
                 break;
         }
     }
