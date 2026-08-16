@@ -34,6 +34,9 @@ void tower_of_hanoi_demo(void)
         printf("\nStarting Tower of Hanoi for %d disks...\n", N);
         dynamic_sleep();
 
+        printf("\nInitial State:\n");
+        print_towers_state(N, pegs, counts);
+
         // Pass 0 (source), 1 (auxiliary), 2 (destination)
         int total_moves = solve_tower_of_hanoi(N, 0, 1, 2, N, pegs, counts);
 

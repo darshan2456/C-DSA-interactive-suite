@@ -20,7 +20,7 @@ static const char* disk_colors[] = {
 };
 
 // Internal function to print the current state of the pegs
-static void print_towers_state(int total_disks, int pegs[3][MAX_HANOI_DISKS], int counts[3])
+void print_towers_state(int total_disks, int pegs[3][MAX_HANOI_DISKS], int counts[3])
 {
     printf("\n");
     // Print row by row, from top (total_disks - 1) to bottom (0)
