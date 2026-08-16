@@ -39,4 +39,7 @@ void jump_search_demo(void);
 // Search for a value using exponential search. Returns The index of the target or -1 if not found.
 int exponential_search(int arr[], int target, int length_of_array);
 
+// Run the exponential search demonstration module.
+void exponential_search_demo(void);
+
 #endif
