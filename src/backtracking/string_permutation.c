@@ -1,11 +1,10 @@
 #include "../utils/config.h"
 #include "backtracking.h"
+#include "cross_platform_timer.h"
 #include <stdio.h>
 #include <string.h>
-#include "cross_platform_timer.h"
 
-
- //Swaps two characters in the string.
+// Swaps two characters in the string.
 static void swap(char* a, char* b)
 {
     char temp = *a;
@@ -22,8 +21,8 @@ static void swap(char* a, char* b)
  * last   : Tracks whether each ancestor is the last branch,
  *          allowing the tree connectors to be displayed correctly.
  */
-static void print_permutation_state(const char* str, int depth, int choice,
-                                    int length, const bool last[])
+static void print_permutation_state(const char* str, int depth, int choice, int length,
+                                    const bool last[])
 {
     const char* GREEN = "\x1b[32m";
     const char* RED = "\x1b[31m";
@@ -76,24 +75,24 @@ int solve_string_permutation(char str[], int depth, int length, bool last[], boo
     if (depth == length)
         return 1;
 
-    int count=0;
+    int count = 0;
     // Try every remaining character at the current position
     for (int choice = depth; choice < length; choice++)
     {
-        
+
         swap(&str[depth], &str[choice]);
 
         // Track whether this is the last branch at this depth
         last[depth] = (choice == length - 1);
 
         // Display the current state of the recursion tree only during demo, and not during tests
-        if(visualize)
+        if (visualize)
             print_permutation_state(str, depth, choice, length, last);
 
         // Recursively generate permutations for the next position and accumulate count
-        count+=solve_string_permutation(str, depth + 1, length, last,visualize);
+        count += solve_string_permutation(str, depth + 1, length, last, visualize);
 
-        //Backtrack by restoring the string to its previous state
+        // Backtrack by restoring the string to its previous state
         swap(&str[depth], &str[choice]);
     }
 

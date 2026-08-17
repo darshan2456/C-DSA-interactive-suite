@@ -99,27 +99,27 @@ void test_string_permutation()
 
     char str1[] = "a";
     bool last1[5] = {false};
-    assert(solve_string_permutation(str1, 0, 1, last1,false) == 1 &&
+    assert(solve_string_permutation(str1, 0, 1, last1, false) == 1 &&
            "1 character should have exactly 1 permutation");
 
     char str2[] = "ab";
     bool last2[5] = {false};
-    assert(solve_string_permutation(str2, 0, 2, last2,false) == 2 &&
+    assert(solve_string_permutation(str2, 0, 2, last2, false) == 2 &&
            "2 characters should have exactly 2 permutations");
 
     char str3[] = "abc";
     bool last3[5] = {false};
-    assert(solve_string_permutation(str3, 0, 3, last3,false) == 6 &&
+    assert(solve_string_permutation(str3, 0, 3, last3, false) == 6 &&
            "3 characters should have exactly 6 permutations");
 
     char str4[] = "abcd";
     bool last4[5] = {false};
-    assert(solve_string_permutation(str4, 0, 4, last4,false) == 24 &&
+    assert(solve_string_permutation(str4, 0, 4, last4, false) == 24 &&
            "4 characters should have exactly 24 permutations");
 
     char str5[] = "abcde";
     bool last5[5] = {false};
-    assert(solve_string_permutation(str5, 0, 5, last5,false) == 120 &&
+    assert(solve_string_permutation(str5, 0, 5, last5, false) == 120 &&
            "5 characters should have exactly 120 permutations");
 
     printf(" --> PASSED\n");

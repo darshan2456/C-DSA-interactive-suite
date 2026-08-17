@@ -1,5 +1,5 @@
-#include "backtracking.h"
 #include "../utils/config.h"
+#include "backtracking.h"
 #include "safe_input.h"
 
 #include <stdio.h>
@@ -13,10 +13,8 @@ void string_permutation_demo(void)
     {
         char str[MAX_STRING_LENGTH + 1];
 
-        int status = safe_input_string(
-                    str,
-                    sizeof(str),
-                    "\nEnter a string (maximum 5 characters), or X to exit: ");
+        int status = safe_input_string(str, sizeof(str),
+                                       "\nEnter a string (maximum 5 characters), or X to exit: ");
 
         if (status == INPUT_EXIT_SIGNAL)
         {
@@ -44,9 +42,9 @@ void string_permutation_demo(void)
 
         dynamic_sleep();
 
-        int count=solve_string_permutation(str, 0, length, last,true);
+        int count = solve_string_permutation(str, 0, length, last, true);
 
-        printf("\nTotal Permutations:%d\n",count);
+        printf("\nTotal Permutations:%d\n", count);
 
         printf("\nString permutation completed successfully!\n");
     }
