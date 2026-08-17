@@ -16,7 +16,7 @@ void string_permutation_demo(void)
         int status = safe_input_string(
                     str,
                     sizeof(str),
-                    "\nEnter a string (maximum 5 characters), or -1 to exit: ");
+                    "\nEnter a string (maximum 5 characters), or X to exit: ");
 
         if (status == INPUT_EXIT_SIGNAL)
         {
@@ -27,12 +27,6 @@ void string_permutation_demo(void)
         if (status == 0)
         {
             continue;
-        }
-
-        if (strcmp(str, "-1") == 0)
-        {
-            printf("\nExiting String Permutation Solver...\n");
-            return;
         }
 
         int length = strlen(str);
@@ -50,7 +44,9 @@ void string_permutation_demo(void)
 
         dynamic_sleep();
 
-        solve_string_permutation(str, 0, length, last,true);
+        int count=solve_string_permutation(str, 0, length, last,true);
+
+        printf("\nTotal Permutations:%d\n",count);
 
         printf("\nString permutation completed successfully!\n");
     }
