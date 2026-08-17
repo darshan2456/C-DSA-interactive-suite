@@ -13,35 +13,26 @@ void boyer_moore_demo(void)
         char text[1024];
         char pattern[256];
 
-        printf("Enter the text to search in (or type 'exit' to quit): ");
-        if (fgets(text, sizeof(text), stdin) == NULL)
+        int status_T =
+            safe_input_string(text, sizeof(text), "Enter the text to search in, or 'X' to exit: ");
+        if (status_T == INPUT_EXIT_SIGNAL)
         {
             break;
         }
-
-        // Remove trailing newline
-        size_t len = strlen(text);
-        if (len > 0 && text[len - 1] == '\n')
+        if (status_T == 0)
         {
-            text[len - 1] = '\0';
+            continue;
         }
 
-        if (strcmp(text, "exit") == 0)
+        int status_P = safe_input_string(pattern, sizeof(pattern),
+                                         "Enter the pattern to search for, or 'X' to exit: ");
+        if (status_P == INPUT_EXIT_SIGNAL)
         {
             break;
         }
-
-        printf("Enter the pattern to search for: ");
-        if (fgets(pattern, sizeof(pattern), stdin) == NULL)
+        if (status_P == 0)
         {
-            break;
-        }
-
-        // Remove trailing newline
-        len = strlen(pattern);
-        if (len > 0 && pattern[len - 1] == '\n')
-        {
-            pattern[len - 1] = '\0';
+            continue;
         }
 
         printf("\nSearching for '%s' in '%s'...\n", pattern, text);
