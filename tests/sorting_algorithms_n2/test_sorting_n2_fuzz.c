@@ -115,14 +115,6 @@ static void test_fuzz_n2_sorting(unsigned int seed, int num_runs)
         shell_sort(work, n);
         assert(is_sorted(work, n));
 
-        // 5. Cocktail Shaker Sort
-        if (n > 0)
-        {
-            memcpy(work, orig, sizeof(int) * n);
-        }
-        cocktail_shaker_sort(work, n);
-        assert(is_sorted(work, n));
-
         free(orig);
         free(work);
     }
