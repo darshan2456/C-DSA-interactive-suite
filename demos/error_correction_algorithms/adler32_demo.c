@@ -9,8 +9,8 @@ void adler32_demo(void)
     display_header("Adler-32 Checksum Demonstration");
 
     char buffer[256];
-    int status =
-        safe_input_string(buffer, sizeof(buffer), "Enter string data for Adler-32 checksum computation: ");
+    int status = safe_input_string(
+        buffer, sizeof(buffer), "Enter string data for Adler-32 checksum computation: ");
     if (status == INPUT_EXIT_SIGNAL || status == 0)
     {
         return;
