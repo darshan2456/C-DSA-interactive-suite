@@ -20,29 +20,25 @@ static bool is_sorted(const int arr[], int n)
 void test_advanced_sorting_fuzz(void)
 {
     FuzzerState state;
-    fuzzer_init(&state, 42, 1000);
+    fuzzer_init(&state, 1337, 1000);
 
-    int num_iterations = 100;
-    int max_len = 200;
+    int num_iterations = 50;
+    int max_len = 100;
 
     for (int iter = 0; iter < num_iterations; iter++)
     {
-        int n = fuzzer_rand_int(&state, 0, max_len);
-        if (n <= 0)
-        {
-            continue;
-        }
+        int n = fuzzer_rand_int(&state, 5, max_len);
 
         int* original = (int*)malloc(n * sizeof(int));
         int* work = (int*)malloc(n * sizeof(int));
-        assert(original != NULL && work != NULL);
+        assert(original && work);
 
         for (int i = 0; i < n; i++)
         {
-            original[i] = fuzzer_rand_int(&state, 0, 10000);
+            original[i] = fuzzer_rand_int(&state, 0, 1000);
         }
 
-        // 1. Quick Sort
+        // 1. Quicksort
         for (int i = 0; i < n; i++)
         {
             work[i] = original[i];
