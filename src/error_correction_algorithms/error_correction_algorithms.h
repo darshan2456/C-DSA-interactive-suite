@@ -44,7 +44,6 @@ void hamming_receiver_demo(void);
 uint32_t calculate_adler32(const char* data, size_t length);
 void adler32_demo(void);
 
-
 /* Shared checksum helpers (implemented in checksum.c) */
 void checksum_print_binary(int value, int bits);
 int safe_input_binary_string(char* buff, size_t size, const char* prompt);

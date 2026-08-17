@@ -1,8 +1,7 @@
-#include "display_header.h"
 #include "error_correction_algorithms.h"
-#include "safe_input.h"
+#include "../../src/utils/display_header.h"
+#include "../../src/utils/safe_input.h"
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 
 void adler32_demo(void)
@@ -17,11 +16,9 @@ void adler32_demo(void)
         return;
     }
 
-    size_t len = strlen(buffer);
-    uint32_t checksum = calculate_adler32(buffer, len);
+    uint32_t checksum = calculate_adler32(buffer, strlen(buffer));
 
-    printf("\nInput Data: \"%s\"\n", buffer);
-    printf("Length:     %zu bytes\n", len);
-    printf("Adler-32 Checksum (Hex):     0x%08X\n", checksum);
-    printf("Adler-32 Checksum (Decimal): %u\n\n", checksum);
+    printf("\nInput String: %s\n", buffer);
+    printf("Adler-32 Checksum (Hex): 0x%08X\n", checksum);
+    printf("Adler-32 Checksum (Dec): %u\n\n", checksum);
 }
