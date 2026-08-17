@@ -2,6 +2,7 @@
 #define ERROR_CORRECTION_ALGORITHMS_H
 
 #include <stddef.h>
+#include <stdint.h>
 
 /*
  * Maximum length of a binary string accepted from the user,
@@ -38,6 +39,11 @@ void parity_bit_demo(void);
 /* Hamming Code */
 void hamming_demo(void);
 void hamming_receiver_demo(void);
+
+/* Adler-32 Checksum */
+uint32_t calculate_adler32(const char* data, size_t length);
+void adler32_demo(void);
+
 
 /* Shared checksum helpers (implemented in checksum.c) */
 void checksum_print_binary(int value, int bits);
