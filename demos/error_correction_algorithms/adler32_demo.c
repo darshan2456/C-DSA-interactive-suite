@@ -1,6 +1,6 @@
-#include "error_correction_algorithms.h"
 #include "../../src/utils/display_header.h"
 #include "../../src/utils/safe_input.h"
+#include "error_correction_algorithms.h"
 #include <stdio.h>
 #include <string.h>
 
@@ -9,8 +9,8 @@ void adler32_demo(void)
     display_header("Adler-32 Checksum Demonstration");
 
     char buffer[256];
-    int status = safe_input_string(
-        buffer, sizeof(buffer), "Enter string data for Adler-32 checksum computation: ");
+    int status = safe_input_string(buffer, sizeof(buffer),
+                                   "Enter string data for Adler-32 checksum computation: ");
     if (status == INPUT_EXIT_SIGNAL || status == 0)
     {
         return;
