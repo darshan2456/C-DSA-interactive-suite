@@ -16,9 +16,10 @@ void sorting_algorithms_n2_demo(void)
                                              "\nenter 2 for insertion sort"
                                              "\nenter 3 for selection sort"
                                              "\nenter 4 for shell sort"
-                                             "\nenter 5 for Comparative Performance Dashboard"
+                                             "\nenter 5 for cocktail shaker sort"
+                                             "\nenter 6 for Comparative Performance Dashboard"
                                              "\nenter choice (\'-1\' to exit, or \'help\') : ",
-                                             1, 5);
+                                             1, 6);
 
         if (sorting_algo_status == INPUT_EXIT_SIGNAL)
         {
@@ -48,6 +49,10 @@ void sorting_algorithms_n2_demo(void)
                 shell_sort_demo();
                 break;
             case 5:
+                display_header("Cocktail Shaker Sort");
+                cocktail_shaker_sort_demo();
+                break;
+            case 6:
                 display_header("Comparative Performance Dashboard");
                 sorting_telemetry_dashboard_demo();
                 break;
