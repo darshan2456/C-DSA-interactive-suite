@@ -150,7 +150,6 @@ void help_error_correction_menu(void)
     printf("      ZIP/PNG file integrity checks.\n");
     printf("    • Hamming Code: ECC (Error-Correcting Code) RAM modules, RAID 2 storage.\n\n");
 
-    printf("
-Press [ENTER] to return...\n");
+    printf("\nPress [ENTER] to return...\n");
     press_enter_to_continue();
 }
