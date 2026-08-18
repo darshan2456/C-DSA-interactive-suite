@@ -2,6 +2,7 @@
 #include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 void swap_adjacent_pairs(int arr[], int length_of_array)
 {
@@ -105,4 +106,18 @@ double average_array(const int arr[], int length_of_array)
         return 0.0;
     }
     return (double)sum_array(arr, length_of_array) / length_of_array;
+}
+int* clone_array(const int arr[], int length_of_array)
+{
+    if (length_of_array <= 0 || arr == NULL)
+    {
+        return NULL;
+    }
+
+    int* new_arr = (int*)malloc(length_of_array * sizeof(int));
+    if (new_arr != NULL)
+    {
+        memcpy(new_arr, arr, length_of_array * sizeof(int));
+    }
+    return new_arr;
 }
