@@ -1,5 +1,6 @@
 #include "array.h"
 #include "hash.h"
+#include <limits.h>
 #include <safe_input.h>
 #include <stdbool.h>
 #include <stdio.h>
@@ -23,7 +24,7 @@ bool quadratic_probing_insert(int arr[], int length_of_array, int value)
         int probe_location =
             (int)(((long long)base_hash_location + (long long)i * i) % length_of_array);
 
-        if (!arr[probe_location])
+        if (arr[probe_location] == INT_MIN)
         {
             arr[probe_location] = value;
             return true;
@@ -55,7 +56,7 @@ int quadratic_probing_search(int arr[], int length_of_array, int search_val)
             return probe_location;
         }
 
-        if (!arr[probe_location])
+        if (arr[probe_location] == INT_MIN)
         {
             break; // stop searching if we hit an empty slot
         }

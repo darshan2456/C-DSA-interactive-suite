@@ -1,5 +1,6 @@
 #include "array.h"
 #include "hash.h"
+#include <limits.h>
 #include <safe_input.h>
 #include <stdbool.h>
 #include <stdio.h>
@@ -57,7 +58,7 @@ bool linear_probing_insert(int arr[], int length_of_array, int value)
         return false;
     }
 
-    if (!arr[hash_location])
+    if (arr[hash_location] == INT_MIN)
     {
         arr[hash_location] = value; // inserting value at its hash location
         return true;
@@ -75,7 +76,7 @@ bool linear_probing_insert(int arr[], int length_of_array, int value)
             array_full = true;
             break;
         }
-    } while (arr[hash_location]);
+    } while (arr[hash_location] != INT_MIN);
 
     if (array_full)
         return false;
@@ -101,7 +102,7 @@ int linear_probing_search(int arr[], int length_of_array, int search_val)
             return hash_location;
         }
         hash_location = (hash_location + 1) % length_of_array;
-    } while (hash_location != start && arr[hash_location]);
+    } while (hash_location != start && arr[hash_location] != INT_MIN);
 
     return -1; // value not found
 }
