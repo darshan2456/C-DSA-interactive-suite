@@ -12,9 +12,13 @@ void cocktail_shaker_sort_demo(void)
 
         int n;
         int status = safe_input_int(&n, "Enter the number of elements to sort: ", 1, 1000);
-        if (status == INPUT_EXIT_SIGNAL || status == 0)
+        if (status == INPUT_EXIT_SIGNAL)
         {
             return;
+        }
+        else if (status == 0)
+        {
+            continue;
         }
 
         int* arr = (int*)malloc(n * sizeof(int));
@@ -28,11 +32,17 @@ void cocktail_shaker_sort_demo(void)
         int input_failed = 0;
         for (int i = 0; i < n; i++)
         {
+        retry_input:
             status = safe_input_int(&arr[i], "> ", -100000, 100000);
-            if (status == INPUT_EXIT_SIGNAL || status == 0)
+            
+            if (status == INPUT_EXIT_SIGNAL)
             {
                 input_failed = 1;
                 break;
+            }
+            else if (status == 0)
+            {
+                goto retry_input;
             }
         }
 
