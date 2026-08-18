@@ -6,19 +6,26 @@
 
 void adler32_demo(void)
 {
-    display_header("Adler-32 Checksum Demonstration");
-
-    char buffer[256];
-    int status = safe_input_string(buffer, sizeof(buffer),
-                                   "Enter string data for Adler-32 checksum computation: ");
-    if (status == INPUT_EXIT_SIGNAL || status == 0)
+    while (1)
     {
-        return;
+        display_header("Adler-32 Checksum Demonstration");
+
+        char buffer[256];
+        int status = safe_input_string(buffer, sizeof(buffer),
+                                       "Enter string data for Adler-32 checksum computation: ");
+        if (status == INPUT_EXIT_SIGNAL)
+        {
+            return;
+        }
+        if (status == 0)
+        {
+            continue;
+        }
+
+        uint32_t checksum = calculate_adler32(buffer, strlen(buffer));
+
+        printf("\nInput String: %s\n", buffer);
+        printf("Adler-32 Checksum (Hex): 0x%08X\n", checksum);
+        printf("Adler-32 Checksum (Dec): %u\n\n", checksum);
     }
-
-    uint32_t checksum = calculate_adler32(buffer, strlen(buffer));
-
-    printf("\nInput String: %s\n", buffer);
-    printf("Adler-32 Checksum (Hex): 0x%08X\n", checksum);
-    printf("Adler-32 Checksum (Dec): %u\n\n", checksum);
 }
