@@ -4,6 +4,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 static bool is_sorted(const int arr[], int n)
 {
@@ -33,56 +34,40 @@ void test_advanced_sorting_fuzz(void)
         int* work = (int*)malloc(n * sizeof(int));
         assert(original && work);
 
+        int min_val = fuzzer_rand_int(&state, -1000, 0);
+        int max_val = fuzzer_rand_int(&state, 1, 1000);
         for (int i = 0; i < n; i++)
         {
-            original[i] = fuzzer_rand_int(&state, 0, 1000);
+            original[i] = fuzzer_rand_int(&state, min_val, max_val);
         }
 
         // 1. Quicksort
-        for (int i = 0; i < n; i++)
-        {
-            work[i] = original[i];
-        }
+        memcpy(work, original, n * sizeof(int));
         quicksort(work, 0, n - 1);
         assert(is_sorted(work, n));
 
         // 2. Merge Sort
-        for (int i = 0; i < n; i++)
-        {
-            work[i] = original[i];
-        }
+        memcpy(work, original, n * sizeof(int));
         merge_sort(work, n);
         assert(is_sorted(work, n));
 
         // 3. Heap Sort
-        for (int i = 0; i < n; i++)
-        {
-            work[i] = original[i];
-        }
+        memcpy(work, original, n * sizeof(int));
         heap_sort(work, n);
         assert(is_sorted(work, n));
 
         // 4. Counting Sort
-        for (int i = 0; i < n; i++)
-        {
-            work[i] = original[i];
-        }
+        memcpy(work, original, n * sizeof(int));
         counting_sort(work, n);
         assert(is_sorted(work, n));
 
         // 5. Bucket Sort
-        for (int i = 0; i < n; i++)
-        {
-            work[i] = original[i];
-        }
+        memcpy(work, original, n * sizeof(int));
         bucket_sort(work, n);
         assert(is_sorted(work, n));
 
         // 6. Radix Sort
-        for (int i = 0; i < n; i++)
-        {
-            work[i] = original[i];
-        }
+        memcpy(work, original, n * sizeof(int));
         radix_sort(work, n);
         assert(is_sorted(work, n));
 
