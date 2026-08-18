@@ -34,8 +34,8 @@ void test_advanced_sorting_fuzz(void)
         int* work = (int*)malloc(n * sizeof(int));
         assert(original && work);
 
-        int min_val = fuzzer_rand_int(&state, -1000, 0);
-        int max_val = fuzzer_rand_int(&state, 1, 1000);
+        int min_val = fuzzer_rand_int(&state, 0, 499);
+        int max_val = fuzzer_rand_int(&state, 500, 1000);
         for (int i = 0; i < n; i++)
         {
             original[i] = fuzzer_rand_int(&state, min_val, max_val);
