@@ -64,6 +64,17 @@ void help_error_correction_menu(void)
     printf("    • If the values of two data blocks shift in opposite directions by the\n");
     printf("      same amount, the sum remains unchanged, failing to detect the error.\n\n");
 
+    printf("--- ADLER-32 CHECKSUM ---\n\n");
+    printf("ADLER-32 CHECKSUM:\n");
+    printf("    A checksum algorithm invented by Mark Adler. It is a modification of the\n");
+    printf("    Fletcher checksum, trading some reliability for software speed compared to CRC.\n\n");
+    printf("HOW IT WORKS:\n");
+    printf("    • Computes two 16-bit sums: A (sum of bytes) and B (sum of all individual A values).\n");
+    printf("    • Both sums are calculated modulo 65521 (the largest prime less than 2^16).\n");
+    printf("    • The final 32-bit checksum is concatenated as (B << 16) | A.\n\n");
+    printf("LIMITATIONS:\n");
+    printf("    • Weak for very short messages (under a few hundred bytes) because the sums\n");
+    printf("      do not wrap around the modulo, leading to poor bit mixing.\n\n");
     printf("--- CYCLIC REDUNDANCY CHECK (CRC) ---\n\n");
     printf("CYCLIC REDUNDANCY CHECK (CRC):\n");
     printf("    A highly powerful algebraic error detection method based on binary division.\n");
@@ -108,6 +119,9 @@ void help_error_correction_menu(void)
     printf("      Lightweight addition operations. Good at catching random bit flips,\n");
     printf("      but weak against balanced errors where values shift by equal/opposite\n"
            "      amounts.\n");
+    printf("    • Adler-32 (Rolling Checksum):\n");
+    printf("      Computes two running sums modulo a prime number. Faster in software than\n");
+    printf("      CRC but has weaker collision resistance, especially for short data.\n");
     printf("    • CRC (Division-based polynomial):\n");
     printf("      Very strong mathematical guarantees. Treats data as a bitstream\n");
     printf("      divided by a generator polynomial. Excellent at catching burst errors.\n");
@@ -120,6 +134,8 @@ void help_error_correction_menu(void)
     printf("      must be kept at an absolute minimum.\n");
     printf("    • Use Checksum when software efficiency is key (network stack headers)\n");
     printf("      and checksum generation must be fast in software.\n");
+    printf("    • Use Adler-32 when you need a fast, software-efficient checksum for large\n");
+    printf("      payloads, such as compressed data streams.\n");
     printf("    • Use CRC when high reliability error detection is required over noisy\n");
     printf("      mediums (like hard disks or wireless signals).\n");
     printf("    • Use Hamming Code when error correction is required without retransmission\n");
@@ -127,6 +143,7 @@ void help_error_correction_menu(void)
     printf("REAL-WORLD APPLICATIONS:\n");
     printf("    • Simple Parity: Serial communications (UART, modems).\n");
     printf("    • Checksum: IP, TCP, and UDP headers in networking packets.\n");
+    printf("    • Adler-32: Used extensively in the zlib compression library and rsync.\n");
     printf("    • CRC: Ethernet frames, Wi-Fi packets, SATA/Hard disk controllers,\n");
     printf("      ZIP/PNG file integrity checks.\n");
     printf("    • Hamming Code: ECC (Error-Correcting Code) RAM modules, RAID 2 storage.\n\n");
