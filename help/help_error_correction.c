@@ -67,9 +67,11 @@ void help_error_correction_menu(void)
     printf("--- ADLER-32 CHECKSUM ---\n\n");
     printf("ADLER-32 CHECKSUM:\n");
     printf("    A checksum algorithm invented by Mark Adler. It is a modification of the\n");
-    printf(\n        "    Fletcher checksum, trading some reliability for software speed compared to CRC.\n\n");
+    printf(
+        "    Fletcher checksum, trading some reliability for software speed compared to CRC.\n\n");
     printf("HOW IT WORKS:\n");
-    printf("    • Computes two 16-bit sums: A (sum of bytes) and B (sum of all individual A "\n           "values).\n");
+    printf("    • Computes two 16-bit sums: A (sum of bytes) and B (sum of all individual A "
+           "values).\n");
     printf("    • Both sums are calculated modulo 65521 (the largest prime less than 2^16).\n");
     printf("    • The final 32-bit checksum is concatenated as (B << 16) | A.\n\n");
     printf("LIMITATIONS:\n");
@@ -148,6 +150,7 @@ void help_error_correction_menu(void)
     printf("      ZIP/PNG file integrity checks.\n");
     printf("    • Hamming Code: ECC (Error-Correcting Code) RAM modules, RAID 2 storage.\n\n");
 
-    printf("\nPress [ENTER] to return...\n");
+    printf("
+Press [ENTER] to return...\n");
     press_enter_to_continue();
 }
