@@ -34,7 +34,7 @@ void cocktail_shaker_sort_demo(void)
         {
         retry_input:
             status = safe_input_int(&arr[i], "> ", -100000, 100000);
-            
+
             if (status == INPUT_EXIT_SIGNAL)
             {
                 input_failed = 1;
