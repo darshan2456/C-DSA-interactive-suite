@@ -4,6 +4,7 @@
 /* Forward declarations */
 int linear_search(int arr[], int target, int length_of_array);
 int binary_search(int arr[], int target, int length_of_array);
+int binary_search_recursive(int arr[], int target, int low, int high);
 int interpolation_search(int arr[], int target, int length_of_array);
 int jump_search(int arr[], int target, int length_of_array);
 int exponential_search(int arr[], int target, int length_of_array);
@@ -44,6 +45,24 @@ void test_binary_search()
     assert(binary_search(arr3, 8, 6) == 3);
 
     printf("Binary search tests passed\n");
+}
+
+void test_binary_search_recursive()
+{
+    int arr1[] = {1, 2, 3, 4, 5};
+    assert(binary_search_recursive(arr1, 1, 0, 4) == 0);
+    assert(binary_search_recursive(arr1, 5, 0, 4) == 4);
+    assert(binary_search_recursive(arr1, 3, 0, 4) == 2);
+    assert(binary_search_recursive(arr1, 10, 0, 4) == -1);
+
+    int arr2[] = {42};
+    assert(binary_search_recursive(arr2, 42, 0, 0) == 0);
+    assert(binary_search_recursive(arr2, 1, 0, 0) == -1);
+
+    int arr3[] = {2, 4, 6, 8, 10, 12};
+    assert(binary_search_recursive(arr3, 8, 0, 5) == 3);
+
+    printf("Recursive binary search tests passed\n");
 }
 
 void test_interpolation_search()
@@ -133,6 +152,7 @@ void test_searching_advanced_edge_cases()
     int n = 7;
     assert(linear_search(neg_arr, -30, n) == 1);
     assert(binary_search(neg_arr, -30, n) == 1);
+    assert(binary_search_recursive(neg_arr, -30, 0, n - 1) == 1);
     assert(interpolation_search(neg_arr, -30, n) == 1);
     assert(jump_search(neg_arr, -30, n) == 1);
     assert(exponential_search(neg_arr, -30, n) == 1);
@@ -142,6 +162,7 @@ void test_searching_advanced_edge_cases()
     /* Target smaller than min element */
     assert(linear_search(neg_arr, -100, n) == -1);
     assert(binary_search(neg_arr, -100, n) == -1);
+    assert(binary_search_recursive(neg_arr, -100, 0, n - 1) == -1);
     assert(interpolation_search(neg_arr, -100, n) == -1);
     assert(jump_search(neg_arr, -100, n) == -1);
     assert(exponential_search(neg_arr, -100, n) == -1);
@@ -151,6 +172,7 @@ void test_searching_advanced_edge_cases()
     /* Target larger than max element */
     assert(linear_search(neg_arr, 500, n) == -1);
     assert(binary_search(neg_arr, 500, n) == -1);
+    assert(binary_search_recursive(neg_arr, 500, 0, n - 1) == -1);
     assert(interpolation_search(neg_arr, 500, n) == -1);
     assert(jump_search(neg_arr, 500, n) == -1);
     assert(exponential_search(neg_arr, 500, n) == -1);
@@ -161,6 +183,7 @@ void test_searching_advanced_edge_cases()
     int uniform[10] = {7, 7, 7, 7, 7, 7, 7, 7, 7, 7};
     assert(linear_search(uniform, 7, 10) == 0);
     assert(binary_search(uniform, 7, 10) >= 0);
+    assert(binary_search_recursive(uniform, 7, 0, 9) >= 0);
     assert(interpolation_search(uniform, 7, 10) >= 0);
     assert(jump_search(uniform, 7, 10) >= 0);
     assert(exponential_search(uniform, 7, 10) >= 0);
@@ -172,6 +195,9 @@ void test_searching_advanced_edge_cases()
     assert(binary_search(duo, 10, 2) == 0);
     assert(binary_search(duo, 20, 2) == 1);
     assert(binary_search(duo, 15, 2) == -1);
+    assert(binary_search_recursive(duo, 10, 0, 1) == 0);
+    assert(binary_search_recursive(duo, 20, 0, 1) == 1);
+    assert(binary_search_recursive(duo, 15, 0, 1) == -1);
     assert(exponential_search(duo, 10, 2) == 0);
     assert(exponential_search(duo, 20, 2) == 1);
     assert(exponential_search(duo, 15, 2) == -1);
@@ -190,6 +216,8 @@ void test_searching_advanced_edge_cases()
     assert(linear_search(single_arr, 99, 1) == -1);
     assert(binary_search(single_arr, 42, 1) == 0);
     assert(binary_search(single_arr, 99, 1) == -1);
+    assert(binary_search_recursive(single_arr, 42, 0, 0) == 0);
+    assert(binary_search_recursive(single_arr, 99, 0, 0) == -1);
     assert(exponential_search(single_arr, 42, 1) == 0);
     assert(exponential_search(single_arr, 99, 1) == -1);
     assert(ternary_search(single_arr, 42, 1) == 0);
@@ -202,6 +230,7 @@ int main()
 {
     test_linear_search();
     test_binary_search();
+    test_binary_search_recursive();
     test_interpolation_search();
     test_jump_search();
     test_exponential_search();
