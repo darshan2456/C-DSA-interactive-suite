@@ -283,6 +283,7 @@ This suite includes over **100+ interactive, memory-audited data structures and 
 | **Heap Sort** | Tree-based Sorting | $\mathcal{O}(N \log N) / \mathcal{O}(N \log N) / \mathcal{O}(N \log N)$ | $\mathcal{O}(1)$ | In-place comparison sort using binary max-heap heapify. |
 | **Radix Sort** | Non-comparison Sort | $\mathcal{O}(N \cdot k) / \mathcal{O}(N \cdot k) / \mathcal{O}(N \cdot k)$ | $\mathcal{O}(N + k)$ | Digit-by-digit distribution sort using counting sort buckets. |
 | **Bucket Sort** | Distribution Sort | $\mathcal{O}(N + k) / \mathcal{O}(N + k) / \mathcal{O}(N^2)$ | $\mathcal{O}(N)$ | Distributes elements into uniform floating-point buckets. |
+| **Counting Sort** | Non-comparison Sort | $\mathcal{O}(N + k) / \mathcal{O}(N + k) / \mathcal{O}(N + k)$ | $\mathcal{O}(N + k)$ | Integer sorting by counting element occurrences. |
 
 ### 4. Searching Algorithms (Menu Option 4)
 | Algorithm | Category | Time Complexity (Best / Avg / Worst) | Space Complexity | Description |
