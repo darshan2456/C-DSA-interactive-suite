@@ -6,8 +6,27 @@
 
 void naive_string_matching(const char* text, const char* pattern)
 {
+    if (text == NULL || pattern == NULL)
+    {
+        printf("Text or pattern is NULL.\n");
+        return;
+    }
+
     int n = strlen(text);
     int m = strlen(pattern);
+
+    if (m == 0 || n == 0)
+    {
+        printf("Text or pattern is empty.\n");
+        return;
+    }
+
+    if (m > n)
+    {
+        printf("Pattern is longer than text.\n");
+        return;
+    }
+
     int found = 0;
 
     for (int i = 0; i <= n - m; i++)
