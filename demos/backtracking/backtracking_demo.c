@@ -18,8 +18,9 @@ void backtracking_demo(void)
                                    "\nenter 4 for Graph Coloring"
                                    "\nenter 5 for Knight's Tour"
                                    "\nenter 6 for Tower of Hanoi"
+                                   "\nenter 7 for string permutation"
                                    "\nenter choice (\'-1\' to exit, or \'help\') : ",
-                                   1, 6);
+                                   1, 7);
 
         if (bt_status == INPUT_EXIT_SIGNAL)
         {
@@ -55,6 +56,10 @@ void backtracking_demo(void)
             case 6:
                 display_header("Tower of Hanoi");
                 tower_of_hanoi_demo();
+                break;
+            case 7:
+                display_header("String Permutation");
+                string_permutation_demo();
                 break;
         }
     }
