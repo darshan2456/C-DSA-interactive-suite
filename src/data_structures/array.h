@@ -28,4 +28,7 @@ void rotate_array(int arr[], int length_of_array, int k);
 // Run the array demonstration module.
 void array_demo(void);
 
+// Create a deep copy of an integer array. Returns a pointer to the newly allocated array.
+int* clone_array(const int arr[], int length_of_array);
+
 #endif
