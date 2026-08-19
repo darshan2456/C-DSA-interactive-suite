@@ -67,4 +67,12 @@ void rotate_array(int arr[], int length_of_array, int k);
  */
 void array_demo(void);
 
+/**
+ * @brief Create a deep copy of an integer array.
+ * @param arr The integer array to copy.
+ * @param length_of_array The number of elements in the array.
+ * @return A pointer to the newly allocated array.
+ */
+int* clone_array(const int arr[], int length_of_array);
+
 #endif
