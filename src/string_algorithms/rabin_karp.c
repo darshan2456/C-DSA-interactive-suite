@@ -11,6 +11,12 @@
 
 void rabin_karp_search(char* text, char* pattern, int q)
 {
+    if (text == NULL || pattern == NULL)
+    {
+        printf("Error: Text or pattern cannot be NULL.\n");
+        return;
+    }
+
     int m = strlen(pattern);
     int n = strlen(text);
     int i, j;
