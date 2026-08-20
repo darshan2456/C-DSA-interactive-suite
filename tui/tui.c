@@ -310,6 +310,7 @@ static Entry ENTRIES[] = {
     {"Naive String Matching", naive_string_matching_demo, 0, 0, 1},
     {"KMP Search", kmp_demo, 0, 0, 1},
     {"Rabin-Karp Search", rabin_karp_demo, 0, 0, 1},
+    {"Boyer-Moore Search", boyer_moore_demo, 0, 0, 1},
     {"Suffix Array & Kasai's LCP", suffix_array_demo, 0, 0, 1},
     {"String Compression", compression_demo, 0, 0, 1},
 
