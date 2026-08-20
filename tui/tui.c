@@ -275,6 +275,7 @@ static Entry ENTRIES[] = {
     {"Infix to Prefix", infix_to_prefix_demo, 0, 0, 1},
 
     {"error_correction_algorithms", NULL, 1, 0, 0},
+    {"Adler-32 Checksum", adler32_demo, 0, 0, 1},
     {"Checksum (Sender)", checksum_demo, 0, 0, 1},
     {"Checksum (Receiver)", checksum_receiver_demo, 0, 0, 1},
     {"CRC (Sender)", crc_demo, 0, 0, 1},
