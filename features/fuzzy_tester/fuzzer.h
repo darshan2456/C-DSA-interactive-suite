@@ -39,7 +39,6 @@ void run_cache_fuzz(FuzzerState* fuzzer, int ops);
 void run_hashing_fuzz(FuzzerState* fuzzer, int ops);
 void run_string_fuzz(FuzzerState* fuzzer, int ops);
 void run_dp_fuzz(FuzzerState* fuzzer, int ops);
-void run_dp_fuzz(FuzzerState* fuzzer, int ops);
 
 void fuzzer_demo(void);
 
