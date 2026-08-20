@@ -291,6 +291,7 @@ This suite includes over **100+ interactive, memory-audited data structures and 
 | **Binary Search (Iterative & Recursive)** | Logarithmic Search | $\mathcal{O}(1) / \mathcal{O}(\log N) / \mathcal{O}(\log N)$ | $\mathcal{O}(1)$ / $\mathcal{O}(\log N)$ | Divide-and-conquer search on sorted arrays. |
 | **Jump Search** | Block Search | $\mathcal{O}(1) / \mathcal{O}(\sqrt{N}) / \mathcal{O}(\sqrt{N})$ | $\mathcal{O}(1)$ | Jumps ahead by fixed steps ($\sqrt{N}$) followed by linear search. |
 | **Interpolation Search** | Position Estimator | $\mathcal{O}(1) / \mathcal{O}(\log \log N) / \mathcal{O}(N)$ | $\mathcal{O}(1)$ | Position probe search for uniformly distributed sorted arrays. |
+| **Fibonacci Search** | Logarithmic Search | $\mathcal{O}(1) / \mathcal{O}(\log N) / \mathcal{O}(\log N)$ | $\mathcal{O}(1)$ | Narrows down range using Fibonacci numbers, avoiding division. |
 
 ### 5. Graph Traversals & Pathfinding (Menu Option 5)
 | Algorithm | Category | Time Complexity | Space Complexity | Description |
