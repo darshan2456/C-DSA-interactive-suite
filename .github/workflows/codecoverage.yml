@@ -1,0 +1,51 @@
+name: Code Coverage
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  coverage:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install build tools and lcov
+        run: sudo apt update && sudo apt install -y build-essential cmake libncurses-dev lcov
+
+      - name: Configure project with coverage
+        run: cmake -S . -B build -DENABLE_COVERAGE=ON
+
+      - name: Build project
+        run: cmake --build build --parallel
+
+      - name: Run tests
+        run: ctest --test-dir build --output-on-failure --verbose
+
+      - name: Generate coverage report
+        run: |
+          lcov --version
+          lcov --capture \
+            --directory build \
+            --output-file coverage.info \
+            --ignore-errors mismatch,unused
+          lcov --remove coverage.info \
+            '/usr/*' \
+            '*/tests/*' \
+            '*/demos/*' \
+            '*/features/*' \
+            '*/tui/*' \
+            --output-file coverage.info \
+            --ignore-errors unused
+          lcov --list coverage.info
+
+      - name: Upload to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          files: ./coverage.info
+          fail_ci_if_error: false
+          token: ${{ secrets.CODECOV_TOKEN }}
