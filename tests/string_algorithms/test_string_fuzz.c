@@ -89,3 +89,19 @@ void run_string_fuzz(FuzzerState* fuzzer, int ops)
 
     fuzzer_log_op(fuzzer, "--- String Algorithms Fuzz Test Complete ---");
 }
+
+int main(void)
+{
+    FuzzerState fuzzer;
+    
+    // Initialize the fuzzer with a fixed seed and 1000 operations
+    fuzzer_init(&fuzzer, 12345, 1000);
+    
+    // Run our string algorithms fuzzer
+    run_string_fuzz(&fuzzer, 1000);
+    
+    // Clean up allocated fuzzer memory
+    fuzzer_free(&fuzzer);
+    
+    return 0;
+}
