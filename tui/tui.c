@@ -207,6 +207,7 @@ static Entry ENTRIES[] = {
     {"Sorting Algorithms", NULL, 1, 0, 0},
     {"O(N^2) Family", NULL, 1, 0, 1},
     {"Bubble Sort", bubble_sort_optimized_demo, 0, 0, 2}, /* add fn when known */
+    {"Cocktail Shaker Sort", cocktail_shaker_sort_demo, 0, 0, 2},
     {"Selection Sort", selection_sort_demo, 0, 0, 2},
     {"Insertion Sort", insertion_sort_demo, 0, 0, 2},
     {"Shell Sort", shell_sort_demo, 0, 0, 2},
