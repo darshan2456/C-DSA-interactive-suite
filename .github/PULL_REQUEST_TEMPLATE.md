@@ -8,6 +8,5 @@ Resolves #[Insert Issue Number Here]
 ## Checklist
 - [ ] My code follows the style guidelines of this project (e.g., clang-format).
 - [ ] I have performed a self-review of my own code.
-- [ ] I have added/updated necessary Doxygen documentation (if applicable).
-- [ ] My changes generate no new warnings or memory leaks.
+- [ ] After making the changes I have compiled and ran the application and found no issues whatsoever.
 - [ ] I have verified that the CI/CD pipeline passes.
