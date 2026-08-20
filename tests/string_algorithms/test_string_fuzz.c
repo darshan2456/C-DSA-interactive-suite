@@ -71,12 +71,15 @@ void run_string_fuzz(FuzzerState* fuzzer, int ops)
 
         if (text == NULL || pattern == NULL)
         {
-            if (text != NULL) free(text);
-            if (pattern != NULL) free(pattern);
+            if (text != NULL)
+                free(text);
+            if (pattern != NULL)
+                free(pattern);
             continue;
         }
 
-        fuzzer_log_op(fuzzer, "Op %d: Fuzzing text (len %lu) against pattern (len %lu)", i, strlen(text), strlen(pattern));
+        fuzzer_log_op(fuzzer, "Op %d: Fuzzing text (len %lu) against pattern (len %lu)", i,
+                      strlen(text), strlen(pattern));
 
         // Execute the algorithms
         naive_string_matching(text, pattern);
@@ -93,15 +96,16 @@ void run_string_fuzz(FuzzerState* fuzzer, int ops)
 int main(void)
 {
     FuzzerState fuzzer;
-    
+
     // Initialize the fuzzer with a fixed seed and 1000 operations
     fuzzer_init(&fuzzer, 12345, 1000);
-    
+
     // Run our string algorithms fuzzer
     run_string_fuzz(&fuzzer, 1000);
-    
+
     // Clean up allocated fuzzer memory
     fuzzer_free(&fuzzer);
-    
+
     return 0;
 }
+
