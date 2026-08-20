@@ -2,6 +2,10 @@
 
 void cocktail_shaker_sort(int arr[], int n)
 {
+    if (arr == NULL || n <= 0)
+    {
+        return;
+    }
     int swapped = 1;
     int start = 0;
     int end = n - 1;
