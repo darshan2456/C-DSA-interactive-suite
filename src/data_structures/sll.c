@@ -330,3 +330,23 @@ int sll_deleteAtPosition(Node** head_ref, int position, void (*free_data)(void*)
     free(temp);
     return 1;
 }
+
+// Returns 1 if a cycle is detected, 0 if no cycle exists
+int sll_hasCycle(const Node* head)
+{
+    const Node* tortoise = head;
+    const Node* hare = head;
+
+    while (hare != NULL && hare->next != NULL)
+    {
+        tortoise = tortoise->next;
+        hare = hare->next->next;
+
+        if (tortoise == hare)
+        {
+            return 1;
+        }
+    }
+
+    return 0;
+}
