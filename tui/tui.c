@@ -72,6 +72,10 @@ static void binary_search_demo_wrapper(void)
 {
     (void)binary_search_demo();
 }
+static void fibonacci_search_demo_wrapper(void)
+{
+    (void)fibonacci_search_demo();
+}
 
 static void run_benchmark_with_prompt(void (*benchmark_fn)(int), const char* category_name)
 {
@@ -223,6 +227,7 @@ static Entry ENTRIES[] = {
     {"Binary Search (Recursive)", binary_search_recursive_demo, 0, 0, 1},
     {"Interpolation Search", interpolation_search_demo, 0, 0, 1},
     {"Jump Search", jump_search_demo, 0, 0, 1},
+    {"Fibonacci Search", fibonacci_search_demo_wrapper, 0, 0, 1},
 
     {"Graph Algorithms", NULL, 1, 0, 0},
     {"Graph Traversals", NULL, 1, 0, 1},

@@ -18,6 +18,9 @@ void help_searching_algorithms_menu(void)
     printf("INTERPOLATION SEARCH:\n");
     printf("    Improved binary search for uniformly distributed sorted arrays. O(log log N) "
            "average case.\n\n");
+    printf("FIBONACCI SEARCH:\n");
+    printf("    Searches a sorted array by narrowing the range using Fibonacci numbers,\n");
+    printf("    purely relying on addition and subtraction. O(log N) complexity.\n\n");
 
     printf("\nPress [ENTER] to return...\n");
     press_enter_to_continue();
