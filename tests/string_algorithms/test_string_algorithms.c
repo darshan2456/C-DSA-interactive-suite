@@ -9,6 +9,7 @@
    counts the "found at index" lines to compare against the expected count. */
 void naive_string_matching(const char* text, const char* pattern);
 void kmp_search(const char* text, const char* pattern);
+void boyer_moore_search(const char* text, const char* pattern);
 void rabin_karp_search(char* text, char* pattern, int q);
 void find_longest_repeated_substring(const char* txt, int n, char* output);
 int* build_suffix_array(const char* txt, int n);
@@ -78,6 +79,7 @@ void test_basic_matches()
 
     assert(count_matches(naive_string_matching, text, pat) == 1);
     assert(count_matches(kmp_search, text, pat) == 1);
+    assert(count_matches(boyer_moore_search, text, pat) == 1);
     assert(count_matches_rk(text, pat, 101) == 1);
 
     /* overlapping matches */
@@ -85,6 +87,7 @@ void test_basic_matches()
     char p2[] = "aa";
     assert(count_matches(naive_string_matching, t2, p2) == 4);
     assert(count_matches(kmp_search, t2, p2) == 4);
+    assert(count_matches(boyer_moore_search, t2, p2) == 4);
     assert(count_matches_rk(t2, p2, 101) == 4);
 
     /* pattern absent */
@@ -92,6 +95,7 @@ void test_basic_matches()
     char p3[] = "xyz";
     assert(count_matches(naive_string_matching, t3, p3) == 0);
     assert(count_matches(kmp_search, t3, p3) == 0);
+    assert(count_matches(boyer_moore_search, t3, p3) == 0);
     assert(count_matches_rk(t3, p3, 101) == 0);
 
     printf("String matching basic tests passed\n");
@@ -107,6 +111,7 @@ void test_non_ascii_bytes()
 
     assert(count_matches(naive_string_matching, text, pat) == 2);
     assert(count_matches(kmp_search, text, pat) == 2);
+    assert(count_matches(boyer_moore_search, text, pat) == 2);
     assert(count_matches_rk(text, pat, 101) == 2);
 
     printf("String matching non-ASCII tests passed\n");
@@ -143,6 +148,7 @@ void test_string_advanced_edge_cases()
     char long_pat[] = "caterpillar";
     assert(count_matches(naive_string_matching, short_txt, long_pat) == 0);
     assert(count_matches(kmp_search, short_txt, long_pat) == 0);
+    assert(count_matches(boyer_moore_search, short_txt, long_pat) == 0);
     assert(count_matches_rk(short_txt, long_pat, 101) == 0);
 
     /* Single character text and pattern */
@@ -150,12 +156,14 @@ void test_string_advanced_edge_cases()
     char single_p[] = "x";
     assert(count_matches(naive_string_matching, single_t, single_p) == 1);
     assert(count_matches(kmp_search, single_t, single_p) == 1);
+    assert(count_matches(boyer_moore_search, single_t, single_p) == 1);
     assert(count_matches_rk(single_t, single_p, 101) == 1);
 
     /* Single character text and non-matching pattern */
     char single_miss[] = "z";
     assert(count_matches(naive_string_matching, single_t, single_miss) == 0);
     assert(count_matches(kmp_search, single_t, single_miss) == 0);
+    assert(count_matches(boyer_moore_search, single_t, single_miss) == 0);
     assert(count_matches_rk(single_t, single_miss, 101) == 0);
 
     /* Repeated single character pattern */
@@ -163,6 +171,7 @@ void test_string_advanced_edge_cases()
     char rep_p[] = "b";
     assert(count_matches(naive_string_matching, rep_t, rep_p) == 6);
     assert(count_matches(kmp_search, rep_t, rep_p) == 6);
+    assert(count_matches(boyer_moore_search, rep_t, rep_p) == 6);
     assert(count_matches_rk(rep_t, rep_p, 101) == 6);
 
     /* Empty text string */
@@ -170,6 +179,7 @@ void test_string_advanced_edge_cases()
     char any_p[] = "abc";
     assert(count_matches(naive_string_matching, empty_t, any_p) == 0);
     assert(count_matches(kmp_search, empty_t, any_p) == 0);
+    assert(count_matches(boyer_moore_search, empty_t, any_p) == 0);
     assert(count_matches_rk(empty_t, any_p, 101) == 0);
 
     printf("String matching advanced edge case tests passed\n");

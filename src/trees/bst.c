@@ -137,6 +137,9 @@ void bst_print_ascii(const bstNode* root)
 
 int bst_insert(bstNode** head_ref, int value)
 {
+    if (head_ref == NULL)
+        return -1;
+
     if ((*head_ref) == NULL)
     {
         bstNode* node = malloc(sizeof(bstNode));

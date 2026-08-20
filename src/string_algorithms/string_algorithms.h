@@ -21,4 +21,7 @@ int* build_lcp_array(const char* txt, int* suffix_arr, int n);
 void find_longest_repeated_substring(const char* txt, int n, char* output);
 void visualize_suffix_array(const char* txt, int n, int* suffix_arr, int* lcp_arr);
 
+void boyer_moore_demo(void);
+void boyer_moore_search(const char* text, const char* pattern);
+
 #endif // STRING_ALGORITHMS_H

@@ -1,6 +1,7 @@
 #define _GNU_SOURCE
 #include "../hashing/hash.h"
 #include "benchmark.h"
+#include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -14,22 +15,24 @@ typedef struct HashNode
 
 static void run_linear_probing(const int* keys, int m, int n)
 {
-    int* table = calloc(n, sizeof(int));
+    int* table = malloc(n * sizeof(int));
     if (!table)
         return;
+    for (int i = 0; i < n; i++)
+        table[i] = INT_MIN;
 
     for (int i = 0; i < m; i++)
     {
         int val = keys[i];
         int hash_loc = hash_function(val, n);
         int start = hash_loc;
-        while (table[hash_loc] != 0)
+        while (table[hash_loc] != INT_MIN)
         {
             hash_loc = (hash_loc + 1) % n;
             if (hash_loc == start)
                 break; // Table full
         }
-        if (table[hash_loc] == 0)
+        if (table[hash_loc] == INT_MIN)
         {
             table[hash_loc] = val;
         }
@@ -41,7 +44,7 @@ static void run_linear_probing(const int* keys, int m, int n)
         int val = keys[i];
         int hash_loc = hash_function(val, n);
         int start = hash_loc;
-        while (table[hash_loc] != 0)
+        while (table[hash_loc] != INT_MIN)
         {
             if (table[hash_loc] == val)
                 break;
@@ -56,9 +59,11 @@ static void run_linear_probing(const int* keys, int m, int n)
 
 static void run_quadratic_probing(const int* keys, int m, int n)
 {
-    int* table = calloc(n, sizeof(int));
+    int* table = malloc(n * sizeof(int));
     if (!table)
         return;
+    for (int i = 0; i < n; i++)
+        table[i] = INT_MIN;
 
     for (int i = 0; i < m; i++)
     {
@@ -67,7 +72,7 @@ static void run_quadratic_probing(const int* keys, int m, int n)
         for (int j = 0; j < n; j++)
         {
             int hash_loc = (base + j * j) % n;
-            if (table[hash_loc] == 0)
+            if (table[hash_loc] == INT_MIN)
             {
                 table[hash_loc] = val;
                 break;
@@ -85,7 +90,7 @@ static void run_quadratic_probing(const int* keys, int m, int n)
             int hash_loc = (base + j * j) % n;
             if (table[hash_loc] == val)
                 break;
-            if (table[hash_loc] == 0)
+            if (table[hash_loc] == INT_MIN)
                 break;
         }
     }
@@ -95,9 +100,11 @@ static void run_quadratic_probing(const int* keys, int m, int n)
 
 static void run_double_hashing(const int* keys, int m, int n)
 {
-    int* table = calloc(n, sizeof(int));
+    int* table = malloc(n * sizeof(int));
     if (!table)
         return;
+    for (int i = 0; i < n; i++)
+        table[i] = INT_MIN;
 
     for (int i = 0; i < m; i++)
     {
@@ -112,7 +119,7 @@ static void run_double_hashing(const int* keys, int m, int n)
         for (int j = 0; j < n; j++)
         {
             int hash_loc = (h1 + j * h2) % n;
-            if (table[hash_loc] == 0)
+            if (table[hash_loc] == INT_MIN)
             {
                 table[hash_loc] = val;
                 break;
@@ -136,7 +143,7 @@ static void run_double_hashing(const int* keys, int m, int n)
             int hash_loc = (h1 + j * h2) % n;
             if (table[hash_loc] == val)
                 break;
-            if (table[hash_loc] == 0)
+            if (table[hash_loc] == INT_MIN)
                 break;
         }
     }

@@ -26,8 +26,9 @@ void error_correction_algorithms_demo(void)
                                         "\nEnter 9 for VRC (Receiver verification)"
                                         "\nEnter 10 for Hamming Code (Sender)"
                                         "\nEnter 11 for Hamming Code (Receiver verification)"
+                                        "\nEnter 12 for Adler-32 Checksum"
                                         "\nEnter -1 to exit: ",
-                                        1, 11);
+                                        1, 12);
 
         if (ECA_status == INPUT_EXIT_SIGNAL)
         {
@@ -93,6 +94,11 @@ void error_correction_algorithms_demo(void)
             case 11:
                 display_header("Hamming Code (Receiver)");
                 hamming_receiver_demo();
+                break;
+
+            case 12:
+                display_header("Adler-32 Checksum");
+                adler32_demo();
                 break;
 
             default:
