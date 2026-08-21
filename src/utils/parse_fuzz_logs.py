@@ -52,7 +52,7 @@ class FuzzerLogParser:
 
 if __name__ == '__main__':
     # Default to fuzzer_output.log in the build directory if no argument is provided
-    target_log = sys.argv[1] if len(sys.argv) > 1 else 'build/fuzzer_output.log'
+    target_log = sys.argv[1] if len(sys.argv) > 1 else 'fuzzer_output.log'
     parser = FuzzerLogParser(target_log)
     if parser.parse():
         parser.report()
