@@ -131,7 +131,8 @@ void cache_visualize(const Cache* cache, int highlighted_slot, bool is_hit)
     for (int i = 0; i < cache->capacity; i++)
     {
         char dirty_str[16];
-        snprintf(dirty_str, sizeof(dirty_str), "Dirty:%-3s", cache->blocks[i].is_dirty ? "Yes" : "No ");
+        snprintf(dirty_str, sizeof(dirty_str), "Dirty:%-3s",
+                 cache->blocks[i].is_dirty ? "Yes" : "No ");
 
         if (i == highlighted_slot)
         {

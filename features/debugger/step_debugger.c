@@ -161,7 +161,8 @@ void algorithm_step_hook(const char* event_msg)
     {
         for (int i = 0; i < DEBUGGER_HISTORY_MAX - 1; i++)
         {
-            strncpy(history_snapshots[i], history_snapshots[i + 1], sizeof(history_snapshots[i]) - 1);
+            strncpy(history_snapshots[i], history_snapshots[i + 1],
+                    sizeof(history_snapshots[i]) - 1);
             history_snapshots[i][sizeof(history_snapshots[i]) - 1] = '\0';
         }
         strncpy(history_snapshots[DEBUGGER_HISTORY_MAX - 1], event_msg, 127);
