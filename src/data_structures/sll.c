@@ -9,9 +9,6 @@
 // insert at end returns -1 on allocation failure and 1 on successful insertion
 int sll_insertAtEnd(Node** head_ref, void* value)
 {
-    if (head_ref == NULL)
-        return -1;
-
     Node* newnode = malloc(sizeof(Node));
     if (newnode == NULL)
         return -1;
@@ -52,9 +49,6 @@ int sll_deleteAtBeginning(Node** head_ref, void (*free_data)(void*))
 // insertAtBeginning function returns -1 on allocation failure and 1 on succesful insertion
 int sll_insertAtBeginning(Node** head_ref, void* value)
 {
-    if (head_ref == NULL)
-        return -1;
-
     Node* newnode = malloc(sizeof(Node));
     if (newnode == NULL)
         return -1;
@@ -208,9 +202,6 @@ int sll_deleteByValue(Node** head_ref, const void* value, int (*compare)(const v
 // returns -2 if list is empty, -1 if list has only 1 element and 1 on successful reversal
 int sll_reverseList(Node** head_ref)
 {
-    if (head_ref == NULL)
-        return -1;
-
     Node* prev = NULL;
     Node* curr = *head_ref;
     if (curr == NULL)
@@ -264,9 +255,6 @@ int sll_getLength(const Node* head)
 // Returns 1 on success, -1 on malloc failure, -2 on invalid position
 int sll_insertAtPosition(Node** head_ref, void* value, int position)
 {
-    if (head_ref == NULL)
-        return -1;
-
     int length = sll_getLength(*head_ref);
 
     if (position < 0 || position > length)
@@ -341,4 +329,24 @@ int sll_deleteAtPosition(Node** head_ref, int position, void (*free_data)(void*)
     }
     free(temp);
     return 1;
+}
+
+// Returns 1 if a cycle is detected, 0 if no cycle exists
+int sll_hasCycle(const Node* head)
+{
+    const Node* tortoise = head;
+    const Node* hare = head;
+
+    while (hare != NULL && hare->next != NULL)
+    {
+        tortoise = tortoise->next;
+        hare = hare->next->next;
+
+        if (tortoise == hare)
+        {
+            return 1;
+        }
+    }
+
+    return 0;
 }
