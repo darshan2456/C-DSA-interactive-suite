@@ -126,7 +126,7 @@ target_compile_definitions(dsa PRIVATE ENABLE_MEMORY_TRACKER)
 enable_testing()
 
 # Build all tests
-file(GLOB TEST_FILES "tests/**/test_*.c")
+file(GLOB TEST_FILES "tests/**/test_*.c" "fuzzy_tests/**/test_*.c")
 set(TEST_TARGETS "")
 foreach(TEST_FILE ${TEST_FILES})
     get_filename_component(TEST_NAME ${TEST_FILE} NAME_WE)
