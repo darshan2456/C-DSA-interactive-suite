@@ -6,6 +6,8 @@
 
 void swap_adjacent_pairs(int arr[], int length_of_array)
 {
+    if (arr == NULL)
+        return;
 
     for (int i = 0; i < length_of_array - 1; i += 2)
     {
@@ -17,6 +19,9 @@ void swap_adjacent_pairs(int arr[], int length_of_array)
 
 void reverse_array(int arr[], int length_of_array)
 {
+    if (arr == NULL)
+        return;
+
     for (int i = 0; i < (length_of_array / 2); i++)
     {
         int temp = arr[i];
@@ -27,7 +32,7 @@ void reverse_array(int arr[], int length_of_array)
 
 void rotate_array(int arr[], int length_of_array, int k)
 {
-    if (length_of_array <= 1)
+    if (arr == NULL || length_of_array <= 1)
         return;
 
     k = k % length_of_array;
@@ -45,6 +50,8 @@ void rotate_array(int arr[], int length_of_array, int k)
 
 void print_array(const int arr[], int length_of_array)
 {
+    if (arr == NULL)
+        return;
     printf("[");
     for (int i = 0; i < length_of_array; i++)
     {
@@ -57,7 +64,7 @@ void print_array(const int arr[], int length_of_array)
 
 int max_array(const int arr[], int length_of_array)
 {
-    if (length_of_array <= 0)
+    if (arr == NULL || length_of_array <= 0)
     {
         return INT_MIN;
     }
@@ -74,7 +81,7 @@ int max_array(const int arr[], int length_of_array)
 
 int min_array(const int arr[], int length_of_array)
 {
-    if (length_of_array <= 0)
+    if (arr == NULL || length_of_array <= 0)
     {
         return INT_MAX;
     }
@@ -91,6 +98,8 @@ int min_array(const int arr[], int length_of_array)
 
 int sum_array(const int arr[], int length_of_array)
 {
+    if (arr == NULL)
+        return 0;
     int sum = 0;
     for (int i = 0; i < length_of_array; i++)
     {
@@ -101,7 +110,7 @@ int sum_array(const int arr[], int length_of_array)
 
 double average_array(const int arr[], int length_of_array)
 {
-    if (length_of_array == 0)
+    if (arr == NULL || length_of_array == 0)
     {
         return 0.0;
     }
