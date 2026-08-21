@@ -9,6 +9,9 @@
 
 int dll_insertAtBeginning(doubly_ll_Node** head_ref, void* value)
 {
+    if (head_ref == NULL)
+        return -1;
+
     doubly_ll_Node* newnode = malloc(sizeof(doubly_ll_Node));
     if (newnode == NULL)
         return -1;
@@ -29,6 +32,9 @@ int dll_insertAtBeginning(doubly_ll_Node** head_ref, void* value)
 
 int dll_insertAtEnd(doubly_ll_Node** head_ref, void* value)
 {
+    if (head_ref == NULL)
+        return -1;
+
     doubly_ll_Node* newnode = malloc(sizeof(doubly_ll_Node));
     if (newnode == NULL)
         return -1;
@@ -223,6 +229,9 @@ void delete_dll(doubly_ll_Node* head, void (*free_data)(void*))
 // returns -2 if list is empty. -1 if list is a single node list and 1 on successful reversal.
 int dll_reverselist(doubly_ll_Node** head_ref)
 {
+    if (head_ref == NULL)
+        return -1;
+
     doubly_ll_Node* temp = NULL;
     doubly_ll_Node* current = *head_ref;
 
@@ -267,6 +276,9 @@ int dll_getLength(const doubly_ll_Node* head)
 // Returns 1 on success, -1 on malloc failure, -2 on invalid position
 int dll_insertAtPosition(doubly_ll_Node** head_ref, void* value, int position)
 {
+    if (head_ref == NULL)
+        return -1;
+
     int length = dll_getLength(*head_ref);
 
     if (position < 0 || position > length)
