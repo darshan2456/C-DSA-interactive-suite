@@ -172,3 +172,10 @@ if(DOXYGEN_FOUND)
 endif()
 
 
+
+# Custom target to parse and summarize fuzzer logs
+add_custom_target(test_report
+    COMMAND python3 ${CMAKE_CURRENT_SOURCE_DIR}/src/utils/parse_fuzz_logs.py ${CMAKE_CURRENT_BINARY_DIR}/fuzzer_output.log
+    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+    COMMENT "Parsing fuzzer crash logs..."
+)
