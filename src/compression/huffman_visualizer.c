@@ -62,15 +62,18 @@ static void collect_leaf_nodes(const HuffmanNode* root, const char codes[256][25
         char ch_display[16];
         if (root->ch == '\n')
         {
-            strcpy(ch_display, "'\\n'");
+            strncpy(ch_display, "'\\n'", sizeof(ch_display) - 1);
+            ch_display[sizeof(ch_display) - 1] = '\0';
         }
         else if (root->ch == '\t')
         {
-            strcpy(ch_display, "'\\t'");
+            strncpy(ch_display, "'\\t'", sizeof(ch_display) - 1);
+            ch_display[sizeof(ch_display) - 1] = '\0';
         }
         else if (root->ch == ' ')
         {
-            strcpy(ch_display, "'Space'");
+            strncpy(ch_display, "'Space'", sizeof(ch_display) - 1);
+            ch_display[sizeof(ch_display) - 1] = '\0';
         }
         else
         {

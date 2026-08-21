@@ -75,11 +75,11 @@ void cache_visualize(const Cache* cache, int highlighted_slot, bool is_hit)
         char page_str[16];
         if (cache->blocks[i].is_valid)
         {
-            sprintf(page_str, "Page: %-3d", cache->blocks[i].page_id);
+            snprintf(page_str, sizeof(page_str), "Page: %-3d", cache->blocks[i].page_id);
         }
         else
         {
-            sprintf(page_str, "Page: -  ");
+            snprintf(page_str, sizeof(page_str), "Page: -  ");
         }
 
         if (i == highlighted_slot)
@@ -97,7 +97,7 @@ void cache_visualize(const Cache* cache, int highlighted_slot, bool is_hit)
     for (int i = 0; i < cache->capacity; i++)
     {
         char ref_str[16];
-        sprintf(ref_str, "Ref:  %-3d", cache->blocks[i].reference_bit);
+        snprintf(ref_str, sizeof(ref_str), "Ref:  %-3d", cache->blocks[i].reference_bit);
 
         if (i == highlighted_slot)
         {
@@ -114,7 +114,7 @@ void cache_visualize(const Cache* cache, int highlighted_slot, bool is_hit)
     for (int i = 0; i < cache->capacity; i++)
     {
         char freq_str[16];
-        sprintf(freq_str, "Freq: %-3d", cache->blocks[i].frequency);
+        snprintf(freq_str, sizeof(freq_str), "Freq: %-3d", cache->blocks[i].frequency);
 
         if (i == highlighted_slot)
         {
@@ -131,7 +131,8 @@ void cache_visualize(const Cache* cache, int highlighted_slot, bool is_hit)
     for (int i = 0; i < cache->capacity; i++)
     {
         char dirty_str[16];
-        sprintf(dirty_str, "Dirty:%-3s", cache->blocks[i].is_dirty ? "Yes" : "No ");
+        snprintf(dirty_str, sizeof(dirty_str), "Dirty:%-3s",
+                 cache->blocks[i].is_dirty ? "Yes" : "No ");
 
         if (i == highlighted_slot)
         {

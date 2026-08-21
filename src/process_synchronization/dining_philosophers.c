@@ -322,7 +322,10 @@ void dp_reset(DiningTable* table)
     for (int p = 0; p < 5; p++)
         table->phil_states[p] = THINKING;
     for (int i = 0; i < 3; i++)
-        strcpy(logs[i], "");
+    {
+        strncpy(logs[i], "", sizeof(logs[i]) - 1);
+        logs[i][sizeof(logs[i]) - 1] = '\0';
+    }
     add_log("Simulation table reset successfully.");
 }
 

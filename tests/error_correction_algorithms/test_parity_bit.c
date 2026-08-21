@@ -77,19 +77,22 @@ void test_parity_verification_and_errors(void)
     // Simulate single-bit transmission errors
     // Flip first bit: "11010011111" -> "01010011111"
     char corrupt_even[32];
-    strcpy(corrupt_even, transmitted_even1);
+    strncpy(corrupt_even, transmitted_even1, sizeof(corrupt_even) - 1);
+    corrupt_even[sizeof(corrupt_even) - 1] = '\0';
     corrupt_even[0] = (corrupt_even[0] == '1') ? '0' : '1';
     assert(verifyEvenParity(corrupt_even) == 0); // Should detect error
 
     // Flip parity bit
-    strcpy(corrupt_even, transmitted_even1);
+    strncpy(corrupt_even, transmitted_even1, sizeof(corrupt_even) - 1);
+    corrupt_even[sizeof(corrupt_even) - 1] = '\0';
     corrupt_even[strlen(corrupt_even) - 1] =
         (corrupt_even[strlen(corrupt_even) - 1] == '1') ? '0' : '1';
     assert(verifyEvenParity(corrupt_even) == 0); // Should detect error
 
     // Odd parity corruptions
     char corrupt_odd[32];
-    strcpy(corrupt_odd, transmitted_odd1);
+    strncpy(corrupt_odd, transmitted_odd1, sizeof(corrupt_odd) - 1);
+    corrupt_odd[sizeof(corrupt_odd) - 1] = '\0';
     corrupt_odd[3] = (corrupt_odd[3] == '1') ? '0' : '1';
     assert(verifyOddParity(corrupt_odd) == 0); // Should detect error
 

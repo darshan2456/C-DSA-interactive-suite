@@ -60,7 +60,8 @@ int infix_to_prefix_convert(const char* infix_expr, char* prefix_expr, size_t ma
         return EXPR_ERROR_MALFORMED;
     }
 
-    strcpy(reversed_expr, infix_expr);
+    strncpy(reversed_expr, infix_expr, sizeof(reversed_expr) - 1);
+    reversed_expr[sizeof(reversed_expr) - 1] = '\0';
     reverse_string(reversed_expr);
     swap_parentheses(reversed_expr);
 
@@ -194,7 +195,8 @@ int infix_to_prefix_convert(const char* infix_expr, char* prefix_expr, size_t ma
         return EXPR_ERROR_MALFORMED;
     }
 
-    strcpy(prefix_expr, postfix_expr);
+    strncpy(prefix_expr, postfix_expr, max_size - 1);
+    prefix_expr[max_size - 1] = '\0';
     reverse_string(prefix_expr);
 
     destroyStack(operators, NULL);

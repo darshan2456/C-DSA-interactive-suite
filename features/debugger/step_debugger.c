@@ -142,7 +142,8 @@ void algorithm_step_hook(const char* event_msg)
     {
         for (int i = 0; i < 4; i++)
         {
-            strcpy(event_log[i], event_log[i + 1]);
+            strncpy(event_log[i], event_log[i + 1], sizeof(event_log[i]) - 1);
+            event_log[i][sizeof(event_log[i]) - 1] = '\0';
         }
         strncpy(event_log[4], event_msg, 127);
         event_log[4][127] = '\0';
@@ -160,7 +161,9 @@ void algorithm_step_hook(const char* event_msg)
     {
         for (int i = 0; i < DEBUGGER_HISTORY_MAX - 1; i++)
         {
-            strcpy(history_snapshots[i], history_snapshots[i + 1]);
+            strncpy(history_snapshots[i], history_snapshots[i + 1],
+                    sizeof(history_snapshots[i]) - 1);
+            history_snapshots[i][sizeof(history_snapshots[i]) - 1] = '\0';
         }
         strncpy(history_snapshots[DEBUGGER_HISTORY_MAX - 1], event_msg, 127);
         history_snapshots[DEBUGGER_HISTORY_MAX - 1][127] = '\0';
@@ -247,7 +250,8 @@ void get_recent_events(char events[5][128], int* count)
     *count = event_count;
     for (int i = 0; i < event_count; i++)
     {
-        strcpy(events[i], event_log[i]);
+        strncpy(events[i], event_log[i], 127);
+        events[i][127] = '\0';
     }
 }
 

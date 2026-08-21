@@ -170,7 +170,8 @@ void generate_huffman_codes(const HuffmanNode* root, char codes[256][256], char*
     if (root->left == NULL && root->right == NULL)
     {
         current_code[depth] = '\0';
-        strcpy(codes[(unsigned char)root->ch], current_code);
+        strncpy(codes[(unsigned char)root->ch], current_code, 255);
+        codes[(unsigned char)root->ch][255] = '\0';
         return;
     }
 
@@ -207,7 +208,8 @@ int huffman_encode(const char* input, const char codes[256][256], char* output, 
             return -1; // Buffer overflow
         }
 
-        strcpy(&output[out_idx], code);
+        strncpy(&output[out_idx], code, out_max - out_idx - 1);
+        output[out_max - 1] = '\0';
         out_idx += code_len;
     }
 
