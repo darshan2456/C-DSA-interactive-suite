@@ -35,11 +35,11 @@ jobs:
       - name: Memory check with valgrind
         run: cmake --build build --target valgrind
 
-      - name: Configure ASan build
+      - name: Configure ASan/UBSan build
         run: cmake -S . -B build-asan -DSANITIZE=ON
       
-      - name: Build ASan
+      - name: Build ASan/UBSan
         run: cmake --build build-asan --parallel
       
-      - name: Run ASan tests
-        run: ctest --test-dir build-asan --output-on-failure --verbose
+      - name: Run ASan/UBSan tests
+        run: UBSAN_OPTIONS=print_stacktrace=1:halt_on_error=1 ctest --test-dir build-asan --output-on-failure --verbose
