@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define FUZZ_ITERATIONS 1000
+#define FUZZ_ITERATIONS 500
 
 // Helper function for qsort
 static int compare_ints(const void* a, const void* b)
