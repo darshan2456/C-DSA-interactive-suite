@@ -66,14 +66,6 @@ void radix_sort_with_telemetry(int arr[], int n, SortingTelemetry* telemetry)
         return;
     }
 
-    for (int i = 0; i < n; i++)
-    {
-        if (arr[i] < 0)
-        {
-            return;
-        }
-    }
-
     if (telemetry)
     {
         sorting_telemetry_init(telemetry, "Radix Sort");
@@ -81,13 +73,71 @@ void radix_sort_with_telemetry(int arr[], int n, SortingTelemetry* telemetry)
     }
     telemetry_init("radix_sort");
 
-    int max = get_max(arr, n, telemetry);
-
-    for (int exp = 1; max / exp > 0; exp *= 10)
+    int* neg = malloc(sizeof(int) * n);
+    int* pos = malloc(sizeof(int) * n);
+    if (!neg || !pos)
     {
-        sorting_telemetry_add_pass(telemetry, 1);
-        radix_counting_sort(arr, n, exp, telemetry);
+        if (neg)
+            free(neg);
+        if (pos)
+            free(pos);
+        telemetry_close();
+        if (telemetry)
+            sorting_telemetry_stop(telemetry);
+        return;
     }
+
+    int neg_cnt = 0, pos_cnt = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if (arr[i] < 0)
+        {
+            neg[neg_cnt++] = -arr[i];
+        }
+        else
+        {
+            pos[pos_cnt++] = arr[i];
+        }
+    }
+
+    if (neg_cnt > 0)
+    {
+        int max_neg = get_max(neg, neg_cnt, telemetry);
+        for (int exp = 1; max_neg / exp > 0; exp *= 10)
+        {
+            sorting_telemetry_add_pass(telemetry, 1);
+            radix_counting_sort(neg, neg_cnt, exp, telemetry);
+        }
+    }
+
+    if (pos_cnt > 0)
+    {
+        int max_pos = get_max(pos, pos_cnt, telemetry);
+        for (int exp = 1; max_pos / exp > 0; exp *= 10)
+        {
+            sorting_telemetry_add_pass(telemetry, 1);
+            radix_counting_sort(pos, pos_cnt, exp, telemetry);
+        }
+    }
+
+    for (int i = 0; i < neg_cnt; i++)
+    {
+        arr[i] = -neg[neg_cnt - 1 - i];
+        if (telemetry)
+            sorting_telemetry_add_copy(telemetry, 1);
+        visualize_sort(arr, n, i, -1, -1, "Radix Sort: Restoring negative elements");
+    }
+
+    for (int i = 0; i < pos_cnt; i++)
+    {
+        arr[neg_cnt + i] = pos[i];
+        if (telemetry)
+            sorting_telemetry_add_copy(telemetry, 1);
+        visualize_sort(arr, n, neg_cnt + i, -1, -1, "Radix Sort: Restoring positive elements");
+    }
+
+    free(neg);
+    free(pos);
 
     telemetry_close();
     if (telemetry)

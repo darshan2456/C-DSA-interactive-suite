@@ -11,6 +11,17 @@ void help_string_compression_menu(void)
     printf("    • KMP (Knuth-Morris-Pratt): Uses a prefix table to skip re-checking "
            "characters. O(N+M).\n");
     printf("    • Rabin-Karp: Uses rolling hashes to compare pattern and text windows.\n");
+    printf("    • Boyer-Moore:\n");
+    printf("        Description: An efficient string searching algorithm that skips sections\n");
+    printf("        of text using the Bad Character Heuristic. It compares characters from\n");
+    printf("        right to left. When a mismatch occurs, it shifts the pattern to align\n");
+    printf("        the mismatched character with its rightmost occurrence in the pattern.\n");
+    printf("        Time Complexity:\n");
+    printf("          - Best Case: O(N/M) (when the last character always mismatches).\n");
+    printf("          - Average Case: O(N/M).\n");
+    printf("          - Worst Case: O(N*M) (when only the first character mismatches, or many "
+           "partial matches occur).\n");
+    printf("        Space Complexity: O(K), where K is the alphabet size (e.g., 256 for ASCII).\n");
     printf("    • Suffix Array: Sorted array of all suffixes, enabling fast substring queries.\n");
     printf("    • Kasai's LCP Array: Computes the longest common prefixes between consecutive\n");
     printf("      suffixes in the Suffix Array in O(N) time. Essential for substring "

@@ -114,4 +114,12 @@ int sll_insertAtPosition(Node** head_ref, void* value, int position);
  */
 int sll_deleteAtPosition(Node** head_ref, int position, void (*free_data)(void*));
 
+/**
+ * @brief Detects whether a singly linked list contains a cycle using Floyd's
+ *        Cycle-Finding Algorithm (Tortoise and Hare).
+ * @param head Pointer to the head node.
+ * @return 1 if a cycle is detected, 0 if no cycle exists.
+ */
+int sll_hasCycle(const Node* head);
+
 #endif

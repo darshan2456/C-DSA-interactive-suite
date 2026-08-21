@@ -1,4 +1,5 @@
 # C_DSA_interactive_suite
+[![codecov](https://codecov.io/gh/darshan2456/C_DSA_interactive_suite/graph/badge.svg)](https://codecov.io/gh/darshan2456/C_DSA_interactive_suite)
 
 A modular, console-based **Data Structures & Algorithms library** written entirely in **C**, built from scratch with pointer-level control, manual memory management (`malloc` / `free`), and defensive input validation.
 
@@ -283,6 +284,7 @@ This suite includes over **100+ interactive, memory-audited data structures and 
 | **Heap Sort** | Tree-based Sorting | $\mathcal{O}(N \log N) / \mathcal{O}(N \log N) / \mathcal{O}(N \log N)$ | $\mathcal{O}(1)$ | In-place comparison sort using binary max-heap heapify. |
 | **Radix Sort** | Non-comparison Sort | $\mathcal{O}(N \cdot k) / \mathcal{O}(N \cdot k) / \mathcal{O}(N \cdot k)$ | $\mathcal{O}(N + k)$ | Digit-by-digit distribution sort using counting sort buckets. |
 | **Bucket Sort** | Distribution Sort | $\mathcal{O}(N + k) / \mathcal{O}(N + k) / \mathcal{O}(N^2)$ | $\mathcal{O}(N)$ | Distributes elements into uniform floating-point buckets. |
+| **Counting Sort** | Non-comparison Sort | $\mathcal{O}(N + k) / \mathcal{O}(N + k) / \mathcal{O}(N + k)$ | $\mathcal{O}(N + k)$ | Integer sorting by counting element occurrences. |
 
 ### 4. Searching Algorithms (Menu Option 4)
 | Algorithm | Category | Time Complexity (Best / Avg / Worst) | Space Complexity | Description |
@@ -291,6 +293,7 @@ This suite includes over **100+ interactive, memory-audited data structures and 
 | **Binary Search (Iterative & Recursive)** | Logarithmic Search | $\mathcal{O}(1) / \mathcal{O}(\log N) / \mathcal{O}(\log N)$ | $\mathcal{O}(1)$ / $\mathcal{O}(\log N)$ | Divide-and-conquer search on sorted arrays. |
 | **Jump Search** | Block Search | $\mathcal{O}(1) / \mathcal{O}(\sqrt{N}) / \mathcal{O}(\sqrt{N})$ | $\mathcal{O}(1)$ | Jumps ahead by fixed steps ($\sqrt{N}$) followed by linear search. |
 | **Interpolation Search** | Position Estimator | $\mathcal{O}(1) / \mathcal{O}(\log \log N) / \mathcal{O}(N)$ | $\mathcal{O}(1)$ | Position probe search for uniformly distributed sorted arrays. |
+| **Fibonacci Search** | Logarithmic Search | $\mathcal{O}(1) / \mathcal{O}(\log N) / \mathcal{O}(\log N)$ | $\mathcal{O}(1)$ | Narrows down range using Fibonacci numbers, avoiding division. |
 
 ### 5. Graph Traversals & Pathfinding (Menu Option 5)
 | Algorithm | Category | Time Complexity | Space Complexity | Description |

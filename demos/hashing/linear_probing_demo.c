@@ -1,5 +1,6 @@
 #include "array.h"
 #include "hash.h"
+#include <limits.h>
 #include <safe_input.h>
 #include <stdbool.h>
 #include <stdio.h>
@@ -27,12 +28,15 @@ void linear_probing_demo(void)
 
         int arr[length_of_array]; // allocate memory for the array
 
-        memset(arr, 0, sizeof(arr)); // setting all values to zero
+        for (int i = 0; i < length_of_array; i++)
+        {
+            arr[i] = INT_MIN; // empty slot is represented by INT_MIN
+        }
 
         while (1)
         {
             int value_status = safe_input_int(
-                &value, "\nenter a value between 1 and 1000 (enter '-1' to search elements):- ", 1,
+                &value, "\nenter a value between 0 and 1000 (enter '-1' to search elements):- ", 0,
                 1000);
 
             if (value_status == INPUT_EXIT_SIGNAL)
@@ -61,7 +65,7 @@ void linear_probing_demo(void)
             int search_val;
             int search_status = safe_input_int(
                 &search_val, "\nenter a value to search in the hash table (enter '-1' to exit):- ",
-                1, 1000);
+                0, 1000);
 
             if (search_status == INPUT_EXIT_SIGNAL)
             {

@@ -28,14 +28,16 @@ void test_crc_generate_and_verify(void)
 
     // Simulate bit flip error in data
     char corrupt_codeword[CHECKSUM_MAX_BITS * 2 + 1];
-    strcpy(corrupt_codeword, codeword);
+    strncpy(corrupt_codeword, codeword, sizeof(corrupt_codeword) - 1);
+    corrupt_codeword[sizeof(corrupt_codeword) - 1] = '\0';
     corrupt_codeword[0] = (corrupt_codeword[0] == '1') ? '0' : '1';
 
     int check_corrupt = crc_verify(corrupt_codeword, generator, NULL);
     assert(check_corrupt == 0); // Should detect error
 
     // Simulate bit flip in parity remainder
-    strcpy(corrupt_codeword, codeword);
+    strncpy(corrupt_codeword, codeword, sizeof(corrupt_codeword) - 1);
+    corrupt_codeword[sizeof(corrupt_codeword) - 1] = '\0';
     int last_idx = (int)strlen(corrupt_codeword) - 1;
     corrupt_codeword[last_idx] = (corrupt_codeword[last_idx] == '1') ? '0' : '1';
 
@@ -48,7 +50,8 @@ void test_crc_generate_and_verify(void)
 void test_crc_xor_operation(void)
 {
     char div[32];
-    strcpy(div, "110100");
+    strncpy(div, "110100", sizeof(div) - 1);
+    div[sizeof(div) - 1] = '\0';
     crc_xor_operation(div, "1011", 0);
     assert(strncmp(div, "0110", 4) == 0); // 1101 XOR 1011 = 0110
 

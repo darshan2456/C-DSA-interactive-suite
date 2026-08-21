@@ -36,7 +36,8 @@ void crc_generate(const char* data, const char* generator, char* remainder_out, 
         return;
     }
 
-    strcpy(dividend, data);
+    strncpy(dividend, data, sizeof(dividend) - 1);
+    dividend[sizeof(dividend) - 1] = '\0';
     for (int i = 0; i < generator_len - 1; i++)
     {
         dividend[data_len + i] = '0';
@@ -62,7 +63,8 @@ void crc_generate(const char* data, const char* generator, char* remainder_out, 
 
     if (codeword_out != NULL)
     {
-        strcpy(codeword_out, data);
+        strncpy(codeword_out, data, (CHECKSUM_MAX_BITS * 2));
+        codeword_out[(CHECKSUM_MAX_BITS * 2)] = '\0';
         strcat(codeword_out, remainder_out);
     }
 }
@@ -77,7 +79,8 @@ int crc_verify(const char* codeword, const char* generator, char* remainder_out)
     int codeword_len = (int)strlen(codeword);
 
     char dividend[(CHECKSUM_MAX_BITS * 2) + 1];
-    strcpy(dividend, codeword);
+    strncpy(dividend, codeword, sizeof(dividend) - 1);
+    dividend[sizeof(dividend) - 1] = '\0';
 
     for (int i = 0; i <= codeword_len - generator_len; i++)
     {
@@ -89,11 +92,13 @@ int crc_verify(const char* codeword, const char* generator, char* remainder_out)
 
     // The remainder is the last (generator_len-1) bits
     char remainder[CHECKSUM_MAX_BITS + 1];
-    strcpy(remainder, &dividend[codeword_len - (generator_len - 1)]);
+    strncpy(remainder, &dividend[codeword_len - (generator_len - 1)], sizeof(remainder) - 1);
+    remainder[sizeof(remainder) - 1] = '\0';
 
     if (remainder_out != NULL)
     {
-        strcpy(remainder_out, remainder);
+        strncpy(remainder_out, remainder, CHECKSUM_MAX_BITS);
+        remainder_out[CHECKSUM_MAX_BITS] = '\0';
     }
 
     for (int i = 0; remainder[i] != '\0'; i++)

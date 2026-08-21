@@ -237,6 +237,16 @@ void test_radix_sort()
     assert(dup[6] == 5);
     assert(dup[7] == 5);
 
+    /* negative numbers */
+    int neg[6] = {-3, 5, -1, 0, -10, 2};
+    radix_sort(neg, 6);
+    assert(neg[0] == -10);
+    assert(neg[1] == -3);
+    assert(neg[2] == -1);
+    assert(neg[3] == 0);
+    assert(neg[4] == 2);
+    assert(neg[5] == 5);
+
     /* random values (multi-digit, exercises multiple radix passes) */
     int random_vals[9] = {170, 45, 75, 90, 2, 802, 24, 66, 1};
     radix_sort(random_vals, 9);

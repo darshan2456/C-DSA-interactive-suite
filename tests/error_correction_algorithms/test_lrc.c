@@ -44,7 +44,8 @@ void test_lrc_verify_corrupted(void)
 
     // Flip one bit in the LRC to simulate corruption
     char corrupted_lrc[9];
-    strcpy(corrupted_lrc, lrc);
+    strncpy(corrupted_lrc, lrc, sizeof(corrupted_lrc) - 1);
+    corrupted_lrc[sizeof(corrupted_lrc) - 1] = '\0';
     corrupted_lrc[0] = (corrupted_lrc[0] == '1') ? '0' : '1';
 
     int result = lrc_verify(words, 3, 8, corrupted_lrc);

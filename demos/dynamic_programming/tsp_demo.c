@@ -59,7 +59,7 @@ void tsp_demo(void)
                 for (int j = 0; j < n; j++)
                 {
                     char prompt[100];
-                    sprintf(prompt, "dist[%d][%d]: ", i, j);
+                    snprintf(prompt, sizeof(prompt), "dist[%d][%d]: ", i, j);
                     int val;
                     if (safe_input_int(&val, prompt, 0, 1000000) != 1)
                     {

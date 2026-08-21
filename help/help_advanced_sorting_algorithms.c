@@ -20,6 +20,9 @@ void help_advanced_sorting_algorithms_menu(void)
     printf("RADIX SORT:\n");
     printf("    Non-comparison sort that processes digits from least to most significant.\n");
     printf("    O(D * (N + K)) where D is the number of digits.\n\n");
+    printf("COUNTING SORT:\n");
+    printf("    Integer sorting algorithm that counts the number of objects having distinct\n");
+    printf("    key values. O(N + K) time and space complexity, where K is the key range.\n\n");
 
     printf("\nPress [ENTER] to return...\n");
     press_enter_to_continue();

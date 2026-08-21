@@ -20,9 +20,14 @@ void rat_in_maze_demo(void);
 void graph_coloring_demo(void);
 void knights_tour_demo(void);
 void tower_of_hanoi_demo(void);
+void string_permutation_demo(void);
 
 // Exposed Solvers & Visualization Helper Functions
+
 void print_towers_state(int total_disks, int pegs[3][10], int counts[3]);
+
+int solve_string_permutation(char str[], int depth, int length, bool last[], bool visualize);
+
 int solve_tower_of_hanoi(int n, int source, int auxiliary, int destination, int disks,
                          int pegs[3][10], int counts[3]);
 bool solve_n_queens_util(int N, char board[8][8], int col);

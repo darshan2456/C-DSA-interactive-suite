@@ -72,6 +72,10 @@ static void binary_search_demo_wrapper(void)
 {
     (void)binary_search_demo();
 }
+static void fibonacci_search_demo_wrapper(void)
+{
+    (void)fibonacci_search_demo();
+}
 
 static void run_benchmark_with_prompt(void (*benchmark_fn)(int), const char* category_name)
 {
@@ -207,6 +211,7 @@ static Entry ENTRIES[] = {
     {"Sorting Algorithms", NULL, 1, 0, 0},
     {"O(N^2) Family", NULL, 1, 0, 1},
     {"Bubble Sort", bubble_sort_optimized_demo, 0, 0, 2}, /* add fn when known */
+    {"Cocktail Shaker Sort", cocktail_shaker_sort_demo, 0, 0, 2},
     {"Selection Sort", selection_sort_demo, 0, 0, 2},
     {"Insertion Sort", insertion_sort_demo, 0, 0, 2},
     {"Shell Sort", shell_sort_demo, 0, 0, 2},
@@ -223,6 +228,7 @@ static Entry ENTRIES[] = {
     {"Binary Search (Recursive)", binary_search_recursive_demo, 0, 0, 1},
     {"Interpolation Search", interpolation_search_demo, 0, 0, 1},
     {"Jump Search", jump_search_demo, 0, 0, 1},
+    {"Fibonacci Search", fibonacci_search_demo_wrapper, 0, 0, 1},
 
     {"Graph Algorithms", NULL, 1, 0, 0},
     {"Graph Traversals", NULL, 1, 0, 1},
@@ -275,6 +281,7 @@ static Entry ENTRIES[] = {
     {"Infix to Prefix", infix_to_prefix_demo, 0, 0, 1},
 
     {"error_correction_algorithms", NULL, 1, 0, 0},
+    {"Adler-32 Checksum", adler32_demo, 0, 0, 1},
     {"Checksum (Sender)", checksum_demo, 0, 0, 1},
     {"Checksum (Receiver)", checksum_receiver_demo, 0, 0, 1},
     {"CRC (Sender)", crc_demo, 0, 0, 1},
@@ -304,6 +311,7 @@ static Entry ENTRIES[] = {
     {"Naive String Matching", naive_string_matching_demo, 0, 0, 1},
     {"KMP Search", kmp_demo, 0, 0, 1},
     {"Rabin-Karp Search", rabin_karp_demo, 0, 0, 1},
+    {"Boyer-Moore Search", boyer_moore_demo, 0, 0, 1},
     {"Suffix Array & Kasai's LCP", suffix_array_demo, 0, 0, 1},
     {"String Compression", compression_demo, 0, 0, 1},
 

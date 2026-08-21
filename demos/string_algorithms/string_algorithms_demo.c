@@ -15,8 +15,9 @@ void string_algorithms_demo(void)
                                 "\nenter 2 for Knuth-Morris-Pratt (KMP) demo"
                                 "\nenter 3 for Rabin-Karp demo"
                                 "\nenter 4 for Suffix Array & Kasai's LCP demo"
+                                "\nenter 5 for Boyer-Moore String Search demo"
                                 "\nenter choice (\'-1\' to exit, or \'help\') : ",
-                                1, 4);
+                                1, 5);
 
         if (status == INPUT_EXIT_SIGNAL)
         {
@@ -44,6 +45,10 @@ void string_algorithms_demo(void)
             case 4:
                 display_header("Suffix Array & Kasai's LCP");
                 suffix_array_demo();
+                break;
+            case 5:
+                display_header("Boyer-Moore String Search");
+                boyer_moore_demo();
                 break;
         }
     }

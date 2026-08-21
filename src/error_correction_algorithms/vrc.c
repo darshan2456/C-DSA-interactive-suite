@@ -38,7 +38,8 @@ void vrc_demo(void)
 
         char transmitted_frame[CHECKSUM_MAX_BITS + 2];
 
-        strcpy(transmitted_frame, data);
+        strncpy(transmitted_frame, data, sizeof(transmitted_frame) - 1);
+        transmitted_frame[sizeof(transmitted_frame) - 1] = '\0';
 
         size_t len = strlen(transmitted_frame);
 

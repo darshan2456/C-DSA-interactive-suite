@@ -269,6 +269,62 @@ void test_edge_cases()
     printf("sll Edge case tests passed\n");
 }
 
+/* Test Floyd's cycle detection */
+void test_has_cycle()
+{
+    /* No cycle: NULL list */
+    assert(sll_hasCycle(NULL) == 0);
+
+    /* No cycle: single node */
+    int* v1 = malloc(sizeof(int));
+    *v1 = 1;
+    Node* head = NULL;
+    sll_insertAtEnd(&head, v1);
+    assert(sll_hasCycle(head) == 0);
+
+    /* No cycle: multiple nodes */
+    int* v2 = malloc(sizeof(int));
+    *v2 = 2;
+    int* v3 = malloc(sizeof(int));
+    *v3 = 3;
+    sll_insertAtEnd(&head, v2);
+    sll_insertAtEnd(&head, v3);
+    assert(sll_hasCycle(head) == 0);
+
+    /* Introduce a cycle: tail -> head */
+    Node* tail = head;
+    while (tail->next != NULL)
+        tail = tail->next;
+    tail->next = head; /* creates cycle */
+    assert(sll_hasCycle(head) == 1);
+
+    /* Break the cycle before freeing */
+    tail->next = NULL;
+    delete_sll(head, free);
+
+    /* Cycle in middle: tail -> second node */
+    int arr[] = {10, 20, 30, 40};
+    head = NULL;
+    for (int i = 0; i < 4; i++)
+    {
+        int* v = malloc(sizeof(int));
+        *v = arr[i];
+        sll_insertAtEnd(&head, v);
+    }
+    Node* second = head->next;
+    tail = head;
+    while (tail->next != NULL)
+        tail = tail->next;
+    tail->next = second; /* cycle: 40 -> 20 */
+    assert(sll_hasCycle(head) == 1);
+
+    /* Break cycle before freeing */
+    tail->next = NULL;
+    delete_sll(head, free);
+
+    printf("sll Cycle detection tests passed\n");
+}
+
 int main()
 {
     test_insert();
@@ -281,6 +337,7 @@ int main()
     test_delete_at_position();
     test_edge_cases();
     test_sll_advanced_edge_cases();
+    test_has_cycle();
 
     printf("All SLL tests passed\n");
     return 0;

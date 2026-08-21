@@ -31,8 +31,14 @@ void bubble_sort_optimized(int arr[], int length_of_array);
 void bubble_sort_optimized_with_telemetry(int arr[], int length_of_array,
                                           SortingTelemetry* telemetry);
 
+// Run the cocktail shaker sort demonstration module.
+void cocktail_shaker_sort_demo(void);
+
 // Sort an integer array using insertion sort.
 void insertion_sort(int arr[], int length_of_array);
 void insertion_sort_with_telemetry(int arr[], int length_of_array, SortingTelemetry* telemetry);
+
+// Sort an integer array using cocktail shaker sort.
+void cocktail_shaker_sort(int arr[], int length_of_array);
 
 #endif

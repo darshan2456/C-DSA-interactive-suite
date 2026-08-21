@@ -72,7 +72,8 @@ void telemetry_init(const char* algorithm_name)
     }
     else
     {
-        strcpy(current_algorithm_name, "unknown");
+        strncpy(current_algorithm_name, "unknown", sizeof(current_algorithm_name) - 1);
+        current_algorithm_name[sizeof(current_algorithm_name) - 1] = '\0';
     }
 
     ensure_parent_dir_exists(telemetry_filepath);

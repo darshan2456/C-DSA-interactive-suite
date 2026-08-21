@@ -12,6 +12,14 @@ if(SANITIZE)
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fsanitize=address,undefined")
 endif()
 
+option(ENABLE_COVERAGE "Enable code coverage reporting" OFF)
+
+if(ENABLE_COVERAGE)
+    message(STATUS "Code coverage enabled")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} --coverage")
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} --coverage")
+endif()
+
 # Source directories
 set(SRC_DIRS
     help
@@ -171,11 +179,10 @@ if(DOXYGEN_FOUND)
     )
 endif()
 
-
-
 # Custom target to parse and summarize fuzzer logs
 add_custom_target(test_report
     COMMAND python3 ${CMAKE_CURRENT_SOURCE_DIR}/src/utils/parse_fuzz_logs.py ${CMAKE_CURRENT_BINARY_DIR}/fuzzer_output.log
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
     COMMENT "Parsing fuzzer crash logs..."
 )
+

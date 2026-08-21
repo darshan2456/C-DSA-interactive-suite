@@ -87,6 +87,7 @@ void rtree_demo(void);
 void searching_algorithms_demo(void);
 void compression_demo(void);
 void string_algorithms_demo(void);
+void fibonacci_search_demo(void);
 
 static const AlgorithmEntry GLOBAL_ALGORITHM_TABLE[] = {
     /* Trees Category */
@@ -249,6 +250,8 @@ static const AlgorithmEntry GLOBAL_ALGORITHM_TABLE[] = {
      "kd kdtree quadtree rtree spatial 2d mbr point range search", 17, spatial_indexing_demo},
 
     /* Searching & Compression Suites */
+    {"Fibonacci Search Interactive Demo", "Searching", "fibonacci search array logn divisionless",
+     4, fibonacci_search_demo},
     {"Searching Algorithms Suite (Binary, Linear, Jump, Interpolation)", "Searching",
      "binary linear interpolation jump exponential search", 4, searching_algorithms_demo},
     {"String Processing & Compression Algorithms Suite", "String & Compression",
