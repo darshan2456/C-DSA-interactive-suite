@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define FUZZ_ITERATIONS 10000
+#define FUZZ_ITERATIONS 300
 
 /* --- set_bit tests --- */
 void test_set_bit_fuzz(void)

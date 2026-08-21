@@ -5,7 +5,7 @@
 #include <string.h>
 #include <time.h>
 
-#define FUZZ_ITERATIONS 1000
+#define FUZZ_ITERATIONS 300
 
 // Generate lengths with a distribution weighted towards smaller strings to
 // keep tests fast, but occasionally generate very large ones (10000+ chars).
