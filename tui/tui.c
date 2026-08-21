@@ -834,6 +834,10 @@ void tui_run(void)
 
         switch (ch)
         {
+            case KEY_RESIZE:
+                clear();
+                break;
+
             case '/':
             case 's':
             case 'S':
