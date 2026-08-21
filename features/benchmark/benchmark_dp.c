@@ -223,7 +223,7 @@ void run_dp_benchmark(int n)
             dp_mem_used = dp_mem_after;
 
         char size_str[32];
-        sprintf(size_str, "Fibonacci (%d)", fib_n);
+        snprintf(size_str, sizeof(size_str), "Fibonacci (%d)", fib_n);
         if (rec_time >= 0)
         {
             printf("%-35s %-15.6f %-15.6f %-10s\n", size_str, rec_time * 1000.0, dp_time * 1000.0,
@@ -273,7 +273,7 @@ void run_dp_benchmark(int n)
                 dp_mem_used = dp_mem_after;
 
             char size_str[32];
-            sprintf(size_str, "0/1 Knapsack (%d)", kp_n);
+            snprintf(size_str, sizeof(size_str), "0/1 Knapsack (%d)", kp_n);
             if (rec_time >= 0)
             {
                 printf("%-35s %-15.6f %-15.6f %-10s\n", size_str, rec_time * 1000.0,
@@ -328,7 +328,7 @@ void run_dp_benchmark(int n)
                 dp_mem_used = dp_mem_after;
 
             char size_str[32];
-            sprintf(size_str, "LCS (%d)", lcs_n);
+            snprintf(size_str, sizeof(size_str), "LCS (%d)", lcs_n);
             if (rec_time >= 0)
             {
                 printf("%-35s %-15.6f %-15.6f %-10s\n", size_str, rec_time * 1000.0,
@@ -380,7 +380,7 @@ void run_dp_benchmark(int n)
                 dp_mem_used = dp_mem_after;
 
             char size_str[32];
-            sprintf(size_str, "Matrix Chain Mult (%d)", mcm_n);
+            snprintf(size_str, sizeof(size_str), "Matrix Chain Mult (%d)", mcm_n);
             if (rec_time >= 0)
             {
                 printf("%-35s %-15.6f %-15.6f %-10s\n", size_str, rec_time * 1000.0,

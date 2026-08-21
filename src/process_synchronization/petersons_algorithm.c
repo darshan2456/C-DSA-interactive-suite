@@ -83,6 +83,9 @@ void petersons_reset(int* flag, int* turn, int* pc)
 {
     petersons_init(flag, turn, pc);
     for (int i = 0; i < 3; i++)
-        strcpy(logs[i], "");
+    {
+        strncpy(logs[i], "", sizeof(logs[i]) - 1);
+        logs[i][sizeof(logs[i]) - 1] = '\0';
+    }
     add_log("Peterson's Algorithm Simulation Reset Successfully.");
 }

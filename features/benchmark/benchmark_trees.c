@@ -150,12 +150,12 @@ void run_trees_benchmark(int n)
                     char buf[32];
                     for (int k = 0; k < n; k++)
                     {
-                        sprintf(buf, "%d", keys[k]);
+                        snprintf(buf, sizeof(buf), "%d", keys[k]);
                         trie_insert(root, buf);
                     }
                     for (int k = 0; k < n; k++)
                     {
-                        sprintf(buf, "%d", keys[k]);
+                        snprintf(buf, sizeof(buf), "%d", keys[k]);
                         trie_search(root, buf);
                     }
                     trie_free(root);

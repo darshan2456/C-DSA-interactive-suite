@@ -25,7 +25,8 @@ void test_hamming_generate_and_verify(void)
     // Simulate single-bit error at position 5
     // 1-based index 5 corresponds to 0-based index 4 in C string
     char corrupt_codeword[128];
-    strcpy(corrupt_codeword, codeword);
+    strncpy(corrupt_codeword, codeword, sizeof(corrupt_codeword) - 1);
+    corrupt_codeword[sizeof(corrupt_codeword) - 1] = '\0';
     corrupt_codeword[4] = (corrupt_codeword[4] == '1') ? '0' : '1';
 
     int error_pos = hamming_verify(corrupt_codeword, corrected, data_recovered);
@@ -34,7 +35,8 @@ void test_hamming_generate_and_verify(void)
     assert(strcmp(data_recovered, data) == 0); // Data should be recovered successfully
 
     // Simulate error in parity bit at position 1 (0-based index 0)
-    strcpy(corrupt_codeword, codeword);
+    strncpy(corrupt_codeword, codeword, sizeof(corrupt_codeword) - 1);
+    corrupt_codeword[sizeof(corrupt_codeword) - 1] = '\0';
     corrupt_codeword[0] = (corrupt_codeword[0] == '1') ? '0' : '1';
 
     error_pos = hamming_verify(corrupt_codeword, corrected, data_recovered);

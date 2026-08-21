@@ -73,7 +73,8 @@ void test_checksum_transmission(void)
 
     // Simulate error in data
     char corrupt_data[17];
-    strcpy(corrupt_data, data);
+    strncpy(corrupt_data, data, sizeof(corrupt_data) - 1);
+    corrupt_data[sizeof(corrupt_data) - 1] = '\0';
     corrupt_data[0] = (corrupt_data[0] == '1') ? '0' : '1'; // Flip first bit
 
     int corrupt_rec_sum = checksum_block_sum(corrupt_data, len, k);
