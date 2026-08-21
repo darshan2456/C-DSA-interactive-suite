@@ -33,7 +33,7 @@ int rle_encode(const char* input, char* output, int len, int out_max)
         i++;
 
         char temp[32];
-        int written = snprintf(temp, sizeof(temp), "%c%d", ch, count);
+        int written = snprintf(temp, sizeof(temp), "%c%d;", ch, count);
         if (written < 0 || written >= (int)sizeof(temp))
         {
             return -1;
@@ -87,6 +87,15 @@ int rle_decode(const char* input, int len, char* output, int out_max)
                 return -1;
             }
             i++;
+        }
+
+        if (i < len && input[i] == ';')
+        {
+            i++;
+        }
+        else
+        {
+            return -1;
         }
 
         for (int j = 0; j < count; j++)
