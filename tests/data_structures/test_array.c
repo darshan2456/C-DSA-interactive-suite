@@ -145,8 +145,31 @@ void test_empty_array()
     printf("Array empty array test passed\n");
 }
 
+/* test null array safety */
+void test_null_array()
+{
+    swap_adjacent_pairs(NULL, 4);
+    reverse_array(NULL, 4);
+    rotate_array(NULL, 4, 2);
+
+    // We cannot easily assert print_array without capturing stdout, but we can verify it doesn't
+    // crash
+    print_array(NULL, 4);
+
+    assert(max_array(NULL, 4) == INT_MIN);
+    assert(min_array(NULL, 4) == INT_MAX);
+    assert(sum_array(NULL, 4) == 0);
+    assert(average_array(NULL, 4) == 0.0);
+
+    int* cloned = clone_array(NULL, 4);
+    assert(cloned == NULL);
+
+    printf("\nArray NULL pointer safety test passed\n");
+}
+
 int main()
 {
+    test_null_array();
 
     test_swap_adjacent_pairs();
     test_swap_odd_length();
