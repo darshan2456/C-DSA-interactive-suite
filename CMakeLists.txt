@@ -12,6 +12,14 @@ if(SANITIZE)
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fsanitize=address,undefined")
 endif()
 
+option(ENABLE_COVERAGE "Enable code coverage reporting" OFF)
+
+if(ENABLE_COVERAGE)
+    message(STATUS "Code coverage enabled")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} --coverage")
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} --coverage")
+endif()
+
 # Source directories
 set(SRC_DIRS
     help
@@ -170,5 +178,3 @@ if(DOXYGEN_FOUND)
         VERBATIM
     )
 endif()
-
-
