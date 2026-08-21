@@ -24,6 +24,16 @@ void help_advanced_sorting_algorithms_menu(void)
     printf("    Integer sorting algorithm that counts the number of objects having distinct\n");
     printf("    key values. O(N + K) time and space complexity, where K is the key range.\n\n");
 
+    printf("TIME & SPACE COMPLEXITY:\n");
+    printf("  +-----------------+--------------+--------------+--------------+---------+\n");
+    printf("  | Algorithm       | Best Time    | Avg Time     | Worst Time   | Space   |\n");
+    printf("  +-----------------+--------------+--------------+--------------+---------+\n");
+    printf("  | Quick Sort      | O(N log N)   | O(N log N)   | O(N^2)       | O(log N)|\n");
+    printf("  | Merge Sort      | O(N log N)   | O(N log N)   | O(N log N)   | O(N)    |\n");
+    printf("  | Heap Sort       | O(N log N)   | O(N log N)   | O(N log N)   | O(1)    |\n");
+    printf("  | Radix Sort      | O(N*k)       | O(N*k)       | O(N*k)       | O(N+k)  |\n");
+    printf("  | Bucket Sort     | O(N+k)       | O(N+k)       | O(N^2)       | O(N)    |\n");
+    printf("  +-----------------+--------------+--------------+--------------+---------+\n\n");
     printf("\nPress [ENTER] to return...\n");
     press_enter_to_continue();
 }

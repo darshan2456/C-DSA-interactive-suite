@@ -20,6 +20,15 @@ void help_sorting_algorithms_n2_menu(void)
     printf("    elements, reducing the array's inversion count step-by-step using a gap "
            "sequence.\n\n");
 
+    printf("TIME & SPACE COMPLEXITY:\n");
+    printf("  +-----------------+--------------+--------------+--------------+---------+\n");
+    printf("  | Algorithm       | Best Time    | Avg Time     | Worst Time   | Space   |\n");
+    printf("  +-----------------+--------------+--------------+--------------+---------+\n");
+    printf("  | Bubble Sort     | O(N)         | O(N^2)       | O(N^2)       | O(1)    |\n");
+    printf("  | Selection Sort  | O(N^2)       | O(N^2)       | O(N^2)       | O(1)    |\n");
+    printf("  | Insertion Sort  | O(N)         | O(N^2)       | O(N^2)       | O(1)    |\n");
+    printf("  | Shell Sort      | O(N log N)   | O(N^1.5)     | O(N^2)       | O(1)    |\n");
+    printf("  +-----------------+--------------+--------------+--------------+---------+\n\n");
     printf("RELATIONSHIPS & COMPARISONS:\n");
     printf("    • Bubble vs. Selection vs. Insertion:\n");
     printf("      - Bubble Sort is generally the least efficient due to excessive swaps.\n");
