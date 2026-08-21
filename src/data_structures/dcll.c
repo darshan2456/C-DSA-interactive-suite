@@ -31,6 +31,9 @@ static dcll_Node* dcll_create_node(void* value)
 
 void dcll_init(dcll* list)
 {
+    if (list == NULL)
+        return;
+
     list->head = NULL;
     list->tail = NULL;
     list->length = 0;
@@ -38,6 +41,9 @@ void dcll_init(dcll* list)
 
 int dcll_insertAtBeginning(dcll* list, void* value)
 {
+    if (list == NULL)
+        return -1;
+
     dcll_Node* node = dcll_create_node(value);
     if (node == NULL)
     {
@@ -68,6 +74,9 @@ int dcll_insertAtBeginning(dcll* list, void* value)
 
 int dcll_insertAtEnd(dcll* list, void* value)
 {
+    if (list == NULL)
+        return -1;
+
     dcll_Node* node = dcll_create_node(value);
     if (node == NULL)
     {
@@ -98,6 +107,9 @@ int dcll_insertAtEnd(dcll* list, void* value)
 
 int dcll_insertAtPosition(dcll* list, void* value, int position)
 {
+    if (list == NULL)
+        return -1;
+
     // Valid insert positions are 0..length (length == append at the end).
     if (position < 0 || position > list->length)
     {
@@ -344,6 +356,12 @@ int dcll_search(const dcll* list, const void* key, int (*compare)(const void*, c
 
 int dcll_getLength(const dcll* list)
 {
+    if (list == NULL)
+        return -1;
+
+    if (list == NULL)
+        return -1;
+
     return list->length;
 }
 

@@ -1,4 +1,5 @@
 # C_DSA_interactive_suite
+[![codecov](https://codecov.io/gh/darshan2456/C_DSA_interactive_suite/graph/badge.svg)](https://codecov.io/gh/darshan2456/C_DSA_interactive_suite)
 
 A modular, console-based **Data Structures & Algorithms library** written entirely in **C**, built from scratch with pointer-level control, manual memory management (`malloc` / `free`), and defensive input validation.
 
