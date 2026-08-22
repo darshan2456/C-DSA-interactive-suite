@@ -98,7 +98,8 @@ int lzw_encode(const char* input, int* output, int out_max)
 
             if (dict_size < LZW_MAX_CODES)
             {
-                strcpy(dict[dict_size].str, pc);
+                strncpy(dict[dict_size].str, pc, sizeof(dict[dict_size].str) - 1);
+                dict[dict_size].str[sizeof(dict[dict_size].str) - 1] = '\0';
                 dict_size++;
             }
             else
