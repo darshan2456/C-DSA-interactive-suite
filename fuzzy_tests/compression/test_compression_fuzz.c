@@ -1,11 +1,11 @@
+#include "../../features/fuzzy_tester/fuzzer.h"
+
 #include "compression.h"
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-
-#define FUZZ_ITERATIONS 300
 
 // Generate lengths with a distribution weighted towards smaller strings to
 // keep tests fast, but occasionally generate very large ones (10000+ chars).
@@ -58,9 +58,9 @@ static void generate_random_string_no_digits(char* str, int len)
     str[len] = '\0';
 }
 
-static void test_rle_fuzz(void)
+static void test_rle_fuzz(int iterations)
 {
-    for (int i = 0; i < FUZZ_ITERATIONS; ++i)
+    for (int i = 0; i < iterations; ++i)
     {
         int len = get_fuzz_length(10000);
         char* input = malloc((size_t)(len + 1));
@@ -107,9 +107,9 @@ static void test_rle_fuzz(void)
     printf("RLE fuzz tests passed\n");
 }
 
-static void test_huffman_fuzz(void)
+static void test_huffman_fuzz(int iterations)
 {
-    for (int i = 0; i < FUZZ_ITERATIONS; ++i)
+    for (int i = 0; i < iterations; ++i)
     {
         int len = get_fuzz_length(10000);
         if (len == 0)
@@ -160,9 +160,9 @@ static void test_huffman_fuzz(void)
     printf("Huffman fuzz tests passed\n");
 }
 
-static void test_lzw_fuzz(void)
+static void test_lzw_fuzz(int iterations)
 {
-    for (int i = 0; i < FUZZ_ITERATIONS; ++i)
+    for (int i = 0; i < iterations; ++i)
     {
         int len = get_fuzz_length(400); // LZW in this repo has dictionary reset bugs > 500 chars
         if (len == 0)
@@ -195,9 +195,9 @@ static void test_lzw_fuzz(void)
     printf("LZW fuzz tests passed\n");
 }
 
-static void test_bwt_mtf_fuzz(void)
+static void test_bwt_mtf_fuzz(int iterations)
 {
-    for (int i = 0; i < FUZZ_ITERATIONS; ++i)
+    for (int i = 0; i < iterations; ++i)
     {
         // BWT forward is currently O(N^2 log N), limit max length to prevent timeouts
         int len = get_fuzz_length(1500);
@@ -246,11 +246,12 @@ static void test_bwt_mtf_fuzz(void)
 int main(void)
 {
     srand((unsigned int)time(NULL));
+    int iterations = fuzzer_get_iterations(300);
 
-    test_rle_fuzz();
-    test_huffman_fuzz();
-    test_lzw_fuzz();
-    test_bwt_mtf_fuzz();
+    test_rle_fuzz(iterations);
+    test_huffman_fuzz(iterations);
+    test_lzw_fuzz(iterations);
+    test_bwt_mtf_fuzz(iterations);
 
     printf("All compression fuzz tests passed\n");
     return 0;

@@ -33,7 +33,7 @@ jobs:
         run: ctest --test-dir build --output-on-failure --verbose
 
       - name: Memory check with valgrind
-        run: cmake --build build --target valgrind
+        run: VALGRIND_MODE=1 cmake --build build --target valgrind
 
       - name: Configure ASan/UBSan build
         run: cmake -S . -B build-asan -DSANITIZE=ON

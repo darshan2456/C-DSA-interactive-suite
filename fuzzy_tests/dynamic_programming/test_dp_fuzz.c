@@ -177,8 +177,8 @@ void run_dp_fuzz(FuzzerState* fuzzer, int ops)
 int main(void)
 {
     FuzzerState fuzzer;
-    fuzzer_init(&fuzzer, 42, 300);
-    run_dp_fuzz(&fuzzer, 300);
+    fuzzer_init(&fuzzer, 42, fuzzer_get_iterations(300));
+    run_dp_fuzz(&fuzzer, fuzzer_get_iterations(300));
     fuzzer_free(&fuzzer);
     return 0;
 }

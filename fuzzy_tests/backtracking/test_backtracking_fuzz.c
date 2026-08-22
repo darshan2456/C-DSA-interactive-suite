@@ -34,8 +34,8 @@ int main(void)
     }
 
     // Sudoku
-    run_sudoku_fuzz(&fuzzer, 300);
-    run_maze_fuzz(&fuzzer, 300);
+    run_sudoku_fuzz(&fuzzer, fuzzer_get_iterations(300));
+    run_maze_fuzz(&fuzzer, fuzzer_get_iterations(300));
     fuzzer_free(&fuzzer);
     printf("Backtracking Fuzzing completed successfully!\n");
     return 0;

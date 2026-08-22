@@ -36,7 +36,7 @@ static void test_fuzz_n2_sorting(unsigned int seed, int num_runs)
         }
         else
         {
-            n = fuzzer_rand_int(&fuzzer, 2, 300);
+            n = fuzzer_rand_int(&fuzzer, 2, fuzzer_get_iterations(300));
         }
 
         int min_val, max_val;
@@ -127,7 +127,7 @@ int main(void)
     unsigned int seed = (unsigned int)time(NULL);
     printf("Starting O(N^2) Sorting Fuzz Tests with seed: %u\n", seed);
 
-    test_fuzz_n2_sorting(seed, 300);
+    test_fuzz_n2_sorting(seed, fuzzer_get_iterations(300));
 
     printf("All O(N^2) Sorting Fuzz Tests passed successfully!\n");
     return 0;
