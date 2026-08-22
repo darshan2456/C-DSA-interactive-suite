@@ -23,7 +23,7 @@ void test_advanced_sorting_fuzz(void)
     FuzzerState state;
     fuzzer_init(&state, 1337, 1000);
 
-    int num_iterations = 300;
+    int num_iterations = fuzzer_get_iterations(300);
     int max_len = 100;
 
     for (int iter = 0; iter < num_iterations; iter++)

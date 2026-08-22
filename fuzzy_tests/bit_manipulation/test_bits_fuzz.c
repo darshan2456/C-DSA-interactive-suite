@@ -1,15 +1,15 @@
+#include "../../features/fuzzy_tester/fuzzer.h"
+
 #include "bit_manipulation.h"
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 
-#define FUZZ_ITERATIONS 300
-
 /* --- set_bit tests --- */
-void test_set_bit_fuzz(void)
+void test_set_bit_fuzz(int iterations)
 {
-    for (int i = 0; i < FUZZ_ITERATIONS; ++i)
+    for (int i = 0; i < iterations; ++i)
     {
         int num = rand();
         if (rand() % 2 == 0)
@@ -34,9 +34,9 @@ void test_set_bit_fuzz(void)
 }
 
 /* --- clear_bit tests --- */
-void test_clear_bit_fuzz(void)
+void test_clear_bit_fuzz(int iterations)
 {
-    for (int i = 0; i < FUZZ_ITERATIONS; ++i)
+    for (int i = 0; i < iterations; ++i)
     {
         int num = rand();
         if (rand() % 2 == 0)
@@ -60,9 +60,9 @@ void test_clear_bit_fuzz(void)
 }
 
 /* --- toggle_bit tests --- */
-void test_toggle_bit_fuzz(void)
+void test_toggle_bit_fuzz(int iterations)
 {
-    for (int i = 0; i < FUZZ_ITERATIONS; ++i)
+    for (int i = 0; i < iterations; ++i)
     {
         int num = rand();
         if (rand() % 2 == 0)
@@ -89,9 +89,9 @@ void test_toggle_bit_fuzz(void)
 }
 
 /* --- check_bit tests --- */
-void test_check_bit_fuzz(void)
+void test_check_bit_fuzz(int iterations)
 {
-    for (int i = 0; i < FUZZ_ITERATIONS; ++i)
+    for (int i = 0; i < iterations; ++i)
     {
         int num = rand();
         if (rand() % 2 == 0)
@@ -114,9 +114,9 @@ void test_check_bit_fuzz(void)
 }
 
 /* --- count_set_bits tests --- */
-void test_count_set_bits_fuzz(void)
+void test_count_set_bits_fuzz(int iterations)
 {
-    for (int i = 0; i < FUZZ_ITERATIONS; ++i)
+    for (int i = 0; i < iterations; ++i)
     {
         int num = rand();
         if (rand() % 2 == 0)
@@ -144,7 +144,7 @@ void test_count_set_bits_fuzz(void)
 }
 
 /* --- is_power_of_two tests --- */
-void test_is_power_of_two_fuzz(void)
+void test_is_power_of_two_fuzz(int iterations)
 {
     // Fuzz with random powers of 2
     for (int i = 0; i < 31; ++i)
@@ -154,7 +154,7 @@ void test_is_power_of_two_fuzz(void)
     }
 
     // Fuzz with random numbers, verify they are not power of 2 unless they actually are
-    for (int i = 0; i < FUZZ_ITERATIONS; ++i)
+    for (int i = 0; i < iterations; ++i)
     {
         int num = rand();
         if (rand() % 2 == 0)
@@ -178,9 +178,9 @@ void test_is_power_of_two_fuzz(void)
 }
 
 /* --- find_unique tests --- */
-void test_find_unique_fuzz(void)
+void test_find_unique_fuzz(int iterations)
 {
-    for (int iter = 0; iter < FUZZ_ITERATIONS; ++iter)
+    for (int iter = 0; iter < iterations; ++iter)
     {
         int pairs = rand() % 50 + 1; // 1 to 50 pairs
         int n = pairs * 2 + 1;
@@ -229,14 +229,15 @@ void test_find_unique_fuzz(void)
 int main(void)
 {
     srand((unsigned int)time(NULL));
+    int iterations = fuzzer_get_iterations(300);
 
-    test_set_bit_fuzz();
-    test_clear_bit_fuzz();
-    test_toggle_bit_fuzz();
-    test_check_bit_fuzz();
-    test_count_set_bits_fuzz();
-    test_is_power_of_two_fuzz();
-    test_find_unique_fuzz();
+    test_set_bit_fuzz(iterations);
+    test_clear_bit_fuzz(iterations);
+    test_toggle_bit_fuzz(iterations);
+    test_check_bit_fuzz(iterations);
+    test_count_set_bits_fuzz(iterations);
+    test_is_power_of_two_fuzz(iterations);
+    test_find_unique_fuzz(iterations);
 
     printf("All Bit Manipulation Fuzz Tests Passed!\n");
 

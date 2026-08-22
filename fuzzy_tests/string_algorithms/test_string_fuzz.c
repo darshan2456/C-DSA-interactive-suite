@@ -97,11 +97,11 @@ int main(void)
 {
     FuzzerState fuzzer;
 
-    // Initialize the fuzzer with a fixed seed and 300 operations
-    fuzzer_init(&fuzzer, 12345, 300);
+    // Initialize the fuzzer with a fixed seed and fuzzer_get_iterations(300) operations
+    fuzzer_init(&fuzzer, 12345, fuzzer_get_iterations(300));
 
     // Run our string algorithms fuzzer
-    run_string_fuzz(&fuzzer, 300);
+    run_string_fuzz(&fuzzer, fuzzer_get_iterations(300));
 
     // Clean up allocated fuzzer memory
     fuzzer_free(&fuzzer);

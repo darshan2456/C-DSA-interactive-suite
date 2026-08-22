@@ -14,8 +14,8 @@ int main(void)
     printf("Starting Graph Fuzzing with seed: %u\n", seed);
 
     fuzzer_init(&fuzzer, seed, 600);
-    run_unweighted_graph_fuzz(&fuzzer, 300, 80);
-    run_weighted_graph_fuzz(&fuzzer, 300, 80);
+    run_unweighted_graph_fuzz(&fuzzer, fuzzer_get_iterations(300), 80);
+    run_weighted_graph_fuzz(&fuzzer, fuzzer_get_iterations(300), 80);
     fuzzer_free(&fuzzer);
 
     printf("Graph Fuzzing completed successfully!\n");

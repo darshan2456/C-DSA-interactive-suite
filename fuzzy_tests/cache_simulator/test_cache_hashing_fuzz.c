@@ -10,8 +10,8 @@ int main(void)
     printf("Starting Cache & Hashing Fuzzing with seed: %u\n", seed);
 
     fuzzer_init(&fuzzer, seed, 600);
-    run_cache_fuzz(&fuzzer, 300);
-    run_hashing_fuzz(&fuzzer, 300);
+    run_cache_fuzz(&fuzzer, fuzzer_get_iterations(300));
+    run_hashing_fuzz(&fuzzer, fuzzer_get_iterations(300));
     fuzzer_free(&fuzzer);
 
     printf("Cache & Hashing Fuzzing completed successfully!\n");

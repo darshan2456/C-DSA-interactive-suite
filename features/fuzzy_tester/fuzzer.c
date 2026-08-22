@@ -97,3 +97,13 @@ int fuzzer_rand_int(FuzzerState* fuzzer, int min, int max)
     unsigned int val = (fuzzer->seed / 65536) % 32768;
     return min + (int)(val % (unsigned int)(max - min + 1));
 }
+
+int fuzzer_get_iterations(int default_iterations)
+{
+    const char* valgrind_mode = getenv("VALGRIND_MODE");
+    if (valgrind_mode != NULL && strcmp(valgrind_mode, "1") == 0)
+    {
+        return 20;
+    }
+    return default_iterations;
+}

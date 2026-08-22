@@ -10,13 +10,13 @@ int main(void)
     printf("Starting Heap Fuzzing with seed: %u\n", seed);
 
     fuzzer_init(&fuzzer, seed, 2100);
-    run_binomial_fuzz(&fuzzer, 300);
-    run_fibonacci_fuzz(&fuzzer, 300);
-    run_minmax_fuzz(&fuzzer, 300);
-    run_leftist_fuzz(&fuzzer, 300);
-    run_skew_fuzz(&fuzzer, 300);
-    run_dary_fuzz(&fuzzer, 300);
-    run_treap_fuzz(&fuzzer, 300);
+    run_binomial_fuzz(&fuzzer, fuzzer_get_iterations(300));
+    run_fibonacci_fuzz(&fuzzer, fuzzer_get_iterations(300));
+    run_minmax_fuzz(&fuzzer, fuzzer_get_iterations(300));
+    run_leftist_fuzz(&fuzzer, fuzzer_get_iterations(300));
+    run_skew_fuzz(&fuzzer, fuzzer_get_iterations(300));
+    run_dary_fuzz(&fuzzer, fuzzer_get_iterations(300));
+    run_treap_fuzz(&fuzzer, fuzzer_get_iterations(300));
     fuzzer_free(&fuzzer);
 
     printf("Heap Fuzzing completed successfully!\n");

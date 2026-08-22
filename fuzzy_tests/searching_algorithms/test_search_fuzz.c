@@ -1,10 +1,10 @@
+#include "../../features/fuzzy_tester/fuzzer.h"
+
 #include "../../src/searching_algorithms/searching_algorithms.h"
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-
-#define FUZZ_ITERATIONS 300
 
 // Helper function for qsort
 static int compare_ints(const void* a, const void* b)
@@ -80,9 +80,9 @@ static void test_negative_search(int* arr, int len, int target)
     assert(jump_search(arr, target, len) == -1);
 }
 
-static void test_searching_fuzz(void)
+static void test_searching_fuzz(int iterations)
 {
-    for (int i = 0; i < FUZZ_ITERATIONS; ++i)
+    for (int i = 0; i < iterations; ++i)
     {
         int len = get_fuzz_length(10000);
 
@@ -154,8 +154,9 @@ static void test_searching_fuzz(void)
 int main(void)
 {
     srand((unsigned int)time(NULL));
+    int iterations = fuzzer_get_iterations(300);
 
-    test_searching_fuzz();
+    test_searching_fuzz(iterations);
 
     return 0;
 }
