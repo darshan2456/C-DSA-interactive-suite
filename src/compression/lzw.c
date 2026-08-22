@@ -107,11 +107,6 @@ int lzw_encode(const char* input, int* output, int out_max)
                 reset_dict(dict, &dict_size);
             }
 
-            if (dict_size >= LZW_MAX_CODES)
-            {
-                reset_dict(dict, &dict_size);
-            }
-
             p[0] = c;
             p[1] = '\0';
             p_len = 1;
