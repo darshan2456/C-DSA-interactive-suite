@@ -31,7 +31,8 @@ The codebase is structured as a reusable **DSA library**, with an interactive, c
 
 ## Expression Evaluation 
 
-<img width="1000" height="603" alt="Screencast From 2026-09-08 23-10-44" src="https://github.com/user-attachments/assets/2552e461-88b8-4294-91e4-75cb5506a444" />
+<img width="1000" height="603" alt="Screencast From 2026-09-08 23-34-14" src="https://github.com/user-attachments/assets/d9998730-b8cf-48f6-809c-16e5c58a3a75" />
+
 
 
 ## String algos (Robin Karp)
