@@ -22,17 +22,17 @@ The codebase is structured as a reusable **DSA library**, with an interactive, c
 
 ## Demos
 
-## Backtracking algos (Knight's tour)
-
-[![asciinema demo](https://asciinema.org/a/G5D8YBvcIbZM2fzF.svg)](https://asciinema.org/a/G5D8YBvcIbZM2fzF)
+## Binary Search Tree
+<img width="1000" height="603" alt="Screencast From 2026-09-08 23-10-44(1)" src="https://github.com/user-attachments/assets/ae4fe9e2-172f-4652-941f-b0ee2c9f260b" />
 
 ## Sorting algos (Bubble sort)
 
 [![asciinema demo](https://asciinema.org/a/J8CHAuyJAIyOduYY.svg)](https://asciinema.org/a/J8CHAuyJAIyOduYY)
 
-## Expression Evaluation complete
+## Expression Evaluation 
 
-[![asciinema demo](https://asciinema.org/a/xDm8zlxD6VzzFZFR.svg)](https://asciinema.org/a/xDm8zlxD6VzzFZFR)
+<img width="1000" height="603" alt="Screencast From 2026-09-08 23-10-44" src="https://github.com/user-attachments/assets/2552e461-88b8-4294-91e4-75cb5506a444" />
+
 
 ## String algos (Robin Karp)
 
